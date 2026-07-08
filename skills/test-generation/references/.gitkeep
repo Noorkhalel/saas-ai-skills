@@ -1,0 +1,3 @@
+# References
+
+Framework playbooks and domain-specific testing guides. These files are loaded on-demand by the skill based on detected project stack.

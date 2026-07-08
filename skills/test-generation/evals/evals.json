@@ -1,0 +1,155 @@
+{
+  "skill_name": "test-generation",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Generate Jest tests for this TypeScript utility that calculates booking prices with tier discounts, weekend surcharges, and seasonal adjustments.",
+      "expected_output": "A Test Generation Report with behavior analysis of the pricing utility, a test plan covering all tiers, surcharges, boundary conditions (zero nights, end-before-start), and complete Jest test code with AAA structure and behavior-based names.",
+      "files": ["evals/files/ts-utility/pricing.ts"],
+      "expectations": [
+        "The report's Behaviors Identified section lists at least: tier-based pricing (basic/premium/enterprise), weekend surcharge calculation, peak season surcharge, long-stay discount threshold, and end-before-start error handling.",
+        "The test plan maps each planned test to a specific behavior and rationale, not just generic 'test calculation' entries.",
+        "Every generated test has a behavior-based name (e.g., 'applies 25% surcharge on weekends') and Arrange-Act-Assert structure.",
+        "Tests cover edge cases including: zero nights (same start/end), end date before start date (RangeError), and floating-point precision for surcharge calculations.",
+        "Generated tests use Jest idioms: describe/it blocks, expect().toBe/toThrow, and proper setup/teardown patterns.",
+        "No generated test contains fixed sleeps, unseeded randomness, wall-clock dependence, order dependence, or live external calls.",
+        "Final Recommendations names at least one missing test or validation gap (e.g., unknown tier handling, very large date ranges, DST transitions)."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Write pytest tests for this FastAPI product inventory endpoint that has authentication, RBAC, validation, and cursor-based pagination.",
+      "expected_output": "A Test Generation Report analyzing the FastAPI endpoint, identifying auth/RBAC/validation behaviors, planning tests across happy path, auth failures, validation errors, and pagination edge cases, with idiomatic pytest code using TestClient.",
+      "files": ["evals/files/fastapi-endpoint/main.py"],
+      "expectations": [
+        "The report's Behaviors Identified section lists at least: product CRUD operations, bearer token authentication, admin vs viewer role enforcement, SKU uniqueness constraint, input validation rules (name length, SKU pattern, price range), and cursor-based pagination.",
+        "The test plan maps tests to behaviors with rationale explaining why each test matters (e.g., 'viewer cannot create products — enforces least-privilege access').",
+        "Every generated test has a behavior-based name and Arrange-Act-Assert structure.",
+        "Tests cover edge cases including: missing auth header, expired/invalid token, viewer attempting admin-only actions, duplicate SKU (409), invalid SKU format, price at boundary (0, negative, max), and pagination beyond available results.",
+        "Generated tests use pytest idioms: fixtures, TestClient from FastAPI, assert on response.status_code and response.json(), and parametrize where appropriate.",
+        "No generated test contains fixed sleeps, unseeded randomness, wall-clock dependence, order dependence, or live external calls.",
+        "Final Recommendations names at least one missing test or validation gap (e.g., concurrent SKU creation race condition, pagination with filters, rate limiting)."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Generate Playwright end-to-end tests for this login flow that includes success, failure, account lockout, and forgot-password scenarios.",
+      "expected_output": "A Test Generation Report analyzing the login page flows, planning E2E tests for each scenario, and generating Playwright tests with resilient selectors and auto-waiting assertions.",
+      "files": ["evals/files/login-flow/login-page.md"],
+      "expectations": [
+        "The report's Behaviors Identified section lists at least: successful login with redirect, invalid credentials error, account lockout after 5 failures, empty field validation, forgot password navigation, and loading state during API call.",
+        "The test plan maps tests to behaviors with rationale, covering both happy and failure paths.",
+        "Every generated test has a behavior-based name and Arrange-Act-Assert structure.",
+        "Tests cover edge cases including: empty fields showing inline errors, loading state (button disabled), email trimming, and concurrent login debouncing.",
+        "Playwright tests use web-first assertions (expect(locator).toBeVisible/toHaveText) and resilient selectors (getByRole, getByLabel). No page.waitForTimeout or fixed sleeps.",
+        "No generated test contains fixed sleeps, unseeded randomness, wall-clock dependence, order dependence, or live external calls.",
+        "Final Recommendations names at least one missing test or validation gap (e.g., session persistence with 'Remember me', network error handling, very long email input)."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Create integration tests for this PostgreSQL order repository that handles transactions, foreign key constraints, and optimistic locking.",
+      "expected_output": "A Test Generation Report analyzing the repository class, identifying CRUD, transaction, constraint, and locking behaviors, and generating integration tests with proper database isolation.",
+      "files": ["evals/files/pg-repository/order_repository.py"],
+      "expectations": [
+        "The report's Behaviors Identified section lists at least: order creation with items (atomic transaction), find by ID with items, status update with optimistic locking, concurrent modification detection (OptimisticLockError), customer query with status filter, and cascading delete of items.",
+        "The test plan maps tests to behaviors with rationale, including transaction atomicity and constraint enforcement.",
+        "Every generated test has a behavior-based name and Arrange-Act-Assert structure.",
+        "Tests cover edge cases including: order with zero items (validation), negative quantity/price, optimistic lock conflict, deleting non-existent order, and finding by customer with no orders.",
+        "Generated tests use appropriate database testing patterns: transaction isolation (rollback or truncate), fixture setup for test data, and proper connection management.",
+        "No generated test contains fixed sleeps, unseeded randomness, wall-clock dependence, order dependence, or live external calls.",
+        "Final Recommendations names at least one missing test or validation gap (e.g., concurrent order creation, very large order with many items, index usage verification)."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Write tests for this Supabase multi-tenant project management schema with RLS policies to verify tenant isolation and role-based access.",
+      "expected_output": "A Test Generation Report analyzing the RLS schema, identifying tenant isolation and role-based access behaviors, and generating tests that prove cross-tenant data cannot be accessed.",
+      "files": ["evals/files/supabase-rls/schema.sql"],
+      "expectations": [
+        "The report's Behaviors Identified section lists at least: organization-scoped data visibility, membership-based access, role hierarchy (owner > admin > member > viewer), project CRUD restricted by role, task management permissions, and cross-tenant isolation.",
+        "The test plan maps tests to behaviors with rationale, emphasizing the security-critical nature of tenant isolation.",
+        "Every generated test has a behavior-based name and Arrange-Act-Assert structure.",
+        "Tests cover edge cases including: viewer attempting write operations, member attempting admin operations, and cross-organization data access attempts.",
+        "Includes a test proving tenant A cannot read or mutate tenant B's rows (cross-tenant isolation verification).",
+        "No generated test contains fixed sleeps, unseeded randomness, wall-clock dependence, order dependence, or live external calls.",
+        "Final Recommendations names at least one missing test or validation gap (e.g., RLS policy bypass via service role, membership deletion cascade effects, concurrent role changes)."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Create regression tests for this order submission service based on the bug report about duplicate orders caused by double-click/retry without idempotency.",
+      "expected_output": "A Test Generation Report that specifically addresses the duplicate-order bug, with regression tests proving the idempotency fix works and a test that would have caught the original bug.",
+      "files": ["evals/files/duplicate-orders/order-service.ts", "evals/files/duplicate-orders/BUG_REPORT.md"],
+      "expectations": [
+        "The report's Behaviors Identified section lists at least: successful order submission, idempotency key deduplication, payment gateway interaction, validation (empty items, missing key), payment failure handling, and the specific duplicate-order bug scenario.",
+        "The test plan maps tests to behaviors with rationale, with the regression test explicitly linked to BUG-2024-0847.",
+        "Every generated test has a behavior-based name and Arrange-Act-Assert structure.",
+        "Tests cover edge cases including: empty items array, missing idempotency key, zero/negative total, and payment gateway failure.",
+        "Includes a test that would fail against the pre-fix code path — specifically testing that submitting the same idempotency key twice results in only one payment charge and returns the original order result.",
+        "No generated test contains fixed sleeps, unseeded randomness, wall-clock dependence, order dependence, or live external calls.",
+        "Final Recommendations names at least one missing test or validation gap (e.g., concurrent submissions with same key, idempotency key expiration, partial failure recovery)."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Generate authentication and authorization tests for this SaaS dashboard that has admin, member, and viewer roles with different access levels.",
+      "expected_output": "A Test Generation Report analyzing the role-based route structure, generating auth/authz tests for each role against each endpoint, verifying proper 401/403 responses.",
+      "files": ["evals/files/saas-dashboard/routes.ts"],
+      "expectations": [
+        "The report's Behaviors Identified section lists at least: JWT authentication middleware, role-based route protection (admin-only, admin+member, all-roles), team management restrictions, self-removal prevention, and input validation for invitations.",
+        "The test plan maps tests to behaviors with rationale, organized by authentication and authorization concerns.",
+        "Every generated test has a behavior-based name and Arrange-Act-Assert structure.",
+        "Tests cover edge cases including: missing auth header, malformed token, expired token, viewer accessing admin routes, member accessing admin routes, admin inviting with invalid role, and admin attempting self-removal.",
+        "Generated tests properly test all three roles against each protected route, verifying 200/201/204 for authorized and 403 for unauthorized access.",
+        "No generated test contains fixed sleeps, unseeded randomness, wall-clock dependence, order dependence, or live external calls.",
+        "Final Recommendations names at least one missing test or validation gap (e.g., token refresh flow, org-level isolation between tenants, concurrent role modifications)."
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Generate edge case tests for this financial calculation module that handles currency rounding, tax computation, amount splitting, and currency conversion.",
+      "expected_output": "A Test Generation Report focused on precision edge cases, rounding behavior, and boundary conditions in financial calculations, with tests that avoid floating-point equality pitfalls.",
+      "files": ["evals/files/financial-calc/financial.ts"],
+      "expectations": [
+        "The report's Behaviors Identified section lists at least: currency-aware rounding (different decimal places for JPY vs USD), tax calculation with discount, amount splitting with remainder distribution, and exchange rate conversion.",
+        "The test plan maps tests to behaviors with rationale, emphasizing precision and rounding concerns.",
+        "Every generated test has a behavior-based name and Arrange-Act-Assert structure.",
+        "Tests cover edge cases including: JPY zero-decimal rounding, splitting amounts that don't divide evenly, zero amount splitting, tax on zero subtotal, and boundary tax rates (0 and 1).",
+        "Assertions avoid floating-point equality pitfalls — uses toBeCloseTo, expects specific rounded values, or handles decimal precision explicitly rather than naive toBe for computed floats.",
+        "No generated test contains fixed sleeps, unseeded randomness, wall-clock dependence, order dependence, or live external calls.",
+        "Final Recommendations names at least one missing test or validation gap (e.g., very large amounts causing overflow, exchange rate source assumptions, negative amount edge cases)."
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Write React Testing Library tests for this registration form component that has async username availability checking, debounced validation, and multiple field-level validations.",
+      "expected_output": "A Test Generation Report analyzing the form component's behaviors, generating tests using Testing Library's user-facing queries and user-event for realistic interaction simulation.",
+      "files": ["evals/files/react-form/RegistrationForm.tsx"],
+      "expectations": [
+        "The report's Behaviors Identified section lists at least: username availability check (debounced 500ms), email format validation, password strength requirements, password confirmation matching, form submission with loading state, error display, and success state.",
+        "The test plan maps tests to behaviors with rationale, covering both happy path and validation failure scenarios.",
+        "Every generated test has a behavior-based name and Arrange-Act-Assert structure.",
+        "Tests cover edge cases including: username too short (< 3 chars), invalid characters in username, weak password (missing uppercase/number), mismatched passwords, API error during availability check, and submission failure.",
+        "Uses Testing Library user-facing queries (findByRole, getByLabelText, getByRole, findByText, user-event) — not container.querySelector, direct DOM traversal, or manual act() wrapping.",
+        "No generated test contains fixed sleeps, unseeded randomness, wall-clock dependence, order dependence, or live external calls.",
+        "Final Recommendations names at least one missing test or validation gap (e.g., debounce timing verification, rapid username changes canceling previous checks, accessibility of error messages)."
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Create API tests for this articles endpoint that supports pagination, filtering by status/author/tag/date, sorting by multiple fields, input validation, and rate limiting.",
+      "expected_output": "A Test Generation Report analyzing the REST endpoint, generating comprehensive API tests covering pagination mechanics, filter combinations, sort validation, rate limit enforcement, and error responses.",
+      "files": ["evals/files/api-surface/articles-api.ts"],
+      "expectations": [
+        "The report's Behaviors Identified section lists at least: offset-based pagination, filtering by status/author/tag/date-range/search, sorting by title/createdAt/viewCount, input validation for all query params, rate limiting per API key, and view count increment on article access.",
+        "The test plan maps tests to behaviors with rationale, covering happy path, validation errors, and rate limit scenarios.",
+        "Every generated test has a behavior-based name and Arrange-Act-Assert structure.",
+        "Tests cover edge cases including: page beyond results (empty data), limit exceeding maximum (400), invalid sort field (400), invalid date format, rate limit exceeded (429 with Retry-After header), and missing API key (401).",
+        "Generated tests verify pagination metadata (page, total, totalPages, hasNext, hasPrev) and sorting order correctness.",
+        "No generated test contains fixed sleeps, unseeded randomness, wall-clock dependence, order dependence, or live external calls.",
+        "Final Recommendations names at least one missing test or validation gap (e.g., combined filter + sort + pagination, search with special characters, concurrent rate limit enforcement)."
+      ]
+    }
+  ]
+}

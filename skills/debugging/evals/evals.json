@@ -1,0 +1,69 @@
+{
+  "skill_name": "debugging",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Our React app crashes with a blank white screen right after login, but only for some users. Debug this. The details and the component are in the react-crash folder (report.md and ProfileWidget.tsx).",
+      "files": ["evals/files/react-crash/report.md", "evals/files/react-crash/ProfileWidget.tsx"],
+      "true_root_cause": "ProfileWidget calls user.passwordUpdatedAt.toLocaleDateString(), but Google/social sign-in users have passwordUpdatedAt: null (only email/password users have a date). Calling .toLocaleDateString() on null throws TypeError during render, which unmounts the tree -> blank screen. The 'only some users' + 'only Google sign-in' + the API showing null for social users + the stack trace line all converge on this. Correct fix handles the null case (conditional render / fallback), NOT a blind ?. that would hide the missing info. The uncleaned setInterval is a real but SEPARATE minor bug (memory/leak + setState-after-unmount), NOT the crash cause — a good review distinguishes them.",
+      "red_herring": "The missing clearInterval in useEffect is a real secondary bug but is NOT the crash cause; a guesser might blame it or blame avatarUrl.",
+      "expectations": [
+        "Follows the Debugging Summary output structure with a confidence-tagged Root Cause",
+        "Identifies the root cause as passwordUpdatedAt being null for social/Google users, causing .toLocaleDateString() to throw",
+        "Uses the evidence (only-Google-users + API null value + stack trace line 20) rather than guessing",
+        "Recommended fix handles the null case correctly (not a blind optional-chain that hides data)",
+        "Distinguishes the crash cause from the separate uncleaned-setInterval bug rather than conflating them",
+        "Recommends a regression test for the social-user (null passwordUpdatedAt) case",
+        "Does not immediately jump to a code patch before establishing the cause"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "This orders API endpoint is extremely slow (3-6 seconds). Investigate why and tell me how to fix it. Everything is in slow-query/report.md including the query, the EXPLAIN ANALYZE, and the current indexes.",
+      "files": ["evals/files/slow-query/report.md"],
+      "true_root_cause": "The query filters WHERE org_id = $1 AND created_at > $2 but there is NO index on org_id (indexes exist only on id, created_at alone, and status). The planner does a Seq Scan over 48M rows, Filter removes 47.9M rows. The fix is a composite index on (org_id, created_at) [equality column first, then the range/sort column] which lets the DB seek to the org's rows already ordered by created_at, serving the ORDER BY created_at DESC LIMIT 50 directly. Evidence is the plan: Seq Scan + 'Rows Removed by Filter: 47987606'. SELECT * is a minor inefficiency but NOT the cause of the slowness.",
+      "red_herring": "SELECT * is present and tempting to blame, but it is not the cause; the existing orders_created_at_idx (created_at alone) is also a trap — it does not help because the org_id filter isn't selective on it and would still scan across all orgs.",
+      "expectations": [
+        "Follows the Debugging Summary output structure with a confidence-tagged Root Cause",
+        "Reads the EXPLAIN output as evidence (Seq Scan, Rows Removed by Filter ~48M) rather than eyeballing the SQL",
+        "Identifies the missing composite index on (org_id, created_at) as the root cause",
+        "Explains the composite column order (equality org_id first, then range/sort created_at) and that it can serve the ORDER BY ... LIMIT",
+        "Does not misattribute the slowness to SELECT * as the primary cause",
+        "Recommends verifying the fix by re-running EXPLAIN ANALYZE (index actually used)",
+        "Provides the index DDL as the concrete fix"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Our payments pod is stuck in CrashLoopBackOff after this morning's deploy. Figure out the root cause. Everything (kubectl describe, previous logs, the recent change) is in crashloop/report.md.",
+      "files": ["evals/files/crashloop/report.md"],
+      "true_root_cause": "This morning's PR renamed the Secret key from 'database-url' to 'db_url', but the Deployment's secretKeyRef still references key: database-url (optional: true). Because the key no longer exists and the ref is optional, DATABASE_URL is silently unset -> the app reads host: undefined -> DNS lookup 'ENOTFOUND undefined' -> connect fails -> process exits 1 -> K8s restarts -> CrashLoopBackOff. Evidence chain: logs --previous show host: undefined + ENOTFOUND; exit code 1 (app error, not OOM/137, not SIGTERM/143); the PR renamed the key while the Deployment still points at the old key. Fix: make the Deployment reference key 'db_url' (or rename the secret key back / add both). CrashLoopBackOff is the effect, not the cause.",
+      "red_herring": "The liveness probe (timeout=1s) looks aggressive and is tempting to blame, but the app exits at ~1s after start while the probe has initialDelaySeconds=10s (never even runs before the crash) and the exit code is 1 (app error) not SIGTERM/143 — so the probe is correctly ruled out by reading the exit code and timing.",
+      "expectations": [
+        "Follows the Debugging Summary output structure with a confidence-tagged Root Cause",
+        "Reads the exit code (1 = app error) and logs --previous rather than blaming CrashLoopBackOff itself",
+        "Identifies the secret key rename (database-url -> db_url) with the Deployment still referencing the old key as root cause",
+        "Connects the optional:true secretKeyRef to DATABASE_URL being silently unset -> host: undefined -> ENOTFOUND",
+        "Correctly rules OUT the liveness probe using exit code and/or timing (not SIGTERM, probe delay 10s > 1s crash)",
+        "Ties the failure to the recent change (the PR) as the prime suspect",
+        "Recommends the config fix and a prevention (e.g., non-optional ref to fail loudly, or a deploy check)"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "During flash sales our inventory sometimes goes negative and we oversell, but we can never reproduce it in testing. Debug this. Code and details are in race/inventory.js and race/report.md.",
+      "files": ["evals/files/race/inventory.js", "evals/files/race/report.md"],
+      "true_root_cause": "reserveInventory does a non-atomic check-then-act: it SELECTs quantity, checks available >= qty in application code, then issues a separate UPDATE that decrements unconditionally. Under concurrency (READ COMMITTED, multiple instances/workers), two requests both SELECT quantity=1, both pass the check, both UPDATE quantity = quantity - 1 -> ends at -1, both succeed. Classic race condition / lost update. Only reproduces under load on the same product (the 'intermittent, only under load, only popular products' signature). Fix: make it atomic — a conditional UPDATE (UPDATE inventory SET quantity = quantity - $1 WHERE product_id = $2 AND quantity >= $1) and treat 0 rows affected as out-of-stock; or SELECT ... FOR UPDATE within a transaction; or a CHECK (quantity >= 0) constraint as a backstop. 'Wrap in a transaction' alone under READ COMMITTED does NOT fix it.",
+      "red_herring": "The absence of a thrown error and the try/catch-free code may tempt a guess about error handling; the real issue is atomicity. Also 'add a transaction' is a partial/incorrect fix if it doesn't make the write conditional or lock the row.",
+      "expectations": [
+        "Follows the Debugging Summary output structure with a confidence-tagged Root Cause",
+        "Identifies a race condition: non-atomic check-then-act (SELECT then separate unconditional UPDATE)",
+        "Explains the concurrent interleaving (two requests both read quantity=1, both pass the check, both decrement)",
+        "Connects the 'only under load / only popular products / not reproducible locally' symptoms to the concurrency diagnosis",
+        "Recommended fix restores atomicity (conditional UPDATE with quantity >= qty and check rows-affected, or SELECT FOR UPDATE, or a CHECK constraint)",
+        "Notes that wrapping in a transaction alone under READ COMMITTED is insufficient without a conditional write or row lock",
+        "Recommends a concurrency regression test (N concurrent reservations asserting no oversell)"
+      ]
+    }
+  ]
+}

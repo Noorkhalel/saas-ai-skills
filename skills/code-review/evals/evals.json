@@ -1,0 +1,108 @@
+{
+  "skill_name": "code-review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Review this React authentication component (LoginForm.tsx). Is it production ready?",
+      "expected_output": "A structured review catching the seeded security and state defects: hardcoded live API key (CRITICAL), credentials logged via console.log, dangerouslySetInnerHTML on server-controlled error (XSS), token+user in localStorage with client-side isAdmin trust, useEffect with stale `attempts` closure and empty deps, setAttempts using stale state, no error handling on fetch/no rate limiting. Should give a score, Not Ready verdict, and concrete fixes.",
+      "files": ["evals/files/LoginForm.tsx"],
+      "seeded_defects": [
+        "CRITICAL: hardcoded live secret API key in client code (line 4) — public + must rotate",
+        "CRITICAL/HIGH: console.log of email AND password (line 25)",
+        "HIGH: dangerouslySetInnerHTML renders server error string — XSS sink (line ~59)",
+        "HIGH: auth token in localStorage (XSS-readable); client-side isAdmin trust for routing",
+        "HIGH: useEffect stale closure — reads `attempts` with empty deps, always 0; setTimeout never cleared",
+        "MEDIUM: setAttempts(attempts+1) stale state update (should be functional update)",
+        "MEDIUM: no error handling if fetch rejects; loading stuck; no login rate limiting",
+        "LOW: email input type='text' not 'email'; no validation"
+      ],
+      "expectations": [
+        "Output follows the mandated Code Review Summary structure with score, Critical Issues table, and Production Readiness verdict",
+        "Flags the hardcoded API key as CRITICAL",
+        "Flags console.log of the password as a sensitive-data leak",
+        "Flags dangerouslySetInnerHTML as an XSS sink",
+        "Identifies the useEffect stale-closure/empty-deps bug (state problem)",
+        "Verdict is Not Ready with reasoning tied to the findings",
+        "Does not fabricate issues that aren't in the code (no hallucinated findings)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Perform a code review of this Node.js/Express orders API endpoint (orders.js). Find any bugs, security, and database problems.",
+      "files": ["evals/files/orders.js"],
+      "seeded_defects": [
+        "CRITICAL: jwt.decode() instead of verify() — signature never checked, auth fully bypassable via forged token",
+        "CRITICAL: SQL injection via string-interpolated `status` and `req.user.id` into query (lines 23-27)",
+        "CRITICAL/HIGH: hardcoded JWT secret fallback 'dev-secret' (line 6)",
+        "HIGH: IDOR on GET /orders/:id — no user_id/ownership filter, any user reads any order (lines 54-62)",
+        "HIGH: N+1 query — order_items fetched per order in a loop (lines 33-41)",
+        "HIGH: cancel/refund does multiple writes with no transaction — partial failure leaves cancelled order without refund or vice versa",
+        "MEDIUM: fire-and-forget audit log db.query not awaited — errors vanish, unhandled rejection",
+        "MEDIUM: error response leaks err.message + err.stack to client",
+        "MEDIUM: parseInt(page) NaN when page missing → offset NaN",
+        "LOW: SELECT * ; no auth token presence check before decode"
+      ],
+      "expectations": [
+        "Output follows the mandated Code Review Summary structure",
+        "Flags jwt.decode-instead-of-verify as CRITICAL auth bypass",
+        "Flags the SQL injection in the status/query building as CRITICAL",
+        "Flags the IDOR / missing ownership check on GET /orders/:id",
+        "Flags the N+1 query pattern in the order loop",
+        "Flags the missing transaction around cancel + refund writes",
+        "Priority Fix Order lists CRITICAL items before lower severities",
+        "Does not hallucinate defects absent from the code"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Review this multi-tenant SaaS document service (documents_service.py). It's a FastAPI backend where users belong to organizations and documents belong to organizations. Check tenant isolation, authorization, and database security.",
+      "files": ["evals/files/documents_service.py"],
+      "seeded_defects": [
+        "CRITICAL: list_documents has NO tenant/org filter AND SQL injection via `q` string concatenation — cross-tenant data exposure + injection",
+        "CRITICAL: get_document fetches by id with no org_id/tenant predicate — cross-tenant IDOR read",
+        "CRITICAL: delete_document deletes by id with no tenant/ownership/role check — any user deletes any org's docs",
+        "CRITICAL: create_document takes org_id from the request payload (client-supplied tenant) instead of the user's org — cross-tenant write / privilege issue",
+        "CRITICAL: /admin/all-documents returns ALL documents across ALL orgs with no admin role check and no tenant filter",
+        "HIGH: no RBAC/role enforcement anywhere; get_current_user only authenticates, never authorizes org membership",
+        "MEDIUM: share_document_cache key has no tenant prefix — cross-tenant cache leak surface",
+        "MEDIUM: SELECT * returns all columns; no response model (may leak internal fields)"
+      ],
+      "expectations": [
+        "Output follows the mandated Code Review Summary structure",
+        "Identifies missing tenant/org filtering on the document queries as CRITICAL cross-tenant leakage",
+        "Flags the client-supplied org_id in create_document as a tenant-boundary violation",
+        "Flags /admin/all-documents missing both role check and tenant scoping",
+        "Flags the SQL injection in list_documents",
+        "Addresses enforcement mechanism (RLS or scoped queries) not just per-endpoint patching",
+        "Notes the cache key tenant-leak surface OR response overexposure",
+        "Verdict is Not Ready; does not hallucinate absent defects"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Review this messy legacy pricing function (legacy_pricing.js). Detect code smells and suggest refactoring.",
+      "files": ["evals/files/legacy_pricing.js"],
+      "seeded_defects": [
+        "HIGH (correctness): loop uses i <= items.length — off-by-one, reads undefined past the end, crashes on it.type",
+        "HIGH (correctness): coupon discount can exceed subtotal → negative price; no clamping; percent+fixed+gold stack unbounded",
+        "MEDIUM (correctness): float math on money throughout — rounding errors",
+        "MEDIUM: mutates input `user` (user.points +=, side effect in a calc function)",
+        "MEDIUM: God function — pricing, discount, tax, shipping, loyalty all in one; deep nesting",
+        "MEDIUM: magic numbers everywhere (0.1, 0.05, 0.2, tax rates, shipping thresholds)",
+        "MEDIUM: no input validation; opts.country unknown → tax 0 silently; coupon/user assumed shaped",
+        "LOW: var over const/let, == over ===, cryptic names (t, d, it, sub, pts), unused `data`/`items` duplication",
+        "LOW: `d = d + 0` dead branch"
+      ],
+      "expectations": [
+        "Output follows the mandated Code Review Summary structure",
+        "Catches the i <= items.length off-by-one as a real bug (not just a smell)",
+        "Flags the unbounded/negative discount possibility",
+        "Names concrete code smells (God function, magic numbers, deep nesting, poor naming)",
+        "Flags the input mutation side effect (user.points)",
+        "Provides before/after refactoring for at least one major issue with trade-offs",
+        "Distinguishes correctness bugs from style smells in severity (does not rate everything the same)",
+        "Suggestions are incremental, not an unjustified full rewrite"
+      ]
+    }
+  ]
+}

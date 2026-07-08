@@ -1,0 +1,88 @@
+// Calculates final price for a cart. Ported from the old system years ago.
+// Handles discounts, tax, shipping, loyalty points.
+function calc(items, user, coupon, opts) {
+  var t = 0;
+  var d = 0;
+  var data = [];
+  for (var i = 0; i <= items.length; i++) {
+    var it = items[i];
+    if (it.type == "physical") {
+      t = t + it.price * it.qty;
+      if (it.price > 100) {
+        d = d + it.price * 0.1 * it.qty;
+      } else {
+        if (it.price > 50) {
+          d = d + it.price * 0.05 * it.qty;
+        } else {
+          d = d + 0;
+        }
+      }
+      data.push(it);
+    } else if (it.type == "digital") {
+      t = t + it.price * it.qty;
+      data.push(it);
+    } else if (it.type == "subscription") {
+      t = t + it.price * it.qty;
+      if (user.tier == "gold") {
+        d = d + it.price * 0.2 * it.qty;
+      }
+      data.push(it);
+    }
+  }
+
+  // apply coupon
+  if (coupon != null) {
+    if (coupon.type == "percent") {
+      d = d + t * (coupon.value / 100);
+    }
+    if (coupon.type == "fixed") {
+      d = d + coupon.value;
+    }
+    if (coupon.type == "percent" && user.tier == "gold") {
+      d = d + t * 0.05;
+    }
+  }
+
+  var sub = t - d;
+
+  // tax
+  var tax = 0;
+  if (opts.country == "US") {
+    tax = sub * 0.07;
+  } else if (opts.country == "UK") {
+    tax = sub * 0.2;
+  } else if (opts.country == "DE") {
+    tax = sub * 0.19;
+  }
+
+  // shipping
+  var ship = 0;
+  if (opts.country == "US") {
+    if (sub < 50) {
+      ship = 5;
+    }
+  } else {
+    if (sub < 100) {
+      ship = 15;
+    }
+  }
+
+  var total = sub + tax + ship;
+
+  // loyalty points (1 point per 10 spent)
+  var pts = 0;
+  pts = total / 10;
+  user.points = user.points + pts;
+
+  return {
+    total: total,
+    subtotal: sub,
+    discount: d,
+    tax: tax,
+    shipping: ship,
+    points: pts,
+    items: data,
+  };
+}
+
+module.exports = { calc };

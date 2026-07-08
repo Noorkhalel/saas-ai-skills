@@ -1,0 +1,42 @@
+{
+  "skill_name": "refactoring-code",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "This OrderService class has grown to like 800 lines and every PR touches it — it does validation, pricing, inventory checks, payment calls, and sends the confirmation emails. Can you clean it up? We have decent test coverage on it. Don't break the public API, other teams call this.",
+      "expected_output": "An analysis naming the smells (God Object, Mixed Responsibilities, likely Divergent Change) with evidence, a risk assessment noting the public API constraint, an ordered incremental plan (Extract Class per responsibility, DI for the payment/email collaborators), execution in small verified steps with tests green, and a report covering security/performance/testing impact and preserved API compatibility.",
+      "files": [],
+      "expectations": [
+        "Smells are named using catalog terminology with file/line evidence, not generic 'messy code' language",
+        "A plan with ordered, individually verifiable steps is presented before large-scale code changes",
+        "Public API of OrderService is unchanged (or a delegate/facade preserves it)",
+        "Tests are run between steps and none are deleted or weakened",
+        "The final response includes security and performance review observations, not just structural changes"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "we inherited this legacy python script that generates our monthly billing reports. zero tests, nobody understands it, but finance says the numbers are right. i need to add a new discount type next sprint and i'm scared to touch it. what's the safest way to restructure it first?",
+      "expected_output": "Recognition that this is preparatory refactoring on untested code: characterization/golden-master tests capturing current report output first (bugs included), then minimal compiler-safe seams, then incremental restructuring of only the area the new discount type touches, explicitly deferring the discount feature itself (two hats).",
+      "files": [],
+      "expectations": [
+        "Characterization or golden-master tests are created (or concretely specified) before any restructuring",
+        "The response does not implement the new discount feature — refactoring and behavior change are kept separate",
+        "Scope is limited to the code the upcoming change touches rather than a whole-script rewrite",
+        "Risk is explicitly assessed and drives the step size"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Do a refactoring audit of src/api/handlers.js — I don't want you to change anything yet, just tell me what's wrong with it and what you'd do. It's our express routes file, about 1200 lines, raw SQL in the handlers, and honestly the whole thing is copy-pasted per endpoint.",
+      "expected_output": "A full analysis-only report: executive summary, named smells with locations (Duplicate Code, Mixed Responsibilities, likely Missing validation), architecture review (layering, Repository recommendation), security review flagging any SQL injection risk from raw SQL with untrusted input, performance review (N+1/repeated query patterns), risk-tiered refactoring plan, and test recommendations — with no code modified.",
+      "files": [],
+      "expectations": [
+        "No source files are modified — the output is a report/plan only",
+        "Raw SQL is inspected for injection risk and findings are reported with severity, flagged as behavior changes to fix",
+        "The report follows the structured format: summary, smells, risk assessment, plan, security, performance, testing impact, future improvements",
+        "Recommendations include specific named refactoring patterns mapped to specific named smells"
+      ]
+    }
+  ]
+}
