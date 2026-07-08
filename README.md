@@ -1,3 +1,4 @@
+![Image](a33eb099-f775-42d6-9c08-5d08cd80f398.png)
 # SaaS AI Skills Collection
 
 This repository is a collection of independent AI Skills for software design, code quality, debugging, refactoring, testing, and incident analysis.
