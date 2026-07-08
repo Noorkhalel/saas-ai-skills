@@ -37,19 +37,19 @@ Support depends on the loader version and its GitHub install workflow.
 ### Install all skills
 
 ```bash
-npx skills add https://github.com/Noorkhalel/saas-ai-skills
+npx skills add noorkhalel/saas-ai-skills
 ```
 
 ### Install one skill
 
 ```bash
-npx skills add https://github.com/Noorkhalel/saas-ai-skills --skill refactoring-code
+npx skills add noorkhalel/saas-ai-skills --skill refactoring-code
 ```
 
 ### Install multiple skills
 
 ```bash
-npx skills add https://github.com/Noorkhalel/saas-ai-skills --skill refactoring-code architecture-planning test-generation
+npx skills add noorkhalel/saas-ai-skills --skill refactoring-code --skill refactoring-code architecture-planning test-generation
 ```
 
 If your installed `skills` CLI expects a different multi-skill selector syntax, follow that CLI's help output. This repository is structured around repository URL plus named skill selection.
