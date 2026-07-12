@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "root-cause-analysis-report.schema.json",
+  "title": "root-cause-analysis report",
+  "allOf": [
+    {
+      "$ref": "common-report.schema.json"
+    }
+  ],
+  "properties": {
+    "metadata": {
+      "properties": {
+        "skill": {
+          "const": "root-cause-analysis"
+        }
+      }
+    }
+  }
+}

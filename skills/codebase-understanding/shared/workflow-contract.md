@@ -4,6 +4,8 @@ This contract provides an optional, file-based way for independently installed s
 
 This file is canonical in the collection. A synchronized copy is shipped as `shared/workflow-contract.md` inside every skill package so a single-skill installation has the same instructions.
 
+`shared/handoff-topics.json` is the canonical, versioned topic vocabulary. Use only its `topics` values in `topics` and `related_topics`; a packaged copy is shipped with every standalone skill. Unknown topics are malformed handoff data, not routing instructions.
+
 ## Runtime layout
 
 When workflow integration is enabled in a writable project, use this project-local layout. Do not create it merely to perform a normal standalone task; enable it when the user requests persistent workflow output or an existing `.ai-workflow/` directory signals that the project uses it.
@@ -72,7 +74,8 @@ For every update:
 1. Re-read the latest `state.json` immediately before writing. If it is absent, initialize `{"schema_version":"1.0","project":{"name":null,"repository_root":"."},"runs":{}}`.
 2. If it is malformed or has an unsupported shape, preserve it (for example as `state.invalid-<timestamp>.json`) when safe, initialize a new valid state, and never delete artifacts or handoffs to recover.
 3. Preserve unknown top-level fields and every other `runs` entry. Change only this skill's run metadata; do not replace the file from an old in-memory snapshot.
-4. Record relative artifact and handoff paths plus useful timestamps. Write the artifact and handoff before marking the run `completed`.
+4. Write the artifact and handoff before marking the run `completed`. Update `state.json` with a lock-safe read-modify-write: acquire a bounded advisory lock (for example atomically creating `.ai-workflow/.state.lock`), re-read state after acquiring it, update only this run, write a temporary file in `.ai-workflow/`, then atomically replace `state.json`. Release the lock even if the write fails.
+5. Record relative artifact and handoff paths plus useful timestamps. If the lock cannot be acquired promptly, return normal standalone output and report workflow persistence as unavailable; never overwrite a concurrent run.
 
 Example run metadata:
 
@@ -85,4 +88,4 @@ Example run metadata:
 }
 ```
 
-If filesystem writes are unavailable or the user opts out, return the skill's normal output and do not treat the lack of workflow files as a failure.
+If filesystem writes are unavailable, a lock times out, state recovery fails, or the user opts out, return the skill's normal output and do not treat the lack of workflow files as a failure. Report persistence separately as unavailable with a safe summary; task completion and verified findings remain valid.

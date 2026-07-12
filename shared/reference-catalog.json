@@ -1,0 +1,897 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "scripts/generate_reference_catalog.py",
+  "fresh_after_days": 180,
+  "references": [
+    {
+      "skill": "api-design-review",
+      "path": "skills/api-design-review/references/protocols-and-async.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "c8b9cbffcb1ddb9ba23de2868fa88d248bc8128dca0c503744737c9aa5acccc7"
+    },
+    {
+      "skill": "api-design-review",
+      "path": "skills/api-design-review/references/rest-and-openapi.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "b6ccab68688102d62798d40b3417c03bb5159f6a04f7f7c6ccea01ed85d15925"
+    },
+    {
+      "skill": "api-design-review",
+      "path": "skills/api-design-review/references/security-and-resilience.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "f2958991210b39d3a546e2adfc3ae8850f928e1586b90ec48458bcae003ee30d"
+    },
+    {
+      "skill": "architecture-planning",
+      "path": "skills/architecture-planning/references/api.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "ab2a0441820b6275fbfb2e00d366c0b05a743dc808e4cc4cc284abb21e617250"
+    },
+    {
+      "skill": "architecture-planning",
+      "path": "skills/architecture-planning/references/cloud.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "a0c275e73fa65f31270f15b6517f82b4ce2ce2817217d54eafb128bd5ad93544"
+    },
+    {
+      "skill": "architecture-planning",
+      "path": "skills/architecture-planning/references/data.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "25665a953d2eb24f3258260e6770aedde73c2a1e32ce84ecd63690cddef32578"
+    },
+    {
+      "skill": "architecture-planning",
+      "path": "skills/architecture-planning/references/diagrams.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "c6e653d7dc8589aac79716a648aed2e40212ba583f24a49cff1fd13ec8cb100c"
+    },
+    {
+      "skill": "architecture-planning",
+      "path": "skills/architecture-planning/references/saas.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "f93121e25c941083a00f8d8227fa05bc9bdd99e2dfb3f01a2d5d059a778d6888"
+    },
+    {
+      "skill": "architecture-planning",
+      "path": "skills/architecture-planning/references/security.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "b3bfbf5fe8a4a279450dd313bdbd270ffc9fe784e2bf4f6f61c250729655a9db"
+    },
+    {
+      "skill": "architecture-planning",
+      "path": "skills/architecture-planning/references/styles.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "5019f54b8251cb271676e6dab2c85b78d5041ac77800e62f922bdeb5930994ae"
+    },
+    {
+      "skill": "clean-architecture-review",
+      "path": "skills/clean-architecture-review/references/dependency-and-testability.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "b84950f5ee88be5dcbcc5fa2b466e88e9c9e854472cac00e98ecc53c7175a019"
+    },
+    {
+      "skill": "clean-architecture-review",
+      "path": "skills/clean-architecture-review/references/evolution-and-modernization.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "986f5d65a75b9fabef665c6fea4ec3b7b6b4cfc2c9298c0b9868e3e6c0b07afe"
+    },
+    {
+      "skill": "clean-architecture-review",
+      "path": "skills/clean-architecture-review/references/patterns-and-boundaries.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "d0d281ed8aa8743bc67765511247f1e080957086a8d30f1aac80207c45cb9333"
+    },
+    {
+      "skill": "code-review",
+      "path": "skills/code-review/references/architecture.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "abc82d6294b521bbfeec7281215a93bc31842ad810e98abb97952af32373271c"
+    },
+    {
+      "skill": "code-review",
+      "path": "skills/code-review/references/bugs.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "cb7b0f5ddabdd51ff6419bb8d0f45d610b344c25f17d40b7f41912acd85487cc"
+    },
+    {
+      "skill": "code-review",
+      "path": "skills/code-review/references/data.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "60a5899a8bddd7d104593806d233ac9a9f031217237cfd9748cba2107590d50f"
+    },
+    {
+      "skill": "code-review",
+      "path": "skills/code-review/references/frameworks.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "b530a43733855bc7099dde05acf3dffe3125c5502db8aeea24c2bfcf40d85cce"
+    },
+    {
+      "skill": "code-review",
+      "path": "skills/code-review/references/performance.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "4b9036b9b60c52686e17a73ffe551a434f2bc3a3935fc9b13098aef24e5857da"
+    },
+    {
+      "skill": "code-review",
+      "path": "skills/code-review/references/security.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "c51bac05113431e7912c8c13486328d078364ce1b328bb47078f3093601a59e1"
+    },
+    {
+      "skill": "code-review",
+      "path": "skills/code-review/references/testing.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "e640ba5f68852f8c85e5ecf0ff250cdb51c569ab41861fa01f450667d510b85a"
+    },
+    {
+      "skill": "codebase-understanding",
+      "path": "skills/codebase-understanding/references/flow-tracing.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "a04f6b3ac3cd88959f24361ec01c67310562531bb14dca40f4f962a9e588ffaf"
+    },
+    {
+      "skill": "codebase-understanding",
+      "path": "skills/codebase-understanding/references/modes-and-examples.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "64069621f2edfdeb8dc707d91e13f7958da8119e7a4b41b240a74c3830997a63"
+    },
+    {
+      "skill": "codebase-understanding",
+      "path": "skills/codebase-understanding/references/reconnaissance.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "72c4355b1b8f20f71c0084e1733080eea3264cb915711b6f1f77cab903210c2c"
+    },
+    {
+      "skill": "database-design",
+      "path": "skills/database-design/references/architecture-and-modeling.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "5749268c1fd8b45a9d67b7743eb8def721d5b9801ce09926b1fbbfedb0c9cdff"
+    },
+    {
+      "skill": "database-design",
+      "path": "skills/database-design/references/operations-and-migrations.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "def6171d10376a5b8e21a51f42345ef23a507ad47f2bdc6da6e5157129c9a176"
+    },
+    {
+      "skill": "database-design",
+      "path": "skills/database-design/references/postgres-and-supabase.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "3e21dfa0b9192a27ae8b4d9c60871ef4e95f1dee59f1bace09d898d97aa6366d"
+    },
+    {
+      "skill": "database-design",
+      "path": "skills/database-design/references/workload-patterns.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "28df2fb2bda6a43251bb41b68ae9b65305074e27c47c7a2fc62b5d4f46b45545"
+    },
+    {
+      "skill": "debugging",
+      "path": "skills/debugging/references/concurrency.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "8ebe64745dd9404a9df4c626aad6244635a99ab45b6e6751e5d6c735d6cb3083"
+    },
+    {
+      "skill": "debugging",
+      "path": "skills/debugging/references/data.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "2f599d9eea14aa4b3f7c79126bff782df62d9ab96136017b839707da0ddb26d4"
+    },
+    {
+      "skill": "debugging",
+      "path": "skills/debugging/references/evidence.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "35fbfba0b542aca8fa7b7ffcdad9964a01017e2ce20189e43358e2b1dc95521d"
+    },
+    {
+      "skill": "debugging",
+      "path": "skills/debugging/references/frontend.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "135a3e3f24914658e0bfd64c546455a76ed6c55eb6dc5e5c081365a5dde143c6"
+    },
+    {
+      "skill": "debugging",
+      "path": "skills/debugging/references/infra.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "afddf176ccfc6c6179c9720ba3cd8c1f9a21a2be7fda073f77e979822e1e0e60"
+    },
+    {
+      "skill": "debugging",
+      "path": "skills/debugging/references/runtime.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "644d3d8d5234df5cb0c71d07ceb0540d67ba06230323bc5b13c3204b441c8d88"
+    },
+    {
+      "skill": "debugging",
+      "path": "skills/debugging/references/security.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "20adadd30e37dd8b8c922d6f48951cd38f240d8a9d41e27d75d02777762a3a5e"
+    },
+    {
+      "skill": "debugging",
+      "path": "skills/debugging/references/workflow.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "3a01ccff39f7b9305447866597ac57199261f1538ba0d46ffd4954b4ad7186fc"
+    },
+    {
+      "skill": "dependency-analysis",
+      "path": "skills/dependency-analysis/references/architecture-and-runtime.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "e39c3fe0fc3e502387b52df77c6e0821e685ddc3264eac8c32788d5841a40af2"
+    },
+    {
+      "skill": "dependency-analysis",
+      "path": "skills/dependency-analysis/references/ecosystem-tools.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "dcf1989bccbfb3e139e2c82777f1a0cc7f078a05b8d31d828dc465ff0929da29"
+    },
+    {
+      "skill": "dependency-analysis",
+      "path": "skills/dependency-analysis/references/examples.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "8bc6eb90680590d1cbc56ad596498e6342e2c24e0426fd4d1dec1bc117549bdc"
+    },
+    {
+      "skill": "dependency-analysis",
+      "path": "skills/dependency-analysis/references/risk-and-upgrades.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "ec77c3af5fb01a59760b55ae1b464f9b0a42a6396f21062bcac70f268c4f6c0e"
+    },
+    {
+      "skill": "design-pattern-advisor",
+      "path": "skills/design-pattern-advisor/references/implementation-and-examples.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "515561b189e16664f01bce1ddbd238972dbaed67f7b6fcb58e300311674b0e5a"
+    },
+    {
+      "skill": "design-pattern-advisor",
+      "path": "skills/design-pattern-advisor/references/language-and-distributed.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "091ff49863c19ded4d6a006ac2da1238532b7108049e9cfd6721069dc7890e38"
+    },
+    {
+      "skill": "design-pattern-advisor",
+      "path": "skills/design-pattern-advisor/references/pattern-catalog.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "6cfb1a04425c8ed95c44d8ed59094e329a95fc3700f942d0a3dd4c9c9609faf6"
+    },
+    {
+      "skill": "performance-optimization",
+      "path": "skills/performance-optimization/references/cloud-and-async.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "73e9de5950facc59e539b4b1ca2f2a059b96a3a7d7c41446fb957301d66ed448"
+    },
+    {
+      "skill": "performance-optimization",
+      "path": "skills/performance-optimization/references/database-and-cache.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "0c56a0129e238b424dbe4da6e09c7f50f402154953506f4390501212301bca77"
+    },
+    {
+      "skill": "performance-optimization",
+      "path": "skills/performance-optimization/references/domain-playbooks.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "86304603e88a9c6992effeb45b4439af366090b01b0cb8729dd299b5b6c2278d"
+    },
+    {
+      "skill": "performance-optimization",
+      "path": "skills/performance-optimization/references/evidence-and-experiments.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "57cac08dc6e71b0cdc406f541829d5ff4aa27b5fe1bd64558e2efa75cf1605c9"
+    },
+    {
+      "skill": "performance-optimization",
+      "path": "skills/performance-optimization/references/frontend.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "f28163339f554fdbd6b543d0d3244c528d8155e024a314f4baa2cc660b4c3da6"
+    },
+    {
+      "skill": "refactoring-code",
+      "path": "skills/refactoring-code/references/architecture.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "fc1b10f046286664f23adf21211d96706166f151035fa94accb73941bede7a3d"
+    },
+    {
+      "skill": "refactoring-code",
+      "path": "skills/refactoring-code/references/code-smells.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "c1d7e943e7d1d1784c58cb91e28ab8bb37ad7af0b137c0537e52dc3785a96710"
+    },
+    {
+      "skill": "refactoring-code",
+      "path": "skills/refactoring-code/references/patterns.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "85e9fea2814a3e71a4ce405cb1bf64ba63cd119b6613edb30632a863977ecdef"
+    },
+    {
+      "skill": "refactoring-code",
+      "path": "skills/refactoring-code/references/performance.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "b2042dcde62f51bfe35713c3fb2c084e0e55cc7c0e0f1d349bd0ebd287578b37"
+    },
+    {
+      "skill": "refactoring-code",
+      "path": "skills/refactoring-code/references/security.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "613529554181d832877a8bf9885c2fb0b67d3b6405e9324f108e70bb6b0cd08a"
+    },
+    {
+      "skill": "refactoring-code",
+      "path": "skills/refactoring-code/references/testing.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "7100b090aef49ab0b9721ce4274ac6647b25364ca45926072216620a257402c5"
+    },
+    {
+      "skill": "refactoring-code",
+      "path": "skills/refactoring-code/references/workflow.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "b3ae10640ba5b6e06e279adbb3e041f15f3943370a14183fd59408351b0b0bc2"
+    },
+    {
+      "skill": "root-cause-analysis",
+      "path": "skills/root-cause-analysis/references/domains.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "8cbbc3208d79fa23b65f98729bc4c7c55f22e5ed882944ff54401bedd4c4c1d6"
+    },
+    {
+      "skill": "root-cause-analysis",
+      "path": "skills/root-cause-analysis/references/evidence.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "c6a0b379647905877130167a72df6b0a83bf35bf7831d6790babf05a7e5b92f1"
+    },
+    {
+      "skill": "root-cause-analysis",
+      "path": "skills/root-cause-analysis/references/prevention.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "07c1836358c1f0c426a7829a24fc4db1e1d8636a689446652e1d34d2be40dc32"
+    },
+    {
+      "skill": "root-cause-analysis",
+      "path": "skills/root-cause-analysis/references/systemic.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "330933673fff660fa88b7871ad451c257772ee90be42a9bc91e37f7a8f542255"
+    },
+    {
+      "skill": "root-cause-analysis",
+      "path": "skills/root-cause-analysis/references/techniques.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "50bbc9f4de50d062854f699c49a44f0de322ae4480bba54fcb6260b1ea59ed5c"
+    },
+    {
+      "skill": "root-cause-analysis",
+      "path": "skills/root-cause-analysis/references/timeline.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "a01ed953cbfa0fa236f1cdb7a9d9a526120d8335a084298cb4a891fe6a0645f7"
+    },
+    {
+      "skill": "security-audit",
+      "path": "skills/security-audit/references/ai-security.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "9a477d79f9478668b40bf047639b55ac07690221ad6bcfb62f6de634595a6680"
+    },
+    {
+      "skill": "security-audit",
+      "path": "skills/security-audit/references/api.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "49150046bce79782a15b609caf349b1048874de0e29e4e1b872360aa0b0fdacb"
+    },
+    {
+      "skill": "security-audit",
+      "path": "skills/security-audit/references/auth.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "a840d2b294b2be376b0378f9e5dc876bf92e4cdebe47dbf51664b29737fee382"
+    },
+    {
+      "skill": "security-audit",
+      "path": "skills/security-audit/references/cicd.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "259cbfa142db9d6c1fc98177fd17c0bed5caac701836dfb853638fec5366d58a"
+    },
+    {
+      "skill": "security-audit",
+      "path": "skills/security-audit/references/cloud.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "b646bda85f345fd30f672797eb847d089d1f0269a8a3d23c07b49dfa7472daab"
+    },
+    {
+      "skill": "security-audit",
+      "path": "skills/security-audit/references/containers.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "187505b751157374f77faa3e63e1912db22c005bfc5e6110fc2f0521d0e139bf"
+    },
+    {
+      "skill": "security-audit",
+      "path": "skills/security-audit/references/database.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "2e39671fd7b8341b91bb00fb4097f3b46aca2e7a50919515241a6585bf0aee45"
+    },
+    {
+      "skill": "security-audit",
+      "path": "skills/security-audit/references/dependencies.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "a6419c63a38902e129f8724460b70a7e639255dcd0afe6a9f9edc5eee2b8ddf0"
+    },
+    {
+      "skill": "security-audit",
+      "path": "skills/security-audit/references/owasp.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "7b4050b6bbf5166e0a0fe69563ea75c4726376e6b76650acafb8676e337b26c6"
+    },
+    {
+      "skill": "security-audit",
+      "path": "skills/security-audit/references/portability.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "da4cc5b4c13479d6af4986878bf8d359da88e181247d71ed0cce138aaa85fdad"
+    },
+    {
+      "skill": "security-audit",
+      "path": "skills/security-audit/references/report-schema.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "63ae43d64206b1d2be9a67803f0b71bc05115adaf23dd4d820e00775498d2def"
+    },
+    {
+      "skill": "security-audit",
+      "path": "skills/security-audit/references/secure-coding.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "e5cf38a588b9c8a17aee8bba8f5b6ad2084bdc061e112654850236bfeceb9aaf"
+    },
+    {
+      "skill": "security-audit",
+      "path": "skills/security-audit/references/threat-modeling.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "b8888d758c14707339c58eecb26a6259a0158b4070ea07cccb2cf7b7f947a471"
+    },
+    {
+      "skill": "solid-review",
+      "path": "skills/solid-review/references/examples.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "654f142b37573b65e07165f53260f5927842c897e0cc444a67b1858989c54914"
+    },
+    {
+      "skill": "solid-review",
+      "path": "skills/solid-review/references/principles-and-evidence.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "5b05ef20582715cc0bcc57f42007a48ee852de3aab62f7087f062d107982883f"
+    },
+    {
+      "skill": "solid-review",
+      "path": "skills/solid-review/references/refactoring-and-language.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "ed4daf0e84e00d7c8fdb3086fe798421522dedde65336f340f6951b1b312fd8f"
+    },
+    {
+      "skill": "test-generation",
+      "path": "skills/test-generation/references/.gitkeep",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "44aa4ad0bd460144ea140a83621841cd11700880ff34c64cef0548683b29f3f6"
+    },
+    {
+      "skill": "test-generation",
+      "path": "skills/test-generation/references/api-testing.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "055dfebe8446682d31c860e07f663da3281fd2de31bd797c2118bc76c0206a9f"
+    },
+    {
+      "skill": "test-generation",
+      "path": "skills/test-generation/references/database-testing.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "e15a613b4f5291504aab5aa0aa3c37931d9831128876c7b0c7a8531ffee995d9"
+    },
+    {
+      "skill": "test-generation",
+      "path": "skills/test-generation/references/frameworks-e2e.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "689ad558f886f3b3a6fe4a10ea9763a840a5cc63c691a93a5913d823cbaa21a3"
+    },
+    {
+      "skill": "test-generation",
+      "path": "skills/test-generation/references/frameworks-go-rust.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "de6be6721a1665e002c18494d2bb52999c450f16b054d75ea58588ce2e1154b6"
+    },
+    {
+      "skill": "test-generation",
+      "path": "skills/test-generation/references/frameworks-js.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "c8e96aa1617a5bd861295419873be5b951b5f2bd0765e08def613c4b4222b3de"
+    },
+    {
+      "skill": "test-generation",
+      "path": "skills/test-generation/references/frameworks-jvm-dotnet.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "6a88e715f24dee1007f7eca084cf39b8aa0d333c66be76955dbc77a3b93c7e34"
+    },
+    {
+      "skill": "test-generation",
+      "path": "skills/test-generation/references/frameworks-python.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "c425c8db58db84d73cab593c48aa089ad4ee1598b3102d91f7296a2fb242b33a"
+    },
+    {
+      "skill": "test-generation",
+      "path": "skills/test-generation/references/frontend-testing.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "45e8c3ace3a41693f4bcca65230e02ce6f2fc9aa651dcfed47f1609e2530c2fc"
+    },
+    {
+      "skill": "test-generation",
+      "path": "skills/test-generation/references/mocks-fixtures.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "98d8d9ea992a8072cfccd0a0fb2ecd2d460608201f1c5418ea8528974fc7f2dd"
+    },
+    {
+      "skill": "test-generation",
+      "path": "skills/test-generation/references/portability.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "2e8e8cbb7213af625a18c55d102ff664d90a6cbaa24f45e4e269c0705fe3cd15"
+    },
+    {
+      "skill": "test-generation",
+      "path": "skills/test-generation/references/report-schema.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "bd2ffa7f35e6aec8b99ad0d25beaf228a865df20f9992b892d9889a4aba33c79"
+    },
+    {
+      "skill": "test-generation",
+      "path": "skills/test-generation/references/security-testing.md",
+      "version": "1.0.0",
+      "last_reviewed": "2026-07-12",
+      "source": "repository-curated",
+      "freshness_status": "current",
+      "review_owner": "maintainers",
+      "sha256": "af49ec7e67c59a612e50b80ec16637ae5877aec0209ba6a3cad83ec89ab358b9"
+    }
+  ]
+}

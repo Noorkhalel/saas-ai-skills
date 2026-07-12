@@ -3,11 +3,14 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CANONICAL = ROOT / "shared" / "workflow-contract.md"
+TOPICS = ROOT / "shared" / "handoff-topics.json"
 SKILLS = ROOT / "skills"
 
 
@@ -19,18 +22,30 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="fail if a packaged copy is missing or differs")
     args = parser.parse_args()
-    if not CANONICAL.is_file():
+    if not CANONICAL.is_file() or not TOPICS.is_file():
         print(f"FAIL: canonical contract missing: {CANONICAL.relative_to(ROOT)}")
         return 1
     source = CANONICAL.read_bytes()
+    topic_source = TOPICS.read_bytes()
     failures: list[str] = []
     for destination in destinations():
+        topic_destination = destination.parent / "handoff-topics.json"
+        manifest = destination.parent / ".generated-workflow-contract.json"
+        expected_manifest = {
+            "generated_by": "scripts/sync_workflow_contract.py",
+            "contract_sha256": hashlib.sha256(source).hexdigest(),
+            "topics_sha256": hashlib.sha256(topic_source).hexdigest(),
+        }
         if args.check:
-            if not destination.is_file() or destination.read_bytes() != source:
+            if not destination.is_file() or destination.read_bytes() != source or not topic_destination.is_file() or topic_destination.read_bytes() != topic_source:
                 failures.append(str(destination.relative_to(ROOT)))
+            elif not manifest.is_file() or manifest.read_text(encoding="utf-8") != json.dumps(expected_manifest, indent=2, sort_keys=True) + "\n":
+                failures.append(str(manifest.relative_to(ROOT)))
         else:
             destination.parent.mkdir(parents=True, exist_ok=True)
             destination.write_bytes(source)
+            topic_destination.write_bytes(topic_source)
+            manifest.write_text(json.dumps(expected_manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     if failures:
         print("FAIL: unsynchronized workflow contracts:")
         print("\n".join(f"- {path}" for path in failures))

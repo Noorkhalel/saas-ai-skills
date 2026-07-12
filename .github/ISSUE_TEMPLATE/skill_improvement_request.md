@@ -13,3 +13,7 @@ labels: skill-improvement
 ## Behavior or compatibility impact
 
 ## Evidence or example task
+
+## Routing and compatibility impact
+
+Does this change alter activation, exclusions, output, handoffs, standalone packaging, or an installation identifier?

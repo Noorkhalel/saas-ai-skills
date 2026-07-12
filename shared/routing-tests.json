@@ -651,6 +651,45 @@
         "test-generation"
       ],
       "selection_rule": "Incorrect-routing refusal: redirect to the owning specialty and do not perform out-of-scope work."
+    },
+    {
+      "id": "RT-CODEBASE-UNDERSTANDING-CLEAN-ARCHITECTURE-REVIEW",
+      "skills": [
+        "codebase-understanding",
+        "clean-architecture-review"
+      ],
+      "user_request": "Understand this unfamiliar codebase's modules and entry points before an architecture review.",
+      "expected_activation": "codebase-understanding",
+      "must_not_activate": [
+        "clean-architecture-review"
+      ],
+      "selection_rule": "Current-state discovery wins when the requested deliverable is a verified repository map rather than an architecture judgment."
+    },
+    {
+      "id": "RT-CODEBASE-UNDERSTANDING-CODE-REVIEW",
+      "skills": [
+        "codebase-understanding",
+        "code-review"
+      ],
+      "user_request": "Understand this codebase and trace the checkout request path before reviewing any implementation quality.",
+      "expected_activation": "codebase-understanding",
+      "must_not_activate": [
+        "code-review"
+      ],
+      "selection_rule": "Repository discovery wins when the user asks for current flow evidence before a separate review."
+    },
+    {
+      "id": "RT-REFACTORING-CODE-TEST-GENERATION",
+      "skills": [
+        "refactoring-code",
+        "test-generation"
+      ],
+      "user_request": "Refactor this class without changing behavior; existing tests are green and test creation is not the requested deliverable.",
+      "expected_activation": "refactoring-code",
+      "must_not_activate": [
+        "test-generation"
+      ],
+      "selection_rule": "Behavior-preserving implementation wins over test generation when tests are a guard rather than the requested artifact."
     }
   ]
 }

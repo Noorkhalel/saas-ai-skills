@@ -1,0 +1,1160 @@
+{
+  "collection_version": "1.1.0",
+  "generated_by": "scripts/generate_skill_catalog.py",
+  "schema_version": "1.0",
+  "skills": [
+    {
+      "activation": {
+        "artifacts": [
+          "OpenAPI",
+          "API examples",
+          "consumer contract"
+        ],
+        "intents": [
+          "API design review",
+          "REST contract",
+          "OpenAPI review",
+          "versioned endpoints"
+        ],
+        "scopes": [
+          "API interface"
+        ]
+      },
+      "base_framework_version": "1.1.0",
+      "closest_skills": [
+        "architecture-planning",
+        "database-design",
+        "security-audit"
+      ],
+      "description": "Review or design an API contract: REST, GraphQL, gRPC, events, webhooks, streaming, or OpenAPI/AsyncAPI. Use when the primary deliverable is an interface contract, compatibility assessment, or API-specific security/resilience guidance. Do not use for whole-system architecture planning, generic code review, database modeling, or implementation debugging.",
+      "exclusions": [
+        "whole-system architecture",
+        "database schema primary"
+      ],
+      "id": "api-design-review",
+      "policy_ids": [
+        "BF-EVIDENCE-1",
+        "BF-SCOPE-1",
+        "BF-SECURITY-1",
+        "BF-UNTRUSTED-1",
+        "BF-COMMAND-1",
+        "BF-WORKFLOW-1",
+        "BF-OUTPUT-1",
+        "BF-PARTIAL-1",
+        "BF-QUALITY-1",
+        "BF-CONTEXT-1"
+      ],
+      "primary_deliverable": "API contract semantics and compatibility assessment",
+      "references": [
+        "references/protocols-and-async.md",
+        "references/rest-and-openapi.md",
+        "references/security-and-resilience.md"
+      ],
+      "required_evidence": [
+        "consumers",
+        "contract",
+        "authorization"
+      ],
+      "secondary_when": [
+        "security audit is explicitly standalone"
+      ],
+      "standalone": {
+        "handoff_topics": "shared/handoff-topics.json",
+        "skill_file": "SKILL.md",
+        "workflow_contract": "shared/workflow-contract.md"
+      },
+      "topics": [
+        "api",
+        "architecture",
+        "authentication",
+        "authorization",
+        "database",
+        "multi-tenancy",
+        "performance",
+        "security",
+        "testing"
+      ],
+      "version": "1.1.0"
+    },
+    {
+      "activation": {
+        "artifacts": [
+          "requirements",
+          "constraints"
+        ],
+        "intents": [
+          "design a new system",
+          "greenfield architecture",
+          "future architecture",
+          "technical blueprint"
+        ],
+        "scopes": [
+          "greenfield",
+          "planned change"
+        ]
+      },
+      "base_framework_version": "1.1.0",
+      "closest_skills": [
+        "clean-architecture-review",
+        "api-design-review",
+        "database-design"
+      ],
+      "description": "Plan the future architecture of a new or materially changing system before implementation. Use for greenfield products, planned platform changes, and technical blueprints spanning components, data, APIs, deployment, and delivery trade-offs. Do not use to audit an existing repository, review a PR, or diagnose an incident.",
+      "exclusions": [
+        "existing repository boundary audit",
+        "PR review",
+        "active defect"
+      ],
+      "id": "architecture-planning",
+      "policy_ids": [
+        "BF-EVIDENCE-1",
+        "BF-SCOPE-1",
+        "BF-SECURITY-1",
+        "BF-UNTRUSTED-1",
+        "BF-WORKFLOW-1",
+        "BF-OUTPUT-1",
+        "BF-PARTIAL-1",
+        "BF-QUALITY-1",
+        "BF-CONTEXT-1"
+      ],
+      "primary_deliverable": "Future-system architecture decision document",
+      "references": [
+        "references/api.md",
+        "references/cloud.md",
+        "references/data.md",
+        "references/diagrams.md",
+        "references/saas.md",
+        "references/security.md",
+        "references/styles.md"
+      ],
+      "required_evidence": [
+        "goals",
+        "constraints",
+        "scale"
+      ],
+      "secondary_when": [
+        "API or database design is explicitly a separate requested deliverable"
+      ],
+      "standalone": {
+        "handoff_topics": "shared/handoff-topics.json",
+        "skill_file": "SKILL.md",
+        "workflow_contract": "shared/workflow-contract.md"
+      },
+      "topics": [
+        "api",
+        "architecture",
+        "authentication",
+        "authorization",
+        "compliance",
+        "data-flow",
+        "database",
+        "dependencies",
+        "infrastructure",
+        "integration",
+        "multi-tenancy",
+        "performance",
+        "reliability",
+        "requirements",
+        "scalability",
+        "security",
+        "technical-debt"
+      ],
+      "version": "1.2.0"
+    },
+    {
+      "activation": {
+        "artifacts": [
+          "repository",
+          "import graph"
+        ],
+        "intents": [
+          "review existing architecture",
+          "audit boundaries",
+          "dependency direction",
+          "clean architecture review"
+        ],
+        "scopes": [
+          "existing system"
+        ]
+      },
+      "base_framework_version": "1.1.0",
+      "closest_skills": [
+        "architecture-planning",
+        "code-review",
+        "dependency-analysis"
+      ],
+      "description": "Audit the current architecture of an existing repository or deployed system: boundaries, dependency direction, module responsibilities, coupling, testability, and incremental modernization. Use for Clean/Hexagonal/DDD/layering health checks. Do not use for greenfield architecture design or a narrow code/PR review.",
+      "exclusions": [
+        "greenfield plan",
+        "narrow PR review",
+        "package inventory"
+      ],
+      "id": "clean-architecture-review",
+      "policy_ids": [
+        "BF-EVIDENCE-1",
+        "BF-SCOPE-1",
+        "BF-SECURITY-1",
+        "BF-UNTRUSTED-1",
+        "BF-COMMAND-1",
+        "BF-WORKFLOW-1",
+        "BF-OUTPUT-1",
+        "BF-PARTIAL-1",
+        "BF-QUALITY-1",
+        "BF-CONTEXT-1"
+      ],
+      "primary_deliverable": "Existing-system boundary and dependency assessment",
+      "references": [
+        "references/dependency-and-testability.md",
+        "references/evolution-and-modernization.md",
+        "references/patterns-and-boundaries.md"
+      ],
+      "required_evidence": [
+        "modules",
+        "dependencies",
+        "tests"
+      ],
+      "secondary_when": [
+        "security or dependencies are explicitly separate audit deliverables"
+      ],
+      "standalone": {
+        "handoff_topics": "shared/handoff-topics.json",
+        "skill_file": "SKILL.md",
+        "workflow_contract": "shared/workflow-contract.md"
+      },
+      "topics": [
+        "architecture",
+        "code-quality",
+        "dependencies",
+        "maintainability",
+        "performance",
+        "security",
+        "testing"
+      ],
+      "version": "1.1.0"
+    },
+    {
+      "activation": {
+        "artifacts": [
+          "diff",
+          "implementation"
+        ],
+        "intents": [
+          "review this PR",
+          "review code",
+          "production readiness",
+          "find bugs"
+        ],
+        "scopes": [
+          "function",
+          "PR",
+          "service"
+        ]
+      },
+      "base_framework_version": "1.1.0",
+      "closest_skills": [
+        "security-audit",
+        "refactoring-code",
+        "solid-review"
+      ],
+      "description": "Review a specific implementation, change set, PR, function, or service for broad correctness and production-readiness findings. Use when code-quality is the primary concern. Do not use when security, performance, architecture, dependencies, or tests are the exclusive requested discipline.",
+      "exclusions": [
+        "security-led audit",
+        "structural implementation change",
+        "SOLID-only diagnosis"
+      ],
+      "id": "code-review",
+      "policy_ids": [
+        "BF-EVIDENCE-1",
+        "BF-SCOPE-1",
+        "BF-SECURITY-1",
+        "BF-UNTRUSTED-1",
+        "BF-COMMAND-1",
+        "BF-WORKFLOW-1",
+        "BF-OUTPUT-1",
+        "BF-PARTIAL-1",
+        "BF-QUALITY-1",
+        "BF-CONTEXT-1"
+      ],
+      "primary_deliverable": "Broad correctness and production-readiness review",
+      "references": [
+        "references/architecture.md",
+        "references/bugs.md",
+        "references/data.md",
+        "references/frameworks.md",
+        "references/performance.md",
+        "references/security.md",
+        "references/testing.md"
+      ],
+      "required_evidence": [
+        "code path",
+        "callers",
+        "tests"
+      ],
+      "secondary_when": [
+        "confirmed defect needs regression tests"
+      ],
+      "standalone": {
+        "handoff_topics": "shared/handoff-topics.json",
+        "skill_file": "SKILL.md",
+        "workflow_contract": "shared/workflow-contract.md"
+      },
+      "topics": [
+        "api",
+        "architecture",
+        "bugs",
+        "code-quality",
+        "database",
+        "maintainability",
+        "multi-tenancy",
+        "performance",
+        "security",
+        "testing"
+      ],
+      "version": "1.2.0"
+    },
+    {
+      "activation": {
+        "artifacts": [
+          "repository",
+          "configuration"
+        ],
+        "intents": [
+          "map this repository",
+          "where is this implemented",
+          "trace request path",
+          "understand codebase"
+        ],
+        "scopes": [
+          "discovery"
+        ]
+      },
+      "base_framework_version": "1.1.0",
+      "closest_skills": [
+        "clean-architecture-review",
+        "debugging",
+        "code-review"
+      ],
+      "description": "Build an evidence-based mental model of an unfamiliar existing repository: structure, ownership, flows, entry points, and change locations. Use for onboarding, tracing, and discovery before another task. Do not use to prescribe a design, issue findings, implement changes, or diagnose a specific failure.",
+      "exclusions": [
+        "issue findings",
+        "new architecture",
+        "specific defect diagnosis"
+      ],
+      "id": "codebase-understanding",
+      "policy_ids": [
+        "BF-EVIDENCE-1",
+        "BF-SCOPE-1",
+        "BF-SECURITY-1",
+        "BF-UNTRUSTED-1",
+        "BF-COMMAND-1",
+        "BF-WORKFLOW-1",
+        "BF-OUTPUT-1",
+        "BF-PARTIAL-1",
+        "BF-QUALITY-1",
+        "BF-CONTEXT-1"
+      ],
+      "primary_deliverable": "Evidence-based repository map and flow trace",
+      "references": [
+        "references/flow-tracing.md",
+        "references/modes-and-examples.md",
+        "references/reconnaissance.md"
+      ],
+      "required_evidence": [
+        "entry points",
+        "flows",
+        "tests"
+      ],
+      "secondary_when": [
+        "a later task needs verified context"
+      ],
+      "standalone": {
+        "handoff_topics": "shared/handoff-topics.json",
+        "skill_file": "SKILL.md",
+        "workflow_contract": "shared/workflow-contract.md"
+      },
+      "topics": [
+        "api",
+        "architecture",
+        "authentication",
+        "authorization",
+        "database",
+        "dependencies",
+        "infrastructure",
+        "multi-tenancy",
+        "performance",
+        "security",
+        "testing"
+      ],
+      "version": "1.1.0"
+    },
+    {
+      "activation": {
+        "artifacts": [
+          "schema",
+          "migration",
+          "workload"
+        ],
+        "intents": [
+          "design database schema",
+          "tenant-safe schema",
+          "migration plan",
+          "indexes and integrity"
+        ],
+        "scopes": [
+          "data model"
+        ]
+      },
+      "base_framework_version": "1.1.0",
+      "closest_skills": [
+        "api-design-review",
+        "performance-optimization",
+        "debugging"
+      ],
+      "description": "Design, review, or evolve a database schema and its data-integrity, tenancy, migration, indexing, and operational model. Use when the primary deliverable is a datastore or schema decision. Do not use for general system planning, query debugging, or generic dependency/security review.",
+      "exclusions": [
+        "API contract semantics",
+        "query failure diagnosis"
+      ],
+      "id": "database-design",
+      "policy_ids": [
+        "BF-EVIDENCE-1",
+        "BF-SCOPE-1",
+        "BF-SECURITY-1",
+        "BF-UNTRUSTED-1",
+        "BF-COMMAND-1",
+        "BF-WORKFLOW-1",
+        "BF-OUTPUT-1",
+        "BF-PARTIAL-1",
+        "BF-QUALITY-1",
+        "BF-CONTEXT-1"
+      ],
+      "primary_deliverable": "Data schema, integrity, tenancy, index, and migration design",
+      "references": [
+        "references/architecture-and-modeling.md",
+        "references/operations-and-migrations.md",
+        "references/postgres-and-supabase.md",
+        "references/workload-patterns.md"
+      ],
+      "required_evidence": [
+        "entities",
+        "tenancy",
+        "workload"
+      ],
+      "secondary_when": [
+        "API contract is separately requested"
+      ],
+      "standalone": {
+        "handoff_topics": "shared/handoff-topics.json",
+        "skill_file": "SKILL.md",
+        "workflow_contract": "shared/workflow-contract.md"
+      },
+      "topics": [
+        "authorization",
+        "compliance",
+        "data-integrity",
+        "database",
+        "indexes",
+        "migrations",
+        "multi-tenancy",
+        "performance",
+        "rls",
+        "schema",
+        "security"
+      ],
+      "version": "1.1.0"
+    },
+    {
+      "activation": {
+        "artifacts": [
+          "error",
+          "trace",
+          "reproduction"
+        ],
+        "intents": [
+          "debug this failure",
+          "reproduce and fix",
+          "currently fails",
+          "active regression"
+        ],
+        "scopes": [
+          "active incident",
+          "observable defect"
+        ]
+      },
+      "base_framework_version": "1.1.0",
+      "closest_skills": [
+        "root-cause-analysis",
+        "performance-optimization",
+        "test-generation"
+      ],
+      "description": "Investigate and safely fix an active, observable software failure, error, regression, or unexpected behavior using reproduction and evidence. Use for the proximate technical cause and remediation. Do not use for a systemic incident postmortem or general performance tuning without a failure.",
+      "exclusions": [
+        "completed incident postmortem",
+        "performance objective without defect"
+      ],
+      "id": "debugging",
+      "policy_ids": [
+        "BF-EVIDENCE-1",
+        "BF-SCOPE-1",
+        "BF-SECURITY-1",
+        "BF-UNTRUSTED-1",
+        "BF-COMMAND-1",
+        "BF-WORKFLOW-1",
+        "BF-OUTPUT-1",
+        "BF-PARTIAL-1",
+        "BF-QUALITY-1",
+        "BF-CONTEXT-1"
+      ],
+      "primary_deliverable": "Active defect diagnosis and minimal safe fix",
+      "references": [
+        "references/concurrency.md",
+        "references/data.md",
+        "references/evidence.md",
+        "references/frontend.md",
+        "references/infra.md",
+        "references/runtime.md",
+        "references/security.md",
+        "references/workflow.md"
+      ],
+      "required_evidence": [
+        "symptoms",
+        "reproduction",
+        "environment"
+      ],
+      "secondary_when": [
+        "a confirmed fix needs regression tests"
+      ],
+      "standalone": {
+        "handoff_topics": "shared/handoff-topics.json",
+        "skill_file": "SKILL.md",
+        "workflow_contract": "shared/workflow-contract.md"
+      },
+      "topics": [
+        "api",
+        "backend",
+        "bugs",
+        "concurrency",
+        "database",
+        "debugging",
+        "dependencies",
+        "frontend",
+        "incidents",
+        "infrastructure",
+        "performance",
+        "security"
+      ],
+      "version": "1.2.0"
+    },
+    {
+      "activation": {
+        "artifacts": [
+          "lockfile",
+          "manifest",
+          "import graph"
+        ],
+        "intents": [
+          "analyze dependencies",
+          "lockfile audit",
+          "package upgrade path",
+          "import cycles"
+        ],
+        "scopes": [
+          "dependencies"
+        ]
+      },
+      "base_framework_version": "1.1.0",
+      "closest_skills": [
+        "security-audit",
+        "clean-architecture-review"
+      ],
+      "description": "Analyze package, lockfile, import/module, build, runtime-service, and third-party dependency relationships, risks, upgrades, and supply-chain health. Use when dependencies themselves are the primary object. Do not use for a broad security audit or whole-architecture review.",
+      "exclusions": [
+        "security exploitability audit",
+        "architecture boundaries as primary"
+      ],
+      "id": "dependency-analysis",
+      "policy_ids": [
+        "BF-EVIDENCE-1",
+        "BF-SCOPE-1",
+        "BF-SECURITY-1",
+        "BF-UNTRUSTED-1",
+        "BF-COMMAND-1",
+        "BF-WORKFLOW-1",
+        "BF-OUTPUT-1",
+        "BF-PARTIAL-1",
+        "BF-QUALITY-1",
+        "BF-CONTEXT-1"
+      ],
+      "primary_deliverable": "Package, module, and runtime dependency map",
+      "references": [
+        "references/architecture-and-runtime.md",
+        "references/ecosystem-tools.md",
+        "references/examples.md",
+        "references/risk-and-upgrades.md"
+      ],
+      "required_evidence": [
+        "manifest",
+        "lockfile",
+        "runtime"
+      ],
+      "secondary_when": [
+        "vulnerability assessment is separately requested"
+      ],
+      "standalone": {
+        "handoff_topics": "shared/handoff-topics.json",
+        "skill_file": "SKILL.md",
+        "workflow_contract": "shared/workflow-contract.md"
+      },
+      "topics": [
+        "api",
+        "architecture",
+        "build",
+        "dependencies",
+        "infrastructure",
+        "licenses",
+        "performance",
+        "security",
+        "supply-chain"
+      ],
+      "version": "1.1.0"
+    },
+    {
+      "activation": {
+        "artifacts": [
+          "extension point",
+          "constraints"
+        ],
+        "intents": [
+          "which design pattern",
+          "strategy or factory",
+          "pattern appropriate",
+          "plugin extension pattern"
+        ],
+        "scopes": [
+          "design decision"
+        ]
+      },
+      "base_framework_version": "1.1.0",
+      "closest_skills": [
+        "refactoring-code",
+        "solid-review",
+        "clean-architecture-review"
+      ],
+      "description": "Select or assess the smallest justified software design pattern for a concrete design problem. Use for pattern choice, pattern misuse, and trade-off guidance. Do not use to refactor code, audit architecture, or perform broad code review.",
+      "exclusions": [
+        "generic cleanup",
+        "pattern name without design force"
+      ],
+      "id": "design-pattern-advisor",
+      "policy_ids": [
+        "BF-EVIDENCE-1",
+        "BF-SCOPE-1",
+        "BF-SECURITY-1",
+        "BF-UNTRUSTED-1",
+        "BF-COMMAND-1",
+        "BF-WORKFLOW-1",
+        "BF-OUTPUT-1",
+        "BF-PARTIAL-1",
+        "BF-QUALITY-1",
+        "BF-CONTEXT-1"
+      ],
+      "primary_deliverable": "Pattern selection for a demonstrated design force",
+      "references": [
+        "references/implementation-and-examples.md",
+        "references/language-and-distributed.md",
+        "references/pattern-catalog.md"
+      ],
+      "required_evidence": [
+        "variation",
+        "constraints",
+        "current design"
+      ],
+      "secondary_when": [
+        "selected pattern requires a separately requested refactor"
+      ],
+      "standalone": {
+        "handoff_topics": "shared/handoff-topics.json",
+        "skill_file": "SKILL.md",
+        "workflow_contract": "shared/workflow-contract.md"
+      },
+      "topics": [
+        "architecture",
+        "code-quality",
+        "design-patterns",
+        "maintainability",
+        "performance",
+        "security",
+        "testing"
+      ],
+      "version": "1.1.0"
+    },
+    {
+      "activation": {
+        "artifacts": [
+          "metrics",
+          "profile",
+          "benchmark"
+        ],
+        "intents": [
+          "reduce p95 latency",
+          "profile performance",
+          "optimize throughput",
+          "memory budget"
+        ],
+        "scopes": [
+          "measured performance"
+        ]
+      },
+      "base_framework_version": "1.1.0",
+      "closest_skills": [
+        "debugging",
+        "root-cause-analysis",
+        "database-design"
+      ],
+      "description": "Measure, diagnose, and improve a performance or capacity objective?latency, throughput, CPU, memory, scalability, or cost?without regressing correctness. Use when performance is the primary requested outcome. Do not use for generic code cleanup or an unmeasured incident postmortem.",
+      "exclusions": [
+        "functional failure",
+        "generic PR review"
+      ],
+      "id": "performance-optimization",
+      "policy_ids": [
+        "BF-EVIDENCE-1",
+        "BF-SCOPE-1",
+        "BF-SECURITY-1",
+        "BF-UNTRUSTED-1",
+        "BF-COMMAND-1",
+        "BF-WORKFLOW-1",
+        "BF-OUTPUT-1",
+        "BF-PARTIAL-1",
+        "BF-QUALITY-1",
+        "BF-CONTEXT-1"
+      ],
+      "primary_deliverable": "Measured performance improvement plan or implementation",
+      "references": [
+        "references/cloud-and-async.md",
+        "references/database-and-cache.md",
+        "references/domain-playbooks.md",
+        "references/evidence-and-experiments.md",
+        "references/frontend.md"
+      ],
+      "required_evidence": [
+        "baseline",
+        "target",
+        "workload"
+      ],
+      "secondary_when": [
+        "schema/index redesign is separately requested"
+      ],
+      "standalone": {
+        "handoff_topics": "shared/handoff-topics.json",
+        "skill_file": "SKILL.md",
+        "workflow_contract": "shared/workflow-contract.md"
+      },
+      "topics": [
+        "api",
+        "backend",
+        "caching",
+        "database",
+        "frontend",
+        "infrastructure",
+        "performance",
+        "scalability",
+        "security",
+        "testing"
+      ],
+      "version": "1.1.0"
+    },
+    {
+      "activation": {
+        "artifacts": [
+          "code",
+          "tests"
+        ],
+        "intents": [
+          "refactor without changing behavior",
+          "extract method",
+          "remove duplication",
+          "restructure code"
+        ],
+        "scopes": [
+          "implementation"
+        ]
+      },
+      "base_framework_version": "1.1.0",
+      "closest_skills": [
+        "code-review",
+        "solid-review",
+        "design-pattern-advisor"
+      ],
+      "description": "Plan and execute behavior-preserving structural changes to existing code: simplify, decompose, modernize, and reduce technical debt with tests and safe steps. Use when implementation change is requested. Do not use for a review-only finding report, new features, or bug fixes that change behavior.",
+      "exclusions": [
+        "review only",
+        "design-pattern choice only",
+        "bug diagnosis"
+      ],
+      "id": "refactoring-code",
+      "policy_ids": [
+        "BF-EVIDENCE-1",
+        "BF-SCOPE-1",
+        "BF-SECURITY-1",
+        "BF-UNTRUSTED-1",
+        "BF-COMMAND-1",
+        "BF-WORKFLOW-1",
+        "BF-OUTPUT-1",
+        "BF-PARTIAL-1",
+        "BF-QUALITY-1",
+        "BF-CONTEXT-1"
+      ],
+      "primary_deliverable": "Behavior-preserving structural change",
+      "references": [
+        "references/architecture.md",
+        "references/code-smells.md",
+        "references/patterns.md",
+        "references/performance.md",
+        "references/security.md",
+        "references/testing.md",
+        "references/workflow.md"
+      ],
+      "required_evidence": [
+        "current behavior",
+        "tests",
+        "change boundary"
+      ],
+      "secondary_when": [
+        "tests are absent or requested for behavior preservation"
+      ],
+      "standalone": {
+        "handoff_topics": "shared/handoff-topics.json",
+        "skill_file": "SKILL.md",
+        "workflow_contract": "shared/workflow-contract.md"
+      },
+      "topics": [
+        "architecture",
+        "code-quality",
+        "complexity",
+        "dependencies",
+        "duplication",
+        "maintainability",
+        "performance",
+        "security",
+        "testing"
+      ],
+      "version": "2.1.0"
+    },
+    {
+      "activation": {
+        "artifacts": [
+          "incident timeline",
+          "metrics"
+        ],
+        "intents": [
+          "postmortem",
+          "root cause analysis",
+          "why did this incident recur",
+          "systemic prevention"
+        ],
+        "scopes": [
+          "completed incident"
+        ]
+      },
+      "base_framework_version": "1.1.0",
+      "closest_skills": [
+        "debugging",
+        "performance-optimization"
+      ],
+      "description": "Produce a systemic, evidence-based incident RCA/postmortem after a failure: timeline, causal chain, contributing conditions, corrective actions, and prevention. Use when recurrence prevention and organizational learning are primary. Do not use as a generic live debugger.",
+      "exclusions": [
+        "active defect needing immediate repair",
+        "latency objective"
+      ],
+      "id": "root-cause-analysis",
+      "policy_ids": [
+        "BF-EVIDENCE-1",
+        "BF-SCOPE-1",
+        "BF-SECURITY-1",
+        "BF-UNTRUSTED-1",
+        "BF-COMMAND-1",
+        "BF-WORKFLOW-1",
+        "BF-OUTPUT-1",
+        "BF-PARTIAL-1",
+        "BF-QUALITY-1",
+        "BF-CONTEXT-1"
+      ],
+      "primary_deliverable": "Completed incident systemic recurrence analysis",
+      "references": [
+        "references/domains.md",
+        "references/evidence.md",
+        "references/prevention.md",
+        "references/systemic.md",
+        "references/techniques.md",
+        "references/timeline.md"
+      ],
+      "required_evidence": [
+        "timeline",
+        "impact",
+        "evidence"
+      ],
+      "secondary_when": [
+        "new regression coverage is a requested action"
+      ],
+      "standalone": {
+        "handoff_topics": "shared/handoff-topics.json",
+        "skill_file": "SKILL.md",
+        "workflow_contract": "shared/workflow-contract.md"
+      },
+      "topics": [
+        "api",
+        "bugs",
+        "concurrency",
+        "database",
+        "debugging",
+        "dependencies",
+        "incidents",
+        "infrastructure",
+        "performance",
+        "security",
+        "testing"
+      ],
+      "version": "1.2.0"
+    },
+    {
+      "activation": {
+        "artifacts": [
+          "auth",
+          "deployment",
+          "code"
+        ],
+        "intents": [
+          "security audit",
+          "exploitability",
+          "threat model",
+          "OWASP audit"
+        ],
+        "scopes": [
+          "security"
+        ]
+      },
+      "base_framework_version": "1.1.0",
+      "closest_skills": [
+        "code-review",
+        "dependency-analysis",
+        "database-design"
+      ],
+      "description": "Conduct a security-led audit of code, systems, APIs, infrastructure, dependencies, and AI workflows with threat modeling and exploitability-backed remediation. Use when security risk is the primary concern. Do not use for a generic code review, database design, or non-security debugging.",
+      "exclusions": [
+        "incidental security concern in general review",
+        "dependency mapping only"
+      ],
+      "id": "security-audit",
+      "policy_ids": [
+        "BF-EVIDENCE-1",
+        "BF-SCOPE-1",
+        "BF-SECURITY-1",
+        "BF-UNTRUSTED-1",
+        "BF-COMMAND-1",
+        "BF-WORKFLOW-1",
+        "BF-OUTPUT-1",
+        "BF-PARTIAL-1",
+        "BF-QUALITY-1",
+        "BF-CONTEXT-1"
+      ],
+      "primary_deliverable": "Security-led exploitability assessment",
+      "references": [
+        "references/ai-security.md",
+        "references/api.md",
+        "references/auth.md",
+        "references/cicd.md",
+        "references/cloud.md",
+        "references/containers.md",
+        "references/database.md",
+        "references/dependencies.md",
+        "references/owasp.md",
+        "references/portability.md",
+        "references/report-schema.md",
+        "references/secure-coding.md",
+        "references/threat-modeling.md"
+      ],
+      "required_evidence": [
+        "trust boundaries",
+        "authorization",
+        "exposure"
+      ],
+      "secondary_when": [
+        "dependency inventory is separately required"
+      ],
+      "standalone": {
+        "handoff_topics": "shared/handoff-topics.json",
+        "skill_file": "SKILL.md",
+        "workflow_contract": "shared/workflow-contract.md"
+      },
+      "topics": [
+        "ai",
+        "api",
+        "authentication",
+        "authorization",
+        "compliance",
+        "database",
+        "dependencies",
+        "infrastructure",
+        "multi-tenancy",
+        "secrets",
+        "security"
+      ],
+      "version": "1.1.0"
+    },
+    {
+      "activation": {
+        "artifacts": [
+          "classes",
+          "interfaces"
+        ],
+        "intents": [
+          "SOLID review",
+          "SRP ISP DIP",
+          "Liskov review",
+          "interface segregation"
+        ],
+        "scopes": [
+          "design diagnosis"
+        ]
+      },
+      "base_framework_version": "1.1.0",
+      "closest_skills": [
+        "refactoring-code",
+        "code-review",
+        "design-pattern-advisor"
+      ],
+      "description": "Review existing code or modules specifically through practical SOLID design risks: responsibility, extensibility, substitutability, interface capability, and dependency inversion. Use for SOLID-focused diagnosis. Do not use for broad architecture review or implementation refactoring.",
+      "exclusions": [
+        "implement refactor",
+        "whole-system dependency architecture"
+      ],
+      "id": "solid-review",
+      "policy_ids": [
+        "BF-EVIDENCE-1",
+        "BF-SCOPE-1",
+        "BF-SECURITY-1",
+        "BF-UNTRUSTED-1",
+        "BF-COMMAND-1",
+        "BF-WORKFLOW-1",
+        "BF-OUTPUT-1",
+        "BF-PARTIAL-1",
+        "BF-QUALITY-1",
+        "BF-CONTEXT-1"
+      ],
+      "primary_deliverable": "SOLID-specific design diagnosis",
+      "references": [
+        "references/examples.md",
+        "references/principles-and-evidence.md",
+        "references/refactoring-and-language.md"
+      ],
+      "required_evidence": [
+        "substitution",
+        "clients",
+        "dependencies"
+      ],
+      "secondary_when": [
+        "user requests implementation after diagnosis"
+      ],
+      "standalone": {
+        "handoff_topics": "shared/handoff-topics.json",
+        "skill_file": "SKILL.md",
+        "workflow_contract": "shared/workflow-contract.md"
+      },
+      "topics": [
+        "architecture",
+        "code-quality",
+        "dependencies",
+        "design-patterns",
+        "maintainability",
+        "performance",
+        "security",
+        "testing"
+      ],
+      "version": "1.1.0"
+    },
+    {
+      "activation": {
+        "artifacts": [
+          "acceptance criteria",
+          "known behavior"
+        ],
+        "intents": [
+          "write tests",
+          "generate regression tests",
+          "add test coverage",
+          "test this behavior"
+        ],
+        "scopes": [
+          "test creation"
+        ]
+      },
+      "base_framework_version": "1.1.0",
+      "closest_skills": [
+        "debugging",
+        "code-review",
+        "refactoring-code"
+      ],
+      "description": "Generate or plan deterministic automated tests for existing behavior, regressions, APIs, UI, integrations, and edge cases. Use when tests are the primary deliverable. Do not use to debug the defect, review the implementation, or redesign the system.",
+      "exclusions": [
+        "discover an unknown defect",
+        "general review"
+      ],
+      "id": "test-generation",
+      "policy_ids": [
+        "BF-EVIDENCE-1",
+        "BF-SCOPE-1",
+        "BF-SECURITY-1",
+        "BF-UNTRUSTED-1",
+        "BF-COMMAND-1",
+        "BF-WORKFLOW-1",
+        "BF-OUTPUT-1",
+        "BF-PARTIAL-1",
+        "BF-QUALITY-1",
+        "BF-CONTEXT-1"
+      ],
+      "primary_deliverable": "Tests for known behavior or confirmed regression",
+      "references": [
+        "references/.gitkeep",
+        "references/api-testing.md",
+        "references/database-testing.md",
+        "references/frameworks-e2e.md",
+        "references/frameworks-go-rust.md",
+        "references/frameworks-js.md",
+        "references/frameworks-jvm-dotnet.md",
+        "references/frameworks-python.md",
+        "references/frontend-testing.md",
+        "references/mocks-fixtures.md",
+        "references/portability.md",
+        "references/report-schema.md",
+        "references/security-testing.md"
+      ],
+      "required_evidence": [
+        "behavior",
+        "framework",
+        "acceptance criteria"
+      ],
+      "secondary_when": [],
+      "standalone": {
+        "handoff_topics": "shared/handoff-topics.json",
+        "skill_file": "SKILL.md",
+        "workflow_contract": "shared/workflow-contract.md"
+      },
+      "topics": [
+        "api",
+        "architecture",
+        "backend",
+        "concurrency",
+        "database",
+        "edge-cases",
+        "frontend",
+        "performance",
+        "regressions",
+        "requirements",
+        "security",
+        "testing"
+      ],
+      "version": "1.1.0"
+    }
+  ]
+}

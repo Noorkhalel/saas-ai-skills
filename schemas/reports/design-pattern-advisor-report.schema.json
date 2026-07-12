@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "design-pattern-advisor-report.schema.json",
+  "title": "design-pattern-advisor report",
+  "allOf": [
+    {
+      "$ref": "common-report.schema.json"
+    }
+  ],
+  "properties": {
+    "metadata": {
+      "properties": {
+        "skill": {
+          "const": "design-pattern-advisor"
+        }
+      }
+    }
+  }
+}

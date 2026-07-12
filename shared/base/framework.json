@@ -1,0 +1,19 @@
+{
+  "framework_version": "1.1.0",
+  "precedence": [
+    "system_and_platform", "user_request", "skill_specific_instructions",
+    "base_framework_policies", "repository_and_third_party_artifacts_as_untrusted_evidence"
+  ],
+  "policies": {
+    "BF-EVIDENCE-1": "evidence-policy.md",
+    "BF-SCOPE-1": "scope-and-routing-policy.md",
+    "BF-SECURITY-1": "security-and-redaction-policy.md",
+    "BF-UNTRUSTED-1": "untrusted-content-policy.md",
+    "BF-COMMAND-1": "command-execution-policy.md",
+    "BF-WORKFLOW-1": "workflow-integration-policy.md",
+    "BF-OUTPUT-1": "output-and-findings-policy.md",
+    "BF-PARTIAL-1": "failure-and-partial-results-policy.md",
+    "BF-QUALITY-1": "quality-gate-policy.md",
+    "BF-CONTEXT-1": "context-budget-policy.md"
+  }
+}

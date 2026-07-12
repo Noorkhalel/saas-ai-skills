@@ -1,44 +1,78 @@
 # Installation Guide
 
-This repository is designed as a GitHub-hosted collection of independent AI Skills.
+## Prerequisites
 
-## Install everything
+Use a compatible skill loader. The examples below use the Skills CLI through `npx`; verify its current flags locally before installing:
+
+```bash
+npx skills add --help
+npx skills add noorkhalel/saas-ai-skills --list
+```
+
+## Install the collection
 
 ```bash
 npx skills add noorkhalel/saas-ai-skills
 ```
 
-## Install one skill
+## Install one standalone skill
+
+Use the folder name shown in [SKILLS.md](SKILLS.md):
 
 ```bash
-npx skills add noorkhalel/saas-ai-skills --skill refactoring-code
+npx skills add noorkhalel/saas-ai-skills --skill debugging
 ```
+
+The selected folder includes its `SKILL.md`, required package-local policy subset, relative references, and optional workflow contract. It does not require the rest of this repository at runtime.
 
 ## Install multiple skills
 
+Repeat `--skill` for a workflow that matches your work:
+
 ```bash
+# Understand a repository, then review and test a change
 npx skills add noorkhalel/saas-ai-skills \
-  --skill refactoring-code \
-  --skill architecture-planning \
+  --skill codebase-understanding \
+  --skill code-review \
   --skill test-generation
+
+# Plan and harden a new SaaS service
+npx skills add noorkhalel/saas-ai-skills \
+  --skill architecture-planning \
+  --skill database-design \
+  --skill security-audit
 ```
 
-Use `npx skills add noorkhalel/saas-ai-skills --list` before installation to inspect the current catalog. The folder name is the skill selector. If installed CLI help differs, follow `npx skills add --help`.
+These are examples, not mandatory sequences. Each skill remains independently usable.
 
-## Optional workflow contract
+## Manual use
 
-Each selected skill folder includes `shared/workflow-contract.md`. No repository-level shared folder needs to be installed for a single skill to use optional `.ai-workflow/` artifacts, handoffs, and state metadata. This remains optional and does not change the commands above or require installing any second skill.
+If your agent accepts folder-based skills directly, give it the desired `skills/<skill-name>/` directory. For a rules-file-only tool, use `SKILL.md` and inline only the relative references the skill asks it to read. Preserve the relative `shared/` folder when you want packaged policies or optional workflow persistence.
 
-## Manual inspection
+## Optional workflow persistence
 
-If you are not using an install command, browse the repository in this order:
+No additional installation is needed. To enable project-local artifacts and compact handoffs, either ask the agent for persistent workflow output or create `.ai-workflow/` in the target project. Details and data-handling rules are in the [workflow contract](shared/workflow-contract.md).
 
-1. `SKILLS.md` for the catalog.
-2. `skills/<skill-name>/SKILL.md` for the canonical prompt.
-3. `skills/<skill-name>/references/` for supporting documentation.
+## Compatibility and limitations
 
-## Notes for maintainers
+| Environment | Status | Notes |
+|---|---|---|
+| Skills CLI | Supported | Folder selectors use repeated `--skill <folder>` flags. CLI behavior may vary by version. |
+| Folder-based skill loaders | Supported | Must retain the selected skill's relative package files. |
+| Single-rules-file agents | Supported with adaptation | Inline only the necessary references; optional package files are not automatically discoverable. |
+| Tool-less environments | Supported | Skills return evidence requests and bounded analysis instead of inventing tool output. |
 
-- Keep new skills in their own top-level folder under `skills/`.
-- Avoid changing existing skill prompts when adding packaging docs.
-- Update the catalog whenever the skill list changes.
+## Verify an installation
+
+After installation, confirm your selected skill folder contains at least:
+
+```text
+<skill>/
+  SKILL.md
+  shared/
+  references/          # when the skill has references
+```
+
+For maintainers, `python scripts/package_check.py` simulates single-skill and multi-skill package layouts without network access.
+
+For common setup problems, see [TROUBLESHOOTING.md](TROUBLESHOOTING.md).

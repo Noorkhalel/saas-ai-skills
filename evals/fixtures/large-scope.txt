@@ -1,0 +1,1 @@
+INERT EVALUATION FIXTURE. Represents a large multi-file scope without executable content.

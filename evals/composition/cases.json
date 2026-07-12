@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "flows": [
+    {"id":"composition-architecture-security-refactor-tests","skills":["codebase-understanding","clean-architecture-review","security-audit","refactoring-code","test-generation"],"topics":["architecture","security","testing"]},
+    {"id":"composition-debugging-rca-tests","skills":["debugging","root-cause-analysis","test-generation"],"topics":["debugging","incidents","testing"]}
+  ]
+}

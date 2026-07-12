@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "solid-review-report.schema.json",
+  "title": "solid-review report",
+  "allOf": [
+    {
+      "$ref": "common-report.schema.json"
+    }
+  ],
+  "properties": {
+    "metadata": {
+      "properties": {
+        "skill": {
+          "const": "solid-review"
+        }
+      }
+    }
+  }
+}

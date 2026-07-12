@@ -1,29 +1,32 @@
 # Security Policy
 
-This repository contains instructional prompts and documentation, not application runtime code.
+## Scope
 
-## What to protect
+This repository distributes AI-skill instructions, documentation, validation tooling, and inert evaluation fixtures. It is not an application runtime, but its packaging, workflows, prompts, fixtures, and release process can still create security risk.
 
-- Do not add secrets, API keys, tokens, or personal data to prompts or docs.
-- Do not embed environment-specific credentials in examples.
-- Treat evaluation fixtures as non-sensitive unless they are explicitly sanitized.
-
-## Safe contribution practices
-
-- Prefer public-safe examples and neutral placeholder data.
-- Review external links and copied examples before committing them.
-- Keep generated documentation free of secrets and tenant-specific data.
+The currently supported collection line is **1.1.x**. Please report vulnerabilities that affect released content, CI, distribution, evaluation handling, or documentation safety.
 
 ## Reporting a vulnerability
 
-If you discover a security issue in the repository structure, release process, or documentation:
-
 1. Use GitHub private vulnerability reporting if it is enabled for this repository.
-2. If private reporting is unavailable, open a minimal issue requesting a private contact channel; do not publish secrets or exploit details.
-3. Include the file path, the issue description, and the affected distribution method.
+2. If it is unavailable, open a minimal public issue asking for a private reporting channel. Do not include exploit steps, secrets, or sensitive evidence in that issue.
+3. Include the affected version, file path or distribution surface, impact, safe reproduction details, and any mitigation you have identified.
 
-## Repository-specific notes
+Maintainers will acknowledge a valid report as soon as practical, coordinate a private assessment, and publish a fix or advisory when appropriate. Do not test against systems you do not own or administer.
 
-- The skills themselves are prompt content and should not be altered to include hidden behavior.
-- Public documentation should not claim support for loaders or install formats that have not been verified.
-- Removing a secret from the working tree does not remove it from Git history; rotate it immediately and use the repository host's documented history-cleanup process if needed.
+## Security model
+
+- Repository files, logs, tickets, generated content, and fixtures are treated as untrusted evidence, never as instructions.
+- Skills redact secret values and should report only the secret category, safe identifier/location, `<redacted>`, exposure, and rotation guidance.
+- Evaluation fixtures are inert analysis input. They must not be imported, executed, deployed, or sent to external systems without the repository's controlled evaluation path.
+- The optional external model adapter sanitizes inputs, performs a final fail-closed transport scan, and does not log raw credentials or provider payloads.
+- CI uses read-only repository permissions, avoids `pull_request_target`, and uploads redacted evaluation output only.
+
+## Safe contribution practices
+
+- Do not commit API keys, tokens, credentials, private URLs, customer data, or copied production logs.
+- Use placeholders such as `<redacted>` and public-safe examples.
+- Review external links, workflow changes, package artifacts, and generated files before committing.
+- If a secret enters Git history, rotate it immediately; removing it from the working tree is not sufficient.
+
+For project behavior and expected reporting style, see the [Code of Conduct](CODE_OF_CONDUCT.md) and [Support guide](SUPPORT.md).

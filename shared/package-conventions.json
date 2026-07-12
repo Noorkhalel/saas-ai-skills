@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "required_in_every_skill": ["SKILL.md", "shared/workflow-contract.md", "shared/handoff-topics.json", "shared/base/.generated-base-framework.json"],
+  "optional_components": {
+    "agents/openai.yaml": {
+      "purpose": "Platform UI metadata. It is intentionally absent when no platform-specific presentation is maintained.",
+      "validate_when_present": true
+    },
+    "README.md": {
+      "purpose": "Repository-facing supplemental documentation. Runtime skill loading depends on SKILL.md, not README.md.",
+      "validate_when_present": true
+    },
+    "scripts/validate_scenarios.py": {
+      "purpose": "Legacy per-skill scenario validation. Collection-wide static and behavioral runners are authoritative.",
+      "validate_when_present": true
+    },
+    "evals/fixture-assertions.json": {
+      "purpose": "Only skills with inert fixture assertions need this static-eval input; behavioral safety coverage is required for every skill.",
+      "validate_when_present": true
+    }
+  }
+}

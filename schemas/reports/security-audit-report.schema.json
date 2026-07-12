@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "security-audit-report.schema.json",
+  "title": "security-audit report",
+  "allOf": [
+    {
+      "$ref": "common-report.schema.json"
+    }
+  ],
+  "properties": {
+    "metadata": {
+      "properties": {
+        "skill": {
+          "const": "security-audit"
+        }
+      }
+    }
+  }
+}

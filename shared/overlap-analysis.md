@@ -289,3 +289,27 @@ Each overlap is intentional: skills share domain vocabulary but deliver differen
 - Should overlap remain: yes; separate scopes preserve useful specialist depth.
 - Routing guidance: `code-review` must not activate for this request; redirect when its primary deliverable is requested.
 - Test: "Assess these classes specifically for SRP, ISP, and DIP risks." -> `solid-review`, not `code-review`.
+
+## `codebase-understanding` vs. `clean-architecture-review`
+
+- Why it exists: both inspect existing repositories and dependency direction.
+- Winner: `codebase-understanding` when the requested deliverable is a current-state map before judgment.
+- Why: discovery produces verified entry points, modules, and flows; architecture review owns the subsequent assessment.
+- Should overlap remain: yes; preserving this boundary prevents unsolicited architecture findings during reconnaissance.
+- Test: "Understand this unfamiliar codebase's modules and entry points before an architecture review." -> `codebase-understanding`, not `clean-architecture-review`.
+
+## `codebase-understanding` vs. `code-review`
+
+- Why it exists: both read implementation and callers.
+- Winner: `codebase-understanding` when the user asks to trace current behavior before evaluating quality.
+- Why: a flow map is evidence preparation, while code review owns correctness and production-readiness findings.
+- Should overlap remain: yes; it keeps discovery free of unsupported review conclusions.
+- Test: "Understand this codebase and trace the checkout request path before reviewing any implementation quality." -> `codebase-understanding`, not `code-review`.
+
+## `refactoring-code` vs. `test-generation`
+
+- Why it exists: safe refactoring relies on tests and test generation can recommend refactoring for untestable code.
+- Winner: `refactoring-code` when structural implementation is the requested deliverable and existing tests are the guard.
+- Why: tests are verification evidence in this case, not the primary artifact.
+- Should overlap remain: yes; it prevents a requested refactor from being reduced to a test-only response.
+- Test: "Refactor this class without changing behavior; existing tests are green and test creation is not the requested deliverable." -> `refactoring-code`, not `test-generation`.

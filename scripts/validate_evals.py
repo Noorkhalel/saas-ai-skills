@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Validate behavior eval coverage and repository-wide routing tests."""
+"""Validate static eval fixture structure and legacy routing-test metadata.
+
+This script does not execute skills and must not be described as behavioral evaluation.
+"""
 from __future__ import annotations
 
 import json
@@ -106,7 +109,7 @@ def main() -> int:
         print("FAIL")
         print("\n".join(f"- {failure}" for failure in failures))
         return 1
-    print(f"PASS: {len(names)} skill suites, {len(all_ids)} evals, and {len(route_ids)} routing tests validated.")
+    print(f"PASS: static structure for {len(names)} skill suites, {len(all_ids)} fixtures, and {len(route_ids)} routing-test records validated.")
     return 0
 
 

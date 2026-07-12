@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Behavioral skill evaluation case",
+  "type": "object",
+  "required": ["id", "skill", "input", "expected", "evaluation_layers", "scoring"],
+  "properties": {
+    "id": {"type": "string"}, "skill": {"type": "string"},
+    "input": {"type": "object", "required": ["request", "files"]},
+    "expected": {"type": "object", "required": ["must_route_to", "must_not_route_to", "required_behaviors", "model_behavior", "forbidden_behaviors", "required_sections", "expected_findings", "secret_redaction", "command_execution_allowed"]},
+    "evaluation_layers": {"type": "object", "required": ["routing_contract", "prompt_context", "model_behavior"]},
+    "scoring": {"type": "object", "required": ["rubric"]}
+  }
+}

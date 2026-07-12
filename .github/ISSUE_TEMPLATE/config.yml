@@ -3,3 +3,9 @@ contact_links:
   - name: Discussions
     url: https://github.com/Noorkhalel/saas-ai-skills/discussions
     about: Ask questions or discuss collection ideas.
+  - name: Support and troubleshooting
+    url: https://github.com/Noorkhalel/saas-ai-skills/blob/main/SUPPORT.md
+    about: Read support, FAQ, and troubleshooting guidance before filing an issue.
+  - name: Security reports
+    url: https://github.com/Noorkhalel/saas-ai-skills/blob/main/SECURITY.md
+    about: Do not report vulnerabilities or sensitive disclosures in a public issue.

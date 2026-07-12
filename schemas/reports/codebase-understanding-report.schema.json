@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "codebase-understanding-report.schema.json",
+  "title": "codebase-understanding report",
+  "allOf": [
+    {
+      "$ref": "common-report.schema.json"
+    }
+  ],
+  "properties": {
+    "metadata": {
+      "properties": {
+        "skill": {
+          "const": "codebase-understanding"
+        }
+      }
+    }
+  }
+}

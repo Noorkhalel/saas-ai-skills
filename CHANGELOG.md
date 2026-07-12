@@ -1,29 +1,38 @@
 # Changelog
 
-All notable changes to this repository will be documented in this file.
+All notable changes to this project are documented here. This project follows [Semantic Versioning](RELEASE.md).
 
 ## [Unreleased]
 
+No unreleased changes yet.
+
+## [1.1.0] - 2026-07-12
+
 ### Added
 
-- API Design Review, Clean Architecture Review, Codebase Understanding, Database Design, Dependency Analysis, Design Pattern Advisor, Performance Optimization, Security Audit, and SOLID Review skills.
-- GitHub community templates and a lightweight repository validation workflow.
-- Optional project-local workflow state, full artifacts, and compact cross-skill handoffs, with a canonical contract synchronized into every independently installable skill package.
-- Workflow synchronizer and validation scenarios for standalone packaging, relevance filtering, safe state preservation, and malformed-state recovery guidance.
+- Nine specialist skills: API Design Review, Clean Architecture Review, Codebase Understanding, Database Design, Dependency Analysis, Design Pattern Advisor, Performance Optimization, Security Audit, and SOLID Review.
+- A canonical, versioned Base Framework with evidence, scope, security, untrusted-content, command-safety, workflow, output, partial-result, quality, and context-budget policies.
+- An executable routing registry, routing matrix, overlap regressions, and generated machine-readable skill catalog.
+- Optional project-local workflow persistence with detailed artifacts, concise JSON handoffs, topic filtering, provenance, and lock-safe state updates.
+- Deterministic behavioral, composition, schema, mutation-regression, redaction, prompt-injection, reference-freshness, and standalone-package evaluations.
+- Release documentation, support guidance, troubleshooting, a public roadmap, and expanded community templates.
 
 ### Changed
 
-- Rebuilt the skill catalog and README overview for all detected skills.
-- Updated installation documentation with verified repeated `--skill` selectors.
-- Documented skill isolation, catalog synchronization, contribution workflow, and release guidance.
+- All skills now package their declared Base Framework policy subset, workflow contract, handoff vocabulary, and required relative resources for standalone installation.
+- Validation now checks framework/workflow synchronization, package conventions, versions, generated discovery artifacts, report schemas, routing regressions, and persistence behavior.
+- Documentation now explains routing, context discipline, workflow handoffs, evaluation boundaries, CI, and release gates.
 
-### Maintenance
+### Security
 
-- Added repository `.gitignore` coverage for local, generated, cache, log, secret, and local AI-tool state.
+- Added fail-closed secret redaction and external-transmission preflight for optional model evaluations.
+- Added inert prompt-injection and synthetic-secret fixtures, plus CI regression coverage for unsafe fixture execution and workflow-data handling.
+- Documented a security-reporting process and defensive-evaluation boundaries.
 
-## 1.0.0 - 2026-07-08
+### Breaking changes
 
-- Added a public repository structure for a multi-skill AI Skills collection.
-- Added root documentation for installation, contribution, architecture, security, development, FAQ, release, and versioning.
-- Added a catalog and discovery index for all current skills.
-- Added per-skill README files for discovery and compatibility.
+- None. Existing skill folder names and Skills CLI installation identifiers remain compatible.
+
+## [1.0.0] - 2026-07-08
+
+- Published the initial SaaS AI Skills collection, root documentation, catalog, contribution guidance, release process, and per-skill discovery material.

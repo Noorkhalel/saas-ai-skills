@@ -1,0 +1,26 @@
+{
+  "framework_version": "1.1.0",
+  "generated_by": "scripts/sync_base_framework.py",
+  "policy_ids": [
+    "BF-EVIDENCE-1",
+    "BF-SCOPE-1",
+    "BF-SECURITY-1",
+    "BF-UNTRUSTED-1",
+    "BF-WORKFLOW-1",
+    "BF-OUTPUT-1",
+    "BF-PARTIAL-1",
+    "BF-QUALITY-1",
+    "BF-CONTEXT-1"
+  ],
+  "sha256": {
+    "context-budget-policy.md": "910fb53e278f83706337783eb99d7ce5b4e3dfaf8178201c0653b1e598e63e90",
+    "evidence-policy.md": "c59b07772da47871576cf61f41b6d903ab071886d628623c1ad076e740d2ff22",
+    "failure-and-partial-results-policy.md": "32c0239e6603259f9401d17070221c7253eac29ddeaed834d668c643236cce32",
+    "output-and-findings-policy.md": "9d263ee4a8eefe4e2ab66419b541aa1b701ba4be7f8570e145bd80a9e643ddb5",
+    "quality-gate-policy.md": "3342e7780c7056e4eab133eecc4dd996067c5971435460b24cd152875328986d",
+    "scope-and-routing-policy.md": "9091255f23a23b7b7590071717650669404fcd3c763892214fdb7052313189f0",
+    "security-and-redaction-policy.md": "da3e47d18f4ef85d094a6137db7dd40ea8e7dd70e4026c09cdf137ff3dfef6e3",
+    "untrusted-content-policy.md": "deeb927c5e6a799695d58b6d541796ef1297fcf9d7de4cd5ab7291d049d24073",
+    "workflow-integration-policy.md": "fd102424cedeae176b0e48cf36667b54213731289e0b8e077e2e2a8f610c2555"
+  }
+}

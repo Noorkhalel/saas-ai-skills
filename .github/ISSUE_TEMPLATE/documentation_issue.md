@@ -10,4 +10,8 @@ labels: documentation
 
 ## Suggested correction
 
+## Verification source
+
+Link to the canonical file, command output, or public documentation that confirms the correction.
+
 ## Additional context

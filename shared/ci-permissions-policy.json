@@ -1,0 +1,5 @@
+{
+  "schema_version": "1.0",
+  "default_permissions": {"contents": "read"},
+  "exceptions": []
+}

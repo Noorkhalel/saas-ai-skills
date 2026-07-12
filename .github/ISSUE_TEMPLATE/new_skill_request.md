@@ -15,3 +15,7 @@ labels: new-skill
 ## Why existing skills do not cover it
 
 ## Suggested references or evaluations
+
+## Routing boundary
+
+What primary deliverable would this skill own, and which current skill is the closest alternative?

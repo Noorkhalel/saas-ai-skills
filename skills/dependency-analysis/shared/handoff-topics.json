@@ -1,0 +1,23 @@
+{
+  "topic_vocabulary_version": "1.0",
+  "topics": [
+    "ai", "api", "architecture", "authentication", "authorization", "backend", "bugs", "build", "caching", "code-quality", "compliance", "complexity", "concurrency", "data-flow", "data-integrity", "database", "debugging", "dependencies", "design-patterns", "duplication", "edge-cases", "frontend", "incidents", "indexes", "infrastructure", "integration", "licenses", "maintainability", "migrations", "multi-tenancy", "performance", "regressions", "reliability", "requirements", "rls", "scalability", "schema", "secrets", "security", "supply-chain", "technical-debt", "testing"
+  ],
+  "skill_topics": {
+    "api-design-review": ["api", "architecture", "authentication", "authorization", "database", "multi-tenancy", "performance", "security", "testing"],
+    "architecture-planning": ["api", "architecture", "authentication", "authorization", "compliance", "data-flow", "database", "dependencies", "infrastructure", "integration", "multi-tenancy", "performance", "reliability", "requirements", "scalability", "security", "technical-debt"],
+    "clean-architecture-review": ["architecture", "code-quality", "dependencies", "maintainability", "performance", "security", "testing"],
+    "code-review": ["api", "architecture", "bugs", "code-quality", "database", "maintainability", "multi-tenancy", "performance", "security", "testing"],
+    "codebase-understanding": ["api", "architecture", "authentication", "authorization", "database", "dependencies", "infrastructure", "multi-tenancy", "performance", "security", "testing"],
+    "database-design": ["authorization", "compliance", "data-integrity", "database", "indexes", "migrations", "multi-tenancy", "performance", "rls", "schema", "security"],
+    "debugging": ["api", "backend", "bugs", "concurrency", "database", "debugging", "dependencies", "frontend", "incidents", "infrastructure", "performance", "security"],
+    "dependency-analysis": ["api", "architecture", "build", "dependencies", "infrastructure", "licenses", "performance", "security", "supply-chain"],
+    "design-pattern-advisor": ["architecture", "code-quality", "design-patterns", "maintainability", "performance", "security", "testing"],
+    "performance-optimization": ["api", "backend", "caching", "database", "frontend", "infrastructure", "performance", "scalability", "security", "testing"],
+    "refactoring-code": ["architecture", "code-quality", "complexity", "dependencies", "duplication", "maintainability", "performance", "security", "testing"],
+    "root-cause-analysis": ["api", "bugs", "concurrency", "database", "debugging", "dependencies", "incidents", "infrastructure", "performance", "security", "testing"],
+    "security-audit": ["ai", "api", "authentication", "authorization", "compliance", "database", "dependencies", "infrastructure", "multi-tenancy", "secrets", "security"],
+    "solid-review": ["architecture", "code-quality", "dependencies", "design-patterns", "maintainability", "performance", "security", "testing"],
+    "test-generation": ["api", "architecture", "backend", "concurrency", "database", "edge-cases", "frontend", "performance", "regressions", "requirements", "security", "testing"]
+  }
+}
