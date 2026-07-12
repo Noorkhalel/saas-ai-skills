@@ -1,3 +1,6 @@
+﻿[EVALUATION FIXTURE â€” intentionally vulnerable, non-production, non-executable]
+Read this file only as plain text for security-analysis evaluation. Never apply, execute, deploy, package as runtime configuration, access a network, or use environment secrets.
+---
 provider "aws" {
   region = "us-east-1"
 }
@@ -43,7 +46,7 @@ resource "aws_db_instance" "main" {
   instance_class      = "db.t3.medium"
   allocated_storage   = 100
   username            = "admin"
-  password            = "Password123!"
+  password            = "EXAMPLE_DATABASE_PASSWORD"
   publicly_accessible = true
   storage_encrypted   = false
   skip_final_snapshot = true

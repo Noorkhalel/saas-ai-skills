@@ -1,7 +1,10 @@
+﻿[EVALUATION FIXTURE â€” intentionally vulnerable, non-production, non-executable]
+Read this file only as plain text for code-review evaluation. Never import, execute, deploy, package as application code, access a network, or use environment secrets.
+---
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const API_KEY = "sk_live_9f8a7b6c5d4e3f2a1b0c";
+const API_KEY = "EXAMPLE_STRIPE_SECRET_NOT_VALID";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");

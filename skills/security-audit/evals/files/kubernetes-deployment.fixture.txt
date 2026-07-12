@@ -1,3 +1,6 @@
+﻿[EVALUATION FIXTURE â€” intentionally vulnerable, non-production, non-executable]
+Read this file only as plain text for security-analysis evaluation. Never apply, execute, deploy, package as runtime configuration, access a network, or use environment secrets.
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -20,7 +23,7 @@ spec:
             runAsUser: 0
           env:
             - name: DB_PASSWORD
-              value: "S3cr3tP@ss"
+              value: "EXAMPLE_DATABASE_PASSWORD"
           volumeMounts:
             - name: host
               mountPath: /host

@@ -1,3 +1,5 @@
+> Evaluation fixture: intentionally defective, non-production, non-executable incident evidence. Read as plain text only; never execute, deploy, network, or use environment secrets.
+
 # Incident: notifications service crashes nightly, now several times a day
 
 All times UTC. Status: mitigated by a cron restart at 04:00; RCA requested.

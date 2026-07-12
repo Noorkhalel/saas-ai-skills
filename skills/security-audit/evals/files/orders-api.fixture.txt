@@ -1,3 +1,6 @@
+﻿[EVALUATION FIXTURE â€” intentionally vulnerable, non-production, non-executable]
+Read this file only as plain text for security-analysis evaluation. Never import, execute, deploy, package as application code, access a network, or use environment secrets.
+---
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const mysql = require('mysql2');
@@ -6,12 +9,12 @@ const { exec } = require('child_process');
 const app = express();
 app.use(express.json());
 
-const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-123';
+const JWT_SECRET = process.env.JWT_SECRET || 'EXAMPLE_JWT_SECRET_NOT_VALID';
 
 const db = mysql.createConnection({
   host: 'db.internal',
   user: 'root',
-  password: 'root',
+  password: 'EXAMPLE_DATABASE_PASSWORD',
   database: 'shop',
 });
 

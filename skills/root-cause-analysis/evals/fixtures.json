@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "fixture_policy": "Incident fixtures are intentionally defective, non-production, non-executable analysis input. They must be read as text only and never executed, deployed, networked, or given environment secrets.",
+  "fixtures": [
+    {"path": "files/memory-leak/incident.md", "format": "plain-text incident report", "expected_findings": ["unbounded process-wide cache", "no eviction/TTL/size limit", "memory exhaustion risk"]}
+  ]
+}

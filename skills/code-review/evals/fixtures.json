@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "fixture_policy": "All fixtures are intentionally defective, non-production, non-executable plain-text analysis input. Eval runners must read them as text and must not import, execute, deploy, network, or expose environment secrets to them.",
+  "fixtures": [
+    {"path": "files/login-form.fixture.txt", "format": "plain-text source sample", "expected_findings": ["hardcoded credential pattern", "plaintext credential logging", "insecure token persistence", "unsafe HTML rendering"]},
+    {"path": "files/orders.fixture.txt", "format": "plain-text source sample", "expected_findings": ["JWT decode without verification", "SQL injection", "missing authorization scope", "stack-trace leakage"]},
+    {"path": "files/legacy-pricing.fixture.txt", "format": "plain-text source sample", "expected_findings": ["off-by-one failure", "legacy maintainability defects"]},
+    {"path": "files/documents-service.fixture.txt", "format": "plain-text source sample", "expected_findings": ["SQL injection", "tenant authorization defects"]}
+  ]
+}

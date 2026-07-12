@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "fixture_metadata": "fixtures.json",
+  "assertions": [
+    {"id": "security-audit-api-fixture", "input": "files/orders-api.fixture.txt", "read_mode": "text-only", "must_identify": ["JWT bypass", "SQL injection", "command injection", "mass assignment", "stack-trace leakage", "hardcoded-secret pattern"]},
+    {"id": "security-audit-ci-fixture", "input": "files/ci-workflow.fixture.txt", "read_mode": "text-only", "must_identify": ["unsafe CI event", "excessive permissions", "untrusted-code execution", "secret exposure", "mutable external action", "production deployment"]},
+    {"id": "security-audit-container-fixtures", "inputs": ["files/container-build.fixture.txt", "files/kubernetes-deployment.fixture.txt", "files/infrastructure.fixture.txt"], "read_mode": "text-only", "must_identify": ["privileged container", "host filesystem mount", "cluster-admin RBAC", "plaintext password", "mutable image tag"]},
+    {"id": "security-audit-fixture-inertness", "inputs": "all fixtures listed in fixtures.json", "must_assert": ["no fixture executes during evaluation", "all source/config samples use .fixture.txt", "synthetic placeholders remain non-usable"]}
+  ]
+}

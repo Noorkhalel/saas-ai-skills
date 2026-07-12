@@ -1,0 +1,18 @@
+﻿[EVALUATION FIXTURE â€” intentionally vulnerable, non-production, non-executable]
+Read this file only as plain text for security-analysis evaluation. Never build, execute, deploy, package as runtime configuration, access a network, or use environment secrets.
+---
+FROM node:latest
+
+WORKDIR /app
+
+COPY . .
+
+ENV EXAMPLE_NPM_TOKEN_NOT_VALID=EXAMPLE_NPM_TOKEN_NOT_VALID
+ENV DATABASE_URL=postgres://example-user:EXAMPLE_PASSWORD@localhost/example
+
+RUN npm install
+RUN npm run build
+
+EXPOSE 3000
+
+CMD ["node", "server.js"]

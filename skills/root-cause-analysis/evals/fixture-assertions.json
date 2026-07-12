@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "fixture_metadata": "fixtures.json",
+  "assertions": [
+    {"id": "root-cause-analysis-memory-leak", "input": "files/memory-leak/incident.md", "read_mode": "text-only", "must_identify": ["unbounded cache", "missing eviction, TTL, and size bound", "OOM/denial-of-service impact"], "must_preserve": "intentional incident scenario"},
+    {"id": "root-cause-analysis-secret-redaction", "input_kind": "configuration and deployment evidence", "must_report_only": ["secret category", "safe key name", "location", "exposure status", "<redacted>", "rotation recommendation when exposed"], "must_not": ["copy values to report", "copy values to artifacts, handoffs, state, logs, snapshots, or examples"]}
+  ]
+}

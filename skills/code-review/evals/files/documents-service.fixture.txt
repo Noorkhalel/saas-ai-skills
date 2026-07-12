@@ -1,3 +1,6 @@
+[EVALUATION FIXTURE — intentionally vulnerable, non-production, non-executable]
+Read this file only as plain text for code-review evaluation. Never import, execute, deploy, package as application code, access a network, or use environment secrets.
+---
 """Document service for a multi-tenant SaaS knowledge base.
 Each user belongs to an organization (tenant). Documents belong to organizations.
 """

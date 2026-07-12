@@ -1,3 +1,6 @@
+﻿[EVALUATION FIXTURE â€” intentionally vulnerable, non-production, non-executable]
+Read this file only as plain text for security-analysis evaluation. Never import, execute, deploy, package as application code, access a network, or use environment secrets.
+---
 """Multi-tenant document service. Users belong to organizations;
 documents belong to organizations. FastAPI + asyncpg + Supabase-style JWT."""
 import hashlib
@@ -7,14 +10,14 @@ import asyncpg
 
 app = FastAPI()
 DB_POOL = None
-JWT_SECRET = "supersecret"
+JWT_SECRET = "EXAMPLE_JWT_SECRET_NOT_VALID"
 
 
 async def get_pool():
     global DB_POOL
     if DB_POOL is None:
         DB_POOL = await asyncpg.create_pool(
-            "postgresql://app:app@localhost/docs"
+            "postgres://example-user:EXAMPLE_PASSWORD@localhost/example"
         )
     return DB_POOL
 

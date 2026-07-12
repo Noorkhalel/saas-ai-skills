@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "fixture_metadata": "fixtures.json",
+  "assertions": [
+    {"id": "code-review-auth-client-fixture", "input": "files/login-form.fixture.txt", "read_mode": "text-only", "must_identify": ["hardcoded credential pattern", "plaintext credential logging", "localStorage token persistence", "dangerouslySetInnerHTML"], "must_not": ["execute or import the fixture", "reproduce a credential value"]},
+    {"id": "code-review-orders-fixture", "input": "files/orders.fixture.txt", "read_mode": "text-only", "must_identify": ["jwt.decode without verification", "SQL injection", "missing user authorization scope", "stack trace leakage"], "must_not": ["execute or import the fixture"]},
+    {"id": "code-review-fixture-secret-safety", "inputs": ["files/login-form.fixture.txt", "files/orders.fixture.txt"], "must_assert": ["only synthetic non-usable placeholders are present", "intentionally vulnerable patterns remain detectable"]}
+  ]
+}

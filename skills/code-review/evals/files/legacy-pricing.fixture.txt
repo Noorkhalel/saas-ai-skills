@@ -1,3 +1,6 @@
+[EVALUATION FIXTURE — intentionally defective, non-production, non-executable]
+Read this file only as plain text for code-review evaluation. Never import, execute, deploy, package as application code, access a network, or use environment secrets.
+---
 // Calculates final price for a cart. Ported from the old system years ago.
 // Handles discounts, tax, shipping, loyalty points.
 function calc(items, user, coupon, opts) {

@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "fixture_policy": "Every fixture is intentionally vulnerable, non-production, non-executable plain-text analysis input. Eval runners must read text only: never import, execute, build, apply, deploy, network, invoke a shell, modify the host, or provide real environment secrets.",
+  "fixtures": [
+    {"path": "files/container-build.fixture.txt", "format": "plain-text container sample", "expected_findings": ["hardcoded-secret pattern", "mutable image tag"]},
+    {"path": "files/infrastructure.fixture.txt", "format": "plain-text IaC sample", "expected_findings": ["plaintext password", "public database exposure", "overbroad IAM"]},
+    {"path": "files/kubernetes-deployment.fixture.txt", "format": "plain-text Kubernetes sample", "expected_findings": ["privileged container", "host filesystem mount", "cluster-admin RBAC", "plaintext password", "mutable image tag"]},
+    {"path": "files/orders-api.fixture.txt", "format": "plain-text source sample", "expected_findings": ["JWT bypass", "SQL injection", "command injection", "mass assignment", "stack-trace leakage", "hardcoded-secret pattern"]},
+    {"path": "files/ai-agent.fixture.txt", "format": "plain-text source sample", "expected_findings": ["indirect prompt injection", "unsafe SQL tool", "shell execution from untrusted input", "secret exposure"]},
+    {"path": "files/ci-workflow.fixture.txt", "format": "plain-text CI sample", "expected_findings": ["unsafe pull_request_target", "secret exposure", "excessive permissions", "untrusted code execution", "mutable third-party action", "production deployment"]},
+    {"path": "files/documents-service.fixture.txt", "format": "plain-text source sample", "expected_findings": ["JWT bypass", "SQL injection", "authorization defects", "hardcoded-secret pattern"]}
+  ]
+}

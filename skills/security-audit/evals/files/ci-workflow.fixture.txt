@@ -1,3 +1,6 @@
+[EVALUATION FIXTURE — intentionally vulnerable, non-production, non-executable]
+Read this file only as plain text for security-analysis evaluation. Never run, execute, deploy, package as workflow configuration, access a network, or use environment secrets.
+---
 name: PR Build and Deploy
 
 on:

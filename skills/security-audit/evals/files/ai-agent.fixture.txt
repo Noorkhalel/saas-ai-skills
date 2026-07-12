@@ -1,3 +1,6 @@
+[EVALUATION FIXTURE — intentionally vulnerable, non-production, non-executable]
+Read this file only as plain text for security-analysis evaluation. Never import, execute, deploy, package as application code, access a network, or use environment secrets.
+---
 """Customer-support AI agent. Answers questions using RAG over the
 knowledge base and can take actions via tools. Uses an LLM + MCP tools."""
 import os
