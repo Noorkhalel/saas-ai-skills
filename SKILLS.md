@@ -22,6 +22,7 @@ This catalog is generated from the canonical `skills/<folder>/SKILL.md` structur
 
 ## Selection boundaries
 
+- The deterministic [routing matrix](shared/routing-matrix.md), [overlap analysis](shared/overlap-analysis.md), and executable [routing tests](shared/routing-tests.json) are the repository-wide source for selection rules.
 - Use **Codebase Understanding** before other skills when repository context is missing.
 - Use **Architecture Planning** for future system design; **Clean Architecture Review** for current boundaries; **SOLID Review** for focused design-principle issues.
 - Use **Code Review** for broad quality/correctness; **Refactoring Code** when implementing behavior-preserving structural changes; **Design Pattern Advisor** only to select/evaluate a pattern.

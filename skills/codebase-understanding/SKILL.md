@@ -1,6 +1,6 @@
 ---
 name: codebase-understanding
-description: "Evidence-based repository intelligence for understanding unfamiliar codebases before planning, coding, debugging, reviewing, refactoring, security, performance, testing, dependency, database, or API work. Use for understand this codebase, analyze repository, explain project/architecture, map codebase, inspect structure, locate a feature/business logic/authentication/database access, trace request/data flow, identify entry points, find relevant files, determine where to make a change, analyze legacy codebase, or onboard to a project. Build a verified mental model of repository structure, stack, modules, flows, data, auth, integrations, build/test/deploy/configuration, risks, and next inspection steps without inventing details."
+description: "Build an evidence-based mental model of an unfamiliar existing repository: structure, ownership, flows, entry points, and change locations. Use for onboarding, tracing, and discovery before another task. Do not use to prescribe a design, issue findings, implement changes, or diagnose a specific failure."
 ---
 
 # Codebase Understanding
@@ -132,6 +132,22 @@ Use Filesystem/GitHub/Git, ripgrep, find/tree, language/AST/type tools, dependen
 - [ ] Stack, entry points, modules, flows, data, auth/authz, persistence, integrations, build/test/deploy/config are evidence-based.
 - [ ] Risks name evidence/confidence/next inspection step; focused change files are justified.
 - [ ] Report is feature/architecture-level and concise, with downstream next actions.
+
+## Routing Boundary
+
+**Use this skill when** the requested outcome is verified understanding of an unfamiliar codebase, a feature location, or a request/data/auth flow before another activity.
+
+**Do NOT use this skill when** the user already asks for a decision, finding, implementation, test suite, or failure diagnosis: route to the corresponding specialized skill. Do not convert reconnaissance into an unsolicited review.
+
+**Routing note:** ?Where is invoice authorization implemented?? belongs here; ?audit invoice authorization? belongs to `security-audit`.
+
+## Optional Workflow Integration
+
+This skill is fully standalone: it never requires another skill, a handoff, or workflow files. Workflow output is opt-in when the user requests persistent output or `.ai-workflow/` already exists (unless the user opts out). Follow the packaged [workflow contract](shared/workflow-contract.md).
+
+Relevant handoff topics: `api`, `architecture`, `authentication`, `authorization`, `database`, `dependencies`, `infrastructure`, `multi-tenancy`, `performance`, `security`, `testing`.
+
+When enabled, inspect only matching concise handoffs as optional leads, verify important claims while tracing repository evidence, and avoid opening full artifacts unless evidence is needed. Complete this skill's normal understanding report first; then save that specialized report to `.ai-workflow/artifacts/codebase-understanding.md`, write the standardized concise handoff to `.ai-workflow/handoffs/codebase-understanding.json`, and update only `runs.codebase-understanding` in `state.json` while preserving other runs and unknown metadata. Missing, invalid, or irrelevant workflow data never blocks analysis.
 
 ## Examples
 

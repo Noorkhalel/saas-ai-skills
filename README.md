@@ -67,16 +67,61 @@ Use `npx skills add noorkhalel/saas-ai-skills --list` to inspect available skill
 3. Let your compatible agent load `skills/<skill-name>/SKILL.md` and its relative references.
 4. Keep skill prompts independent; use repository documentation to choose related skills.
 
+## Optional workflow integration
+
+Skills can optionally exchange compact, project-local workflow handoffs without placing full reports in an agent's context window. This is additive: a skill still works normally when it is the only installed skill, when no workflow files exist, or when workflow output is disabled.
+
+When enabled, skills use this runtime directory in the target project:
+
+```text
+.ai-workflow/
+  state.json                 # lightweight run metadata and paths
+  artifacts/<skill-name>.md  # full, skill-specific report
+  handoffs/<skill-name>.json # concise standardized summary
+```
+
+`state.json` never stores detailed reports. A later skill filters handoffs by relevant topics, verifies useful claims against the repository, and opens a full artifact only when more evidence is necessary. This keeps cross-skill context small while preserving each skill's specialized report format.
+
+The workflow is opt-in: request persistent workflow output, or create `.ai-workflow/` to signal that the project uses it. To disable it, do neither (or explicitly tell the agent not to write workflow output); the skill returns its ordinary result. The complete contract is [shared/workflow-contract.md](shared/workflow-contract.md). Every installed skill includes an identical copy at `shared/workflow-contract.md`, so installing one folder is sufficient.
+
+An example sequence is advisory, not a required order:
+
+```text
+architecture-planning
+        ↓ handoff
+security-audit
+        ↓ handoff
+database-design
+        ↓ handoff
+refactoring-code
+        ↓ handoff
+test-generation
+```
+
+A single installed skill remains independent:
+
+```text
+security-audit
+    ├── works independently
+    ├── optionally creates its detailed artifact
+    ├── optionally creates its concise handoff
+    └── does not require any other skill
+```
+
+Generated workflow output is project-specific. Add `.ai-workflow/` to a project's `.gitignore` when it should remain local. Teams may instead commit selected artifacts or handoffs as an audit trail; do not commit secrets or sensitive evidence without applying the project's data-handling rules.
+
 ## Repository structure
 
 ```text
 skills/<skill-name>/
   SKILL.md          # canonical instructions
+  shared/           # packaged optional workflow contract
   references/       # optional, loaded on demand
   evals/            # optional evaluation fixtures
   examples/         # optional examples
 .github/             # community files and lightweight validation
 SKILLS.md            # full catalog
+shared/              # canonical workflow contract, synchronized into each skill
 ```
 
 ## Contributing, releases, and security

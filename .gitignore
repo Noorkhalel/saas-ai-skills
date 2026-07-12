@@ -61,6 +61,7 @@ eval-results/
 benchmark-results/
 
 # Local AI tool state (public skill sources remain under skills/)
+.ai-workflow/
 .claude/
 .cursor/
 .roo/
@@ -69,3 +70,5 @@ benchmark-results/
 .codex/
 .agent/
 .agents/local/
+.agent/*
+.agent/skills/*

@@ -1,6 +1,6 @@
 ---
 name: solid-review
-description: "Evidence-based SOLID design review for source code, classes, functions, interfaces, modules, services, pull requests, and repositories. Use for review SOLID principles, perform SOLID review, check SOLID compliance, find SOLID violations, review object-oriented design, analyze class design, review coupling/cohesion, improve maintainability, review service responsibilities, check dependency inversion or interface design, refactor using SOLID, identify design problems, or investigate too many responsibilities, rigid design, inheritance problems, oversized interfaces, tight concrete dependencies, untestable classes, or repeated conditionals. Diagnose real SRP/OCP/LSP/ISP/DIP risks without forcing patterns, interfaces, inheritance, or rewrites."
+description: "Review existing code or modules specifically through practical SOLID design risks: responsibility, extensibility, substitutability, interface capability, and dependency inversion. Use for SOLID-focused diagnosis. Do not use for broad architecture review or implementation refactoring."
 ---
 
 # SOLID Review
@@ -129,6 +129,22 @@ Use plain Markdown and language-neutral guidance so the skill works in Claude, O
 - [ ] False-positive gates and positive/pragmatic decisions are included.
 - [ ] Findings are consolidated; severity reflects practical risk, not principle purity.
 - [ ] Recommendations are incremental, behavior-preserving, language/framework appropriate, and test-backed.
+
+## Routing Boundary
+
+**Use this skill when** the user explicitly seeks a SOLID-centered assessment of class/module responsibilities, coupling, interfaces, inheritance/substitution, or dependency inversion.
+
+**Do NOT use this skill when** the primary question is whole-system boundaries (`clean-architecture-review`), broad code quality (`code-review`), pattern selection (`design-pattern-advisor`), or implementation restructuring (`refactoring-code`).
+
+**Routing note:** ?Are these classes violating SOLID?? belongs here; ?make them SOLID by changing the code? belongs to `refactoring-code` after a diagnosis.
+
+## Optional Workflow Integration
+
+This skill is fully standalone: it never requires another skill, a handoff, or workflow files. Workflow output is opt-in when the user requests persistent output or `.ai-workflow/` already exists (unless the user opts out). Follow the packaged [workflow contract](shared/workflow-contract.md).
+
+Relevant handoff topics: `architecture`, `code-quality`, `dependencies`, `design-patterns`, `maintainability`, `performance`, `security`, `testing`.
+
+When enabled, inspect only matching concise handoffs as optional leads, verify important claims in current code, callers, and tests, and avoid opening full artifacts unless evidence is needed. Complete this skill's normal SOLID review first; then save that specialized report to `.ai-workflow/artifacts/solid-review.md`, write the standardized concise handoff to `.ai-workflow/handoffs/solid-review.json`, and update only `runs.solid-review` in `state.json` while preserving other runs and unknown metadata. Missing, invalid, or irrelevant workflow data never blocks the review.
 
 ## Example routing
 

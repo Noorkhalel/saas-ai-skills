@@ -1,6 +1,6 @@
 ---
 name: architecture-planning
-description: 'Act as a principal software architect: analyze requirements, weigh trade-offs, and produce a production-ready architecture plan before any code is written. Use whenever the user asks to design, plan, create, or review the architecture of an application or system — "design architecture", "plan system architecture", "architect this application", "design backend structure", "how should I structure this project", "review my architecture", "make this scalable", "prepare architecture before coding", "design SaaS architecture", "create technical blueprint" — or describes a new product, SaaS, platform, or service and wants to know how to build it: choosing a stack, planning a database schema, designing APIs, planning multi-tenancy or billing, deciding monolith vs. microservices, planning cloud/deployment topology, or documenting technical decisions. Also use when starting a significant greenfield build with no architecture yet, even if the user only says "let''s start building X".'
+description: "Plan the future architecture of a new or materially changing system before implementation. Use for greenfield products, planned platform changes, and technical blueprints spanning components, data, APIs, deployment, and delivery trade-offs. Do not use to audit an existing repository, review a PR, or diagnose an incident."
 license: MIT
 metadata:
   version: "1.1.0"
@@ -154,6 +154,22 @@ Include this at the end of every full plan, honestly checked — an unchecked bo
 **User:** "How should I structure a job-board app? Small team, maybe 5k users year one."
 
 **Skill behavior:** Ask 3–4 intake questions (revenue model? single employer type or marketplace? team size/skills? any compliance?). Then produce a full plan recommending a modular monolith (jobs, applications, accounts, billing modules), PostgreSQL with shared schema, session-based auth, REST API, deployed on a PaaS — with a Mermaid component diagram, an ER sketch of the five core entities, microservices explicitly rejected ("no independent scaling need at 5k users; team of 3 can't operate the overhead"), risks table led by "search becomes first bottleneck ~50k listings → Postgres FTS now, dedicated search engine trigger documented," and a roadmap whose phase 1 is a walking skeleton: one job posted, one application submitted, deployed to production.
+
+## Routing Boundary
+
+**Use this skill when** the user needs a forward-looking, buildable system blueprint before coding or a material planned change: system boundaries, stack, topology, data/API ownership, delivery phases, and trade-offs.
+
+**Do NOT use this skill when** the primary evidence is an existing repository to assess (`clean-architecture-review`), a focused API contract (`api-design-review`), a database schema (`database-design`), a current bottleneck (`performance-optimization`), or a failure (`debugging`/`root-cause-analysis`).
+
+**Routing note:** ?Design a new SaaS? belongs here even if it mentions APIs and databases; ?review our current architecture? belongs to `clean-architecture-review`.
+
+## Optional Workflow Integration
+
+This skill is fully standalone: it never requires another skill, a handoff, or workflow files. Workflow output is opt-in when the user requests persistent output or `.ai-workflow/` already exists (unless the user opts out). Follow the packaged [workflow contract](shared/workflow-contract.md).
+
+Relevant handoff topics: `api`, `architecture`, `authentication`, `authorization`, `compliance`, `data-flow`, `database`, `dependencies`, `infrastructure`, `integration`, `multi-tenancy`, `performance`, `reliability`, `requirements`, `scalability`, `security`, `technical-debt`.
+
+When enabled, inspect only matching concise handoffs as optional leads, verify important claims against the project requirements and repository, and avoid opening full artifacts unless evidence is needed. Complete this skill's normal architecture plan first; then save that specialized plan to `.ai-workflow/artifacts/architecture-planning.md`, write the standardized concise handoff to `.ai-workflow/handoffs/architecture-planning.json`, and update only `runs.architecture-planning` in `state.json` while preserving other runs and unknown metadata. Missing, invalid, or irrelevant workflow data never blocks planning.
 
 ## Portability note
 

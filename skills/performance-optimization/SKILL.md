@@ -1,6 +1,6 @@
 ---
 name: performance-optimization
-description: Evidence-based, production-system performance engineering for repositories, services, APIs, databases, frontends, cloud infrastructure, containers, Kubernetes, queues, caches, and AI/RAG systems. Use for requests to optimize performance, review performance, profile code, investigate slowness or bottlenecks, reduce latency, CPU or memory use, improve throughput, response time or scalability, optimize SQL/database/ORM/API/React/Next.js/backend/caching, or plan benchmarking and performance regression validation. Diagnose first; recommend only measurable, correctness-preserving optimizations.
+description: "Measure, diagnose, and improve a performance or capacity objective?latency, throughput, CPU, memory, scalability, or cost?without regressing correctness. Use when performance is the primary requested outcome. Do not use for generic code cleanup or an unmeasured incident postmortem."
 ---
 
 # Performance Optimization
@@ -136,6 +136,22 @@ If an integration is absent, give the command/artifact request and explain what 
 - [ ] Recommendations specify mechanism, metric, trade-off, correctness guard, validation, and rollback.
 - [ ] Plan is prioritized by impact, risk, and effort; no premature architecture change is presented as a quick win.
 - [ ] Before/after benchmark, regression tests, and rollout monitoring/abort thresholds are defined.
+
+## Routing Boundary
+
+**Use this skill when** the primary outcome is an evidence-backed performance improvement or benchmark plan for latency, throughput, resource use, capacity, or cost.
+
+**Do NOT use this skill when** the request is merely cleanup (`refactoring-code`), a current functional failure with no performance objective (`debugging`), a systemic incident postmortem (`root-cause-analysis`), generic review (`code-review`), or schema design without performance evidence (`database-design`).
+
+**Routing note:** ?The API is slow; profile and improve p95? belongs here. ?The API returns 500? belongs to `debugging` unless the user explicitly requests performance analysis.
+
+## Optional Workflow Integration
+
+This skill is fully standalone: it never requires another skill, a handoff, or workflow files. Workflow output is opt-in when the user requests persistent output or `.ai-workflow/` already exists (unless the user opts out). Follow the packaged [workflow contract](shared/workflow-contract.md).
+
+Relevant handoff topics: `api`, `backend`, `caching`, `database`, `frontend`, `infrastructure`, `performance`, `scalability`, `security`, `testing`.
+
+When enabled, inspect only matching concise handoffs as hypotheses, verify important claims with measurements and project evidence, and avoid opening full artifacts unless evidence is needed. Complete this skill's normal performance report first; then save that specialized report to `.ai-workflow/artifacts/performance-optimization.md`, write the standardized concise handoff to `.ai-workflow/handoffs/performance-optimization.json`, and update only `runs.performance-optimization` in `state.json` while preserving other runs and unknown metadata. Missing, invalid, or irrelevant workflow data never blocks optimization.
 
 ## Examples
 

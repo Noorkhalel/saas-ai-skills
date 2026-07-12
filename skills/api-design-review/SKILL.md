@@ -1,6 +1,6 @@
 ---
 name: api-design-review
-description: "Review, design, and audit production APIs and interface contracts: REST, GraphQL, gRPC, WebSockets, SSE, webhooks, OpenAPI/Swagger, AsyncAPI, internal/public/SaaS/AI APIs, and microservice interfaces. Use for review API, review REST API, API design review, API architecture, improve API, review endpoints/OpenAPI/Swagger/GraphQL, design API, review backend interface, audit API, API best practices, or production API review. Evaluate resource and contract design, compatibility, authentication/authorization, security, performance, resilience, documentation, DX, and scalability; explain evidence and trade-offs for every recommendation."
+description: "Review or design an API contract: REST, GraphQL, gRPC, events, webhooks, streaming, or OpenAPI/AsyncAPI. Use when the primary deliverable is an interface contract, compatibility assessment, or API-specific security/resilience guidance. Do not use for whole-system architecture planning, generic code review, database modeling, or implementation debugging."
 ---
 
 # API Design Review
@@ -9,7 +9,7 @@ Act as a principal API architect. Review the contract and its operational behavi
 
 ## Purpose and activation
 
-Activate for API design/review/audit work across REST, GraphQL, gRPC, WebSockets, SSE, webhooks, OpenAPI/Swagger, AsyncAPI, internal/public/SaaS/AI APIs, and service boundaries. Trigger phrases include **review API**, **review REST API**, **API design review**, **API architecture**, **improve API**, **review endpoints**, **review OpenAPI/Swagger/GraphQL**, **design API**, **review backend interface**, **audit API**, **API best practices**, and **production API review**.
+Activate for API design/review/audit work across REST, GraphQL, gRPC, WebSockets, SSE, webhooks, OpenAPI/Swagger, AsyncAPI, internal/public/SaaS/AI APIs, and microservice interfaces/service boundaries. Trigger phrases include **review API**, **review REST API**, **API design review**, **API architecture**, **improve API**, **review endpoints**, **review OpenAPI/Swagger/GraphQL**, **design API**, **review backend interface**, **audit API**, **API best practices**, and **production API review**.
 
 Do not use this skill solely to rename a field with no contract, behavior, or consumer impact. Distinguish an API proposal from an existing API audit; a missing spec, traces, consumer inventory, or authorization model is an evidence gap, not permission to guess.
 
@@ -111,6 +111,22 @@ Use plain Markdown and protocol-standard snippets. Keep vendor-specific gateway/
 - [ ] Authentication, resource/tenant authorization, least privilege, abuse controls, and OWASP API risks have negative tests.
 - [ ] Payload/query work, caching, limits, retries/timeouts/idempotency, observability, and failure/scale behavior are bounded.
 - [ ] Compatibility, version/deprecation, contract/security/load testing, release gates, monitoring, and rollback/forward repair are planned.
+
+## Routing Boundary
+
+**Use this skill when** the primary artifact is an API/interface contract or an audit of one: endpoint/resource semantics, protocol behavior, versioning, consumer compatibility, API authorization, idempotency, documentation, or API resilience.
+
+**Do NOT use this skill when** the primary request is a future whole-system blueprint (`architecture-planning`), existing repository boundary review (`clean-architecture-review`), data model (`database-design`), implementation-quality review (`code-review`), or an active failure (`debugging`). An API finding may be included in those reports, but it does not change their owning scope.
+
+**Routing note:** ?Design an API for an already chosen system? activates this skill; ?design the system, including APIs? activates `architecture-planning`.
+
+## Optional Workflow Integration
+
+This skill is fully standalone: it never requires another skill, a handoff, or workflow files. Workflow output is opt-in when the user requests persistent output or `.ai-workflow/` already exists (unless the user opts out). Follow the packaged [workflow contract](shared/workflow-contract.md).
+
+Relevant handoff topics: `api`, `architecture`, `authentication`, `authorization`, `database`, `multi-tenancy`, `performance`, `security`, `testing`.
+
+When enabled, inspect only matching concise handoffs as optional leads, verify important claims against the API/project artifacts, and avoid opening full artifacts unless evidence is needed. Complete this skill's normal API report first; then save that specialized report to `.ai-workflow/artifacts/api-design-review.md`, write the standardized concise handoff to `.ai-workflow/handoffs/api-design-review.json`, and update only `runs.api-design-review` in `state.json` while preserving other runs and unknown metadata. Missing, invalid, or irrelevant workflow data never blocks the review.
 
 ## Examples
 

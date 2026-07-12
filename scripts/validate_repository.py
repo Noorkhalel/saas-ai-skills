@@ -19,6 +19,9 @@ def main() -> int:
     for name in REQUIRED_ROOT:
         if not (ROOT / name).is_file():
             failures.append(f"missing root file: {name}")
+    contract = ROOT / "shared" / "workflow-contract.md"
+    if not contract.is_file():
+        failures.append("missing canonical workflow contract: shared/workflow-contract.md")
     folders = sorted(path for path in SKILLS.iterdir() if path.is_dir()) if SKILLS.is_dir() else []
     if not folders:
         failures.append("no skill folders found")
@@ -33,6 +36,13 @@ def main() -> int:
         if f"skills/{folder.name}/SKILL.md" not in catalog:
             failures.append(f"catalog missing skill: {folder.name}")
         text = skill.read_text(encoding="utf-8", errors="replace")
+        packaged_contract = folder / "shared" / "workflow-contract.md"
+        if not packaged_contract.is_file():
+            failures.append(f"missing packaged workflow contract: {packaged_contract.relative_to(ROOT)}")
+        elif contract.is_file() and packaged_contract.read_bytes() != contract.read_bytes():
+            failures.append(f"out-of-sync packaged workflow contract: {packaged_contract.relative_to(ROOT)}")
+        if "## Optional Workflow Integration" not in text:
+            failures.append(f"missing workflow integration section: {skill.relative_to(ROOT)}")
         if re.search(r"[A-Za-z]:\\", text):
             failures.append(f"Windows local path in: {skill.relative_to(ROOT)}")
         for target in LINK.findall(text):

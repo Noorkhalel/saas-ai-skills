@@ -27,10 +27,11 @@ Keep skills independent, behavior-preserving, and easy to discover. Do not merge
 - [ ] CHANGELOG is updated
 - [ ] Installation was tested
 - [ ] The skill does not unintentionally duplicate another skill
+- [ ] The optional workflow section declares only topics relevant to the skill
 
 ## Validation
 
-Run `python scripts/validate_repository.py`. Review the output, then run the relevant skill-specific validator or evaluation fixtures when present. Keep generated output, caches, and private configuration out of commits.
+Run `python scripts/validate_repository.py`, `python scripts/sync_workflow_contract.py --check`, and `python scripts/validate_workflow_integration.py`. If changing the workflow contract, edit only `shared/workflow-contract.md` and run `python scripts/sync_workflow_contract.py` to update every packaged copy. Review the output, then run the relevant skill-specific validator or evaluation fixtures when present. Keep generated output, caches, and private configuration out of commits.
 
 ## Pull requests
 

@@ -25,6 +25,7 @@ When making changes:
 - Prefer one canonical prompt file per skill.
 - Avoid introducing cross-skill dependencies.
 - Keep temporary and evaluation content clearly separated from prompts.
+- For workflow-contract changes, edit `shared/workflow-contract.md`, run the synchronizer, and do not hand-edit packaged copies.
 
 ## Suggested Validation
 
@@ -32,6 +33,8 @@ Run:
 
 ```bash
 python scripts/validate_repository.py
+python scripts/sync_workflow_contract.py --check
+python scripts/validate_workflow_integration.py
 ```
 
 Then run the skill-specific validator or evaluation fixtures when present. Check Markdown links, catalog membership, folder names, and relevant installation flow before opening a pull request.

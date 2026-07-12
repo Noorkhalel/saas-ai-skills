@@ -17,6 +17,9 @@ jobs:
         with:
           python-version: "3.12"
       - run: python scripts/validate_repository.py
+      - run: python scripts/validate_evals.py
+      - run: python scripts/sync_workflow_contract.py --check
+      - run: python scripts/validate_workflow_integration.py
       - name: Check for obvious private key files
         run: |
           ! find . -type f \( -name '*.pem' -o -name '*.p12' -o -name '*.pfx' \) -not -path './.git/*' | grep .

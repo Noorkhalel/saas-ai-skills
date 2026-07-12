@@ -1,6 +1,6 @@
 ---
 name: root-cause-analysis
-description: 'Investigate a software failure like a senior engineer running a production postmortem: reconstruct the timeline, gather evidence, separate symptoms from causes, drive Five Whys past the immediate bug to the engineering/architectural/process root, and produce corrective plus preventive actions that stop the incident class from recurring. Use whenever the user says root cause analysis, RCA, postmortem, incident review, analyze this failure/outage/regression, why did this happen, investigate this issue, production incident, recurring bug, failure analysis, or determine the real cause — for logic/runtime bugs, production incidents, database corruption or degradation, auth failures, API/network failures, performance problems, memory leaks, concurrency bugs, CI/CD or deploy failures, Docker/Kubernetes incidents, cloud outages, security incidents, and AI-agent/MCP workflow failures. Also use after any bug is fixed when the user wants to understand why it happened and how to prevent recurrence.'
+description: "Produce a systemic, evidence-based incident RCA/postmortem after a failure: timeline, causal chain, contributing conditions, corrective actions, and prevention. Use when recurrence prevention and organizational learning are primary. Do not use as a generic live debugger."
 license: MIT
 metadata:
   version: "1.1.0"
@@ -109,6 +109,22 @@ Use whatever the environment provides and cite what you ran: **git** (log/blame/
 | `references/systemic.md` | Phase 7 — SPOFs, hidden coupling, blast-radius and containment analysis, technical-debt findings |
 | `references/prevention.md` | Phase 8 — corrective vs preventive actions, monitoring/test/CI recommendations, lessons learned, blameless writing |
 | `references/domains.md` | Any phase — incident signatures and typical causal chains per domain: API/deploy, database, auth/JWT/RLS, frontend loops, K8s/Docker, races, memory leaks, CI/CD, AI-agent & MCP failures |
+
+## Routing Boundary
+
+**Use this skill when** the primary deliverable is a post-incident explanation of why an outage, regression, or recurring failure happened and how to prevent the incident class, including timeline and contributing process/system causes.
+
+**Do NOT use this skill when** the immediate goal is to reproduce and fix an active bug (`debugging`), tune a measured bottleneck (`performance-optimization`), or audit security generally (`security-audit`).
+
+**Routing note:** This skill may identify the proximate bug, but it must continue to systemic controls. If no incident evidence exists yet, route to `debugging` first.
+
+## Optional Workflow Integration
+
+This skill is fully standalone: it never requires another skill, a handoff, or workflow files. Workflow output is opt-in when the user requests persistent output or `.ai-workflow/` already exists (unless the user opts out). Follow the packaged [workflow contract](shared/workflow-contract.md).
+
+Relevant handoff topics: `api`, `bugs`, `concurrency`, `database`, `debugging`, `dependencies`, `incidents`, `infrastructure`, `performance`, `security`, `testing`.
+
+When enabled, inspect only matching concise handoffs as hypotheses, verify important claims through current incident evidence and project files, and avoid opening full artifacts unless evidence is needed. Complete this skill's normal RCA report first; then save that specialized report to `.ai-workflow/artifacts/root-cause-analysis.md`, write the standardized concise handoff to `.ai-workflow/handoffs/root-cause-analysis.json`, and update only `runs.root-cause-analysis` in `state.json` while preserving other runs and unknown metadata. Missing, invalid, or irrelevant workflow data never blocks the investigation.
 
 ## Portability note
 

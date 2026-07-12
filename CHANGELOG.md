@@ -8,6 +8,8 @@ All notable changes to this repository will be documented in this file.
 
 - API Design Review, Clean Architecture Review, Codebase Understanding, Database Design, Dependency Analysis, Design Pattern Advisor, Performance Optimization, Security Audit, and SOLID Review skills.
 - GitHub community templates and a lightweight repository validation workflow.
+- Optional project-local workflow state, full artifacts, and compact cross-skill handoffs, with a canonical contract synchronized into every independently installable skill package.
+- Workflow synchronizer and validation scenarios for standalone packaging, relevance filtering, safe state preservation, and malformed-state recovery guidance.
 
 ### Changed
 

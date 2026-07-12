@@ -1,6 +1,6 @@
 ---
 name: database-design
-description: "Design, review, and evolve production-ready databases for SaaS systems: requirements analysis, domain and relational modeling, ERDs, PostgreSQL/Supabase schemas, SQL DDL, NoSQL selection, multi-tenancy, security, indexing, performance, migrations, and operations. Use when asked to design a database or schema, create an ERD or tables, design a PostgreSQL schema or relationships, normalize or improve/review a schema or SQL schema, choose a database, design multi-tenant storage, optimize a schema, or plan a safe database migration. Understand business rules before producing tables; make evidence-based, integrity-preserving trade-offs."
+description: "Design, review, or evolve a database schema and its data-integrity, tenancy, migration, indexing, and operational model. Use when the primary deliverable is a datastore or schema decision. Do not use for general system planning, query debugging, or generic dependency/security review."
 ---
 
 # Database Design
@@ -124,6 +124,22 @@ Use plain Markdown, Mermaid, portable SQL concepts, and vendor-specific code onl
 - [ ] Tenant isolation, least privilege, PII/retention/audit, and backup/recovery concerns are covered.
 - [ ] Migration has expansion/backfill/verification/switch/contraction, safe rollback/repair, and observability.
 - [ ] Operational and performance validation uses representative data, queries, and failure cases.
+
+## Routing Boundary
+
+**Use this skill when** the primary deliverable is a data model, ERD, schema/DDL, database choice, migration plan, tenancy/data-integrity design, or schema-focused review.
+
+**Do NOT use this skill when** the request is a whole-system blueprint (`architecture-planning`), a measured slow query/bottleneck (`performance-optimization`), database security as an audit (`security-audit`), or a live query error (`debugging`).
+
+**Routing note:** ?Design tenant tables and constraints? belongs here; ?why is this SQL query timing out?? belongs to `debugging` or `performance-optimization` depending on the requested outcome.
+
+## Optional Workflow Integration
+
+This skill is fully standalone: it never requires another skill, a handoff, or workflow files. Workflow output is opt-in when the user requests persistent output or `.ai-workflow/` already exists (unless the user opts out). Follow the packaged [workflow contract](shared/workflow-contract.md).
+
+Relevant handoff topics: `authorization`, `compliance`, `data-integrity`, `database`, `indexes`, `migrations`, `multi-tenancy`, `performance`, `rls`, `schema`, `security`.
+
+When enabled, inspect only matching concise handoffs as optional leads, verify important claims against schema, migrations, queries, and policies, and avoid opening full artifacts unless evidence is needed. Complete this skill's normal database report first; then save that specialized report to `.ai-workflow/artifacts/database-design.md`, write the standardized concise handoff to `.ai-workflow/handoffs/database-design.json`, and update only `runs.database-design` in `state.json` while preserving other runs and unknown metadata. Missing, invalid, or irrelevant workflow data never blocks database work.
 
 ## Examples
 

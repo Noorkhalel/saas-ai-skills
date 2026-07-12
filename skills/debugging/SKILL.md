@@ -1,6 +1,6 @@
 ---
 name: debugging
-description: 'Diagnose the real root cause of a bug, crash, error, failure, or performance problem using disciplined evidence-driven investigation before proposing any fix. Use whenever the user says debug this, help debug, fix this bug, investigate this issue, analyze this error/stack trace/exception, why is this happening, or reports a crash, runtime/server error, production incident, failing tests, unexpected behavior, performance issue, memory leak, race condition, deadlock, or asks for root cause analysis — across backend, frontend, APIs, databases, cache, queues, cloud, Docker, Kubernetes, CI/CD, mobile, AI apps, distributed systems, and SaaS. Also use when handed a stack trace, log dump, crash report, git diff, failing CI output, or container/pod logs and asked what is wrong. Understand before fixing; never guess.'
+description: "Investigate and safely fix an active, observable software failure, error, regression, or unexpected behavior using reproduction and evidence. Use for the proximate technical cause and remediation. Do not use for a systemic incident postmortem or general performance tuning without a failure."
 license: MIT
 metadata:
   version: "1.1.0"
@@ -121,6 +121,22 @@ Use what the environment offers; never invent output. If available: **git** (log
 | `references/frontend.md` | React/Next/Vue/Angular/Svelte crashes, state/render bugs, hydration, effect/lifecycle, client perf |
 | `references/infra.md` | Docker (exits immediately), Kubernetes (CrashLoopBackOff, OOMKilled), CI/CD & deploy failures, Nginx, network |
 | `references/security.md` | Auth/authz bugs, JWT failures, session, injection/SSRF/XSS/CSRF-as-bug, secrets, tenant isolation |
+
+## Routing Boundary
+
+**Use this skill when** the user needs to reproduce, isolate, explain, and safely fix a current defect, error, crash, failing test, or unexpected runtime behavior.
+
+**Do NOT use this skill when** the requested output is a blameless timeline and systemic prevention plan after an incident (`root-cause-analysis`), a measured optimization program (`performance-optimization`), a security audit (`security-audit`), or broad code quality review (`code-review`).
+
+**Routing note:** Active ?why does this fail now?? routes here. ?Why did this outage recur and what process changes prevent it?? routes to `root-cause-analysis`.
+
+## Optional Workflow Integration
+
+This skill is fully standalone: it never requires another skill, a handoff, or workflow files. Workflow output is opt-in when the user requests persistent output or `.ai-workflow/` already exists (unless the user opts out). Follow the packaged [workflow contract](shared/workflow-contract.md).
+
+Relevant handoff topics: `api`, `backend`, `bugs`, `concurrency`, `database`, `debugging`, `dependencies`, `frontend`, `incidents`, `infrastructure`, `performance`, `security`.
+
+When enabled, inspect only matching concise handoffs as hypotheses, verify important claims with current reproduction evidence and project files, and avoid opening full artifacts unless evidence is needed. Complete this skill's normal debugging report first; then save that specialized report to `.ai-workflow/artifacts/debugging.md`, write the standardized concise handoff to `.ai-workflow/handoffs/debugging.json`, and update only `runs.debugging` in `state.json` while preserving other runs and unknown metadata. Missing, invalid, or irrelevant workflow data never blocks diagnosis.
 
 ## Portability note
 

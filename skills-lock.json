@@ -1,35 +1,95 @@
 {
   "version": 1,
   "skills": {
+    "api-design-review": {
+      "source": "noorkhalel/saas-ai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/api-design-review/SKILL.md",
+      "computedHash": "2d320075d07b5c09001f294c1d7b629c697ed32244867391d26c8152f73ee4e9"
+    },
     "architecture-planning": {
-      "source": "Noorkhalel/saas-ai-skills",
+      "source": "noorkhalel/saas-ai-skills",
       "sourceType": "github",
       "skillPath": "skills/architecture-planning/SKILL.md",
-      "computedHash": "84a3b1ddec9e26b5c8499cf6587d7b606157d2a6c3d815b36112c68edf2e799a"
+      "computedHash": "2cf4631a9c275c527274f55800ecd3ec9d27a14b4e431acc5500aab3f9320bfd"
+    },
+    "clean-architecture-review": {
+      "source": "noorkhalel/saas-ai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/clean-architecture-review/SKILL.md",
+      "computedHash": "a286e62d6780efe24e4b24bd77365d5c5ee89f98d1e376db506701ea6ae859a4"
     },
     "code-review": {
-      "source": "Noorkhalel/saas-ai-skills",
+      "source": "noorkhalel/saas-ai-skills",
       "sourceType": "github",
       "skillPath": "skills/code-review/SKILL.md",
-      "computedHash": "d242e4ff60d2cecf5e7247964e0ce7e7ba3401287956eb24121cffe92b537fef"
+      "computedHash": "2917fd732a2ea1ac0a657f40b16a4566f9e20a74caf4c3c9195fb965aed527f2"
+    },
+    "codebase-understanding": {
+      "source": "noorkhalel/saas-ai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/codebase-understanding/SKILL.md",
+      "computedHash": "ae7ec5b86a9104ad7a3d9c098d510fdf4f8c5acf41fc5166e800b592cbf3342f"
+    },
+    "database-design": {
+      "source": "noorkhalel/saas-ai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database-design/SKILL.md",
+      "computedHash": "a9ff1c35c4539fe6782defe66ef9fd258c976d01c81cb57cfe4a267f6031d97d"
     },
     "debugging": {
       "source": "noorkhalel/saas-ai-skills",
       "sourceType": "github",
       "skillPath": "skills/debugging/SKILL.md",
-      "computedHash": "237e362feda36fb9ad690127805d8a8868d9f00368dadfbbc9452056d5767a3f"
+      "computedHash": "f640763a7bb7e98cc25f89f53ad350eca2b7278e118e9b57bb8624be55a28730"
+    },
+    "dependency-analysis": {
+      "source": "noorkhalel/saas-ai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/dependency-analysis/SKILL.md",
+      "computedHash": "69702ceb3f423212abc02e85e55c43133108210ba7de877c7e6f30a0dc3f5c13"
+    },
+    "design-pattern-advisor": {
+      "source": "noorkhalel/saas-ai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/design-pattern-advisor/SKILL.md",
+      "computedHash": "ae596ae30417fd445ed6085e392dca9d2a3499e7d07ff1781f8c85f8a3a6597c"
+    },
+    "performance-optimization": {
+      "source": "noorkhalel/saas-ai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/performance-optimization/SKILL.md",
+      "computedHash": "0899b59e6c5e92da76234d69bfdc91635e5033c69b48f456137f8e2a5f7333fb"
     },
     "refactoring-code": {
       "source": "noorkhalel/saas-ai-skills",
       "sourceType": "github",
       "skillPath": "skills/refactoring-code/SKILL.md",
-      "computedHash": "82c316afbad698012db795853291f29397f1476b4ca1fd3fa59742dc2d9359e7"
+      "computedHash": "5303a03a82ef194b32c0c78e6bd503ade731d38ace554d32fb7bc6817e423173"
     },
     "root-cause-analysis": {
-      "source": "Noorkhalel/saas-ai-skills",
+      "source": "noorkhalel/saas-ai-skills",
       "sourceType": "github",
       "skillPath": "skills/root-cause-analysis/SKILL.md",
-      "computedHash": "22f50e5f48b6c39d1a3f9d646f83889894a736c78d054291d3d3dfd6160e82c6"
+      "computedHash": "2e1e0753b5ed21f8c9dad4635a31faa4ef2c74475aa8d2c1617c47cf8f17c801"
+    },
+    "security-audit": {
+      "source": "noorkhalel/saas-ai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security-audit/SKILL.md",
+      "computedHash": "0b6b1657304e9af40d6a2434cf38161c19768878537b267dbb5c62ca01819ea1"
+    },
+    "solid-review": {
+      "source": "noorkhalel/saas-ai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/solid-review/SKILL.md",
+      "computedHash": "c374ec847dac4128ee0048e19447cfde8a4a428f285627e57b7f6f630d188187"
+    },
+    "test-generation": {
+      "source": "noorkhalel/saas-ai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/test-generation/SKILL.md",
+      "computedHash": "9c6c200f016b0d9ca8b81e20221c9323ae3976f5eb608dbb91593b1fdd7d569d"
     }
   }
 }

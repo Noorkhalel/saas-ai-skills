@@ -1,6 +1,6 @@
 ---
 name: dependency-analysis
-description: "Evidence-based dependency analysis for package manifests and lockfiles, imports and module graphs, build/deployment infrastructure, service/database/API dependencies, third-party providers, AI/MCP tools, and monorepos. Use for analyze dependencies, dependency analysis, review project dependencies, inspect dependency graph, find circular dependencies/imports, audit packages, check outdated/deprecated/vulnerable dependencies, review imports/package.json/requirements.txt/pyproject.toml/pom.xml/build.gradle/Cargo.toml/go.mod/NuGet, dependency health check, supply-chain review, check transitive dependencies, plan upgrades, remove dependencies, or investigate version drift, conflicts, unused/missing packages, lockfile inconsistencies, vendor lock-in, or service dependencies. Separate package, architectural, security, build, and runtime risks; do not invent vulnerability or usage claims."
+description: "Analyze package, lockfile, import/module, build, runtime-service, and third-party dependency relationships, risks, upgrades, and supply-chain health. Use when dependencies themselves are the primary object. Do not use for a broad security audit or whole-architecture review."
 ---
 
 # Dependency Analysis
@@ -119,6 +119,22 @@ Use plain Markdown/Mermaid and vendor-neutral concepts so this skill works in Cl
 - [ ] Unused, vulnerability, maintenance, license, and supply-chain claims are verified or clearly qualified.
 - [ ] Cycles have exact paths/impact; external services/AI/MCP tools include trust/failure analysis.
 - [ ] Upgrades/removals are incremental, validated, behavior-preserving, and rollback-aware.
+
+## Routing Boundary
+
+**Use this skill when** package/module/service dependency inventory, graph, cycle, version drift, upgrade/removal, license, vendor, or supply-chain risk is the primary requested outcome.
+
+**Do NOT use this skill when** the request is a broad security assessment (`security-audit`), a whole-system boundary review (`clean-architecture-review`), a specific correctness defect (`debugging`), or a measured performance problem (`performance-optimization`).
+
+**Routing note:** A vulnerable package or dependency-confusion question belongs here when the dependency is the scope; a wider attack-surface audit belongs to `security-audit`.
+
+## Optional Workflow Integration
+
+This skill is fully standalone: it never requires another skill, a handoff, or workflow files. Workflow output is opt-in when the user requests persistent output or `.ai-workflow/` already exists (unless the user opts out). Follow the packaged [workflow contract](shared/workflow-contract.md).
+
+Relevant handoff topics: `api`, `architecture`, `build`, `dependencies`, `infrastructure`, `licenses`, `performance`, `security`, `supply-chain`.
+
+When enabled, inspect only matching concise handoffs as optional leads, verify important claims in manifests, locks, runtime configuration, and project files, and avoid opening full artifacts unless evidence is needed. Complete this skill's normal dependency report first; then save that specialized report to `.ai-workflow/artifacts/dependency-analysis.md`, write the standardized concise handoff to `.ai-workflow/handoffs/dependency-analysis.json`, and update only `runs.dependency-analysis` in `state.json` while preserving other runs and unknown metadata. Missing, invalid, or irrelevant workflow data never blocks the analysis.
 
 ## Examples
 

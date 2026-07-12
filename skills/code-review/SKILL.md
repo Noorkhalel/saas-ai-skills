@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: 'Perform deep, senior-engineer code review: correctness, bugs, security (OWASP), performance, database usage, architecture, maintainability, testing, and production readiness — with severity-ranked findings, evidence, and concrete fixes. Use whenever the user asks to review code, review a PR/diff, find bugs, audit code, check an implementation, find code smells, improve existing code, or asks "is this production ready" or "check my architecture" — or shares code and asks what''s wrong with it, whether it''s safe, secure, or fast enough, or wants a second opinion before merging or deploying. Covers single functions, files, pull requests, whole services, multi-tenant SaaS backends, and messy legacy code. Also use when asked to harden, assess, or quality-check existing code even if the word "review" never appears.'
+description: "Review a specific implementation, change set, PR, function, or service for broad correctness and production-readiness findings. Use when code-quality is the primary concern. Do not use when security, performance, architecture, dependencies, or tests are the exclusive requested discipline."
 license: MIT
 metadata:
   version: "1.1.0"
@@ -123,6 +123,22 @@ Use what the environment provides; never fabricate tool output. If linters/analy
 | `references/architecture.md` | Phases 2 & 7 — SOLID with judgment, code smells, boundaries, dependency direction, when patterns help vs. hurt |
 | `references/testing.md` | Phase 8 — test quality, coverage gaps, what to recommend |
 | `references/frameworks.md` | Any phase — framework-specific pitfalls: React/Next/Vue/Angular, Node/NestJS/Django/FastAPI/Spring/.NET, PostgreSQL/MySQL/MongoDB/Supabase |
+
+## Routing Boundary
+
+**Use this skill when** the user asks for broad implementation review of code or a diff, covering correctness first and then relevant security, performance, maintainability, data, and tests.
+
+**Do NOT use this skill when** security is explicitly the primary objective (`security-audit`), a measured bottleneck is the objective (`performance-optimization`), the request is a current-system boundary review (`clean-architecture-review`), dependency health (`dependency-analysis`), test creation (`test-generation`), or behavior-preserving restructuring (`refactoring-code`).
+
+**Routing note:** A broad PR review stays here even if it finds security or performance issues; an explicitly security-led or performance-led audit routes to its specialist.
+
+## Optional Workflow Integration
+
+This skill is fully standalone: it never requires another skill, a handoff, or workflow files. Workflow output is opt-in when the user requests persistent output or `.ai-workflow/` already exists (unless the user opts out). Follow the packaged [workflow contract](shared/workflow-contract.md).
+
+Relevant handoff topics: `api`, `architecture`, `bugs`, `code-quality`, `database`, `maintainability`, `multi-tenancy`, `performance`, `security`, `testing`.
+
+When enabled, inspect only matching concise handoffs as optional leads, verify important claims in the changed code and project files, and avoid opening full artifacts unless evidence is needed. Complete this skill's normal code review first; then save that specialized report to `.ai-workflow/artifacts/code-review.md`, write the standardized concise handoff to `.ai-workflow/handoffs/code-review.json`, and update only `runs.code-review` in `state.json` while preserving other runs and unknown metadata. Missing, invalid, or irrelevant workflow data never blocks the review.
 
 ## Portability note
 

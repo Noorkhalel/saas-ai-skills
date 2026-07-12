@@ -1,6 +1,6 @@
 ---
 name: design-pattern-advisor
-description: "Evidence-based design pattern selection and review for code, modules, services, APIs, domain models, pull requests, repositories, and architecture proposals. Use when asked which design pattern to use, recommend/identify the right pattern, improve a design, replace a conditional, make code extensible, decouple code, simplify object creation, manage lifecycle, separate behavior, organize event handling, design plugins, refactor using patterns, or evaluate Strategy, Factory, Observer, Adapter, Repository, Mediator, CQRS, Outbox, Saga, or frontend patterns. Diagnose design forces, compare simpler alternatives, and recommend zero, one, or a small justified combination of patterns without cargo-cult abstraction."
+description: "Select or assess the smallest justified software design pattern for a concrete design problem. Use for pattern choice, pattern misuse, and trade-off guidance. Do not use to refactor code, audit architecture, or perform broad code review."
 ---
 
 # Design Pattern Advisor
@@ -119,6 +119,22 @@ Use plain Markdown and language-neutral conceptual guidance so this skill works 
 - [ ] Selected pattern has a demonstrated variation/boundary need, trade-offs, costs, failure modes, and language/framework fit.
 - [ ] Adoption preserves behavior with incremental migration, targeted tests, and validation/rollback.
 - [ ] Misuse/overengineering and pattern boundaries with other skills are addressed.
+
+## Routing Boundary
+
+**Use this skill when** the user asks whether a concrete variation, construction, coordination, interface-mismatch, state, or extension problem merits a named pattern?or no pattern.
+
+**Do NOT use this skill when** the user asks to implement a behavior-preserving restructure (`refactoring-code`), diagnose SOLID violations (`solid-review`), assess whole-system boundaries (`clean-architecture-review`), or review broad correctness (`code-review`).
+
+**Routing note:** ?Should this use Strategy or a map?? belongs here; ?refactor this conditional into Strategy? belongs to `refactoring-code`, which may use the pattern after choosing it.
+
+## Optional Workflow Integration
+
+This skill is fully standalone: it never requires another skill, a handoff, or workflow files. Workflow output is opt-in when the user requests persistent output or `.ai-workflow/` already exists (unless the user opts out). Follow the packaged [workflow contract](shared/workflow-contract.md).
+
+Relevant handoff topics: `architecture`, `code-quality`, `design-patterns`, `maintainability`, `performance`, `security`, `testing`.
+
+When enabled, inspect only matching concise handoffs as optional leads, verify important claims against current design, callers, and tests, and avoid opening full artifacts unless evidence is needed. Complete this skill's normal pattern advisory first; then save that specialized report to `.ai-workflow/artifacts/design-pattern-advisor.md`, write the standardized concise handoff to `.ai-workflow/handoffs/design-pattern-advisor.json`, and update only `runs.design-pattern-advisor` in `state.json` while preserving other runs and unknown metadata. Missing, invalid, or irrelevant workflow data never blocks the advisory.
 
 ## Examples
 

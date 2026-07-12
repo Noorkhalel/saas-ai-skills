@@ -25,6 +25,10 @@ npx skills add noorkhalel/saas-ai-skills \
 
 Use `npx skills add noorkhalel/saas-ai-skills --list` before installation to inspect the current catalog. The folder name is the skill selector. If installed CLI help differs, follow `npx skills add --help`.
 
+## Optional workflow contract
+
+Each selected skill folder includes `shared/workflow-contract.md`. No repository-level shared folder needs to be installed for a single skill to use optional `.ai-workflow/` artifacts, handoffs, and state metadata. This remains optional and does not change the commands above or require installing any second skill.
+
 ## Manual inspection
 
 If you are not using an install command, browse the repository in this order:

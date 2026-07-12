@@ -1,6 +1,6 @@
 ---
 name: test-generation
-description: "Act as a senior SDET to generate tests, write tests, and create unit tests, integration tests, and end-to-end tests for any codebase. Use whenever asked to improve test coverage, test this function, test this API, generate Playwright tests, generate Jest tests, create regression tests for bug fixes, create mocks and create fixtures for test isolation, or generate edge case tests. Analyzes code deeply before generating — identifies behaviors, plans coverage by risk, produces framework-idiomatic deterministic tests, never invents requirements, flags untestable code with refactoring advice, and delivers a structured Test Generation Report."
+description: "Generate or plan deterministic automated tests for existing behavior, regressions, APIs, UI, integrations, and edge cases. Use when tests are the primary deliverable. Do not use to debug the defect, review the implementation, or redesign the system."
 ---
 
 # Test Generation
@@ -270,6 +270,22 @@ describe('calculateDiscount', () => {
 - Coverage Estimate → "Covers all three tiers, zero boundary, and precision edge case. Not covered: behavior for invalid tier values (no type enforcement at runtime)"
 - Risks → "ASSUMPTION: Negative prices are not validated; test assumes function processes them mathematically without error"
 - Final Recommendations → "Add runtime validation for negative prices; consider adding type guard for tier parameter"
+
+## Routing Boundary
+
+**Use this skill when** the user asks to create, expand, or plan automated tests, fixtures, mocks, regression coverage, or test strategy for known behavior.
+
+**Do NOT use this skill when** the user needs the cause of an unknown failing behavior (`debugging`), a broad quality assessment (`code-review`), a security audit (`security-audit`), or a new system blueprint (`architecture-planning`).
+
+**Routing note:** ?Add a regression test for the fixed duplicate charge bug? belongs here; ?find why duplicate charges occur? belongs to `debugging` or `root-cause-analysis`.
+
+## Optional Workflow Integration
+
+This skill is fully standalone: it never requires another skill, a handoff, or workflow files. Workflow output is opt-in when the user requests persistent output or `.ai-workflow/` already exists (unless the user opts out). Follow the packaged [workflow contract](shared/workflow-contract.md).
+
+Relevant handoff topics: `api`, `architecture`, `backend`, `concurrency`, `database`, `edge-cases`, `frontend`, `performance`, `regressions`, `requirements`, `security`, `testing`.
+
+When enabled, inspect only matching concise handoffs as optional leads, verify important claims against current code and executable behavior, and avoid opening full artifacts unless evidence is needed. Complete this skill's normal test-generation report first; then save that specialized report to `.ai-workflow/artifacts/test-generation.md`, write the standardized concise handoff to `.ai-workflow/handoffs/test-generation.json`, and update only `runs.test-generation` in `state.json` while preserving other runs and unknown metadata. Missing, invalid, or irrelevant workflow data never blocks test design or generation.
 
 ## Output
 

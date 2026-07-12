@@ -1,0 +1,656 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Repository-wide cross-skill routing assertions. They test deterministic choice by primary deliverable rather than exact wording.",
+  "tests": [
+    {
+      "id": "RT-API-DESIGN-REVIEW-ARCHITECTURE-PLANNING",
+      "skills": [
+        "api-design-review",
+        "architecture-planning"
+      ],
+      "user_request": "Design the entire new SaaS architecture, including APIs.",
+      "expected_activation": "architecture-planning",
+      "must_not_activate": [
+        "api-design-review"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-API-DESIGN-REVIEW-DATABASE-DESIGN",
+      "skills": [
+        "api-design-review",
+        "database-design"
+      ],
+      "user_request": "Design versioned REST resources for the existing billing domain.",
+      "expected_activation": "api-design-review",
+      "must_not_activate": [
+        "database-design"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-API-DESIGN-REVIEW-SECURITY-AUDIT",
+      "skills": [
+        "api-design-review",
+        "security-audit"
+      ],
+      "user_request": "Audit the public API contract for compatibility and idempotency.",
+      "expected_activation": "api-design-review",
+      "must_not_activate": [
+        "security-audit"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-ARCHITECTURE-PLANNING-CLEAN-ARCHITECTURE-REVIEW",
+      "skills": [
+        "architecture-planning",
+        "clean-architecture-review"
+      ],
+      "user_request": "Review our existing repository architecture and boundaries.",
+      "expected_activation": "clean-architecture-review",
+      "must_not_activate": [
+        "architecture-planning"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-ARCHITECTURE-PLANNING-DATABASE-DESIGN",
+      "skills": [
+        "architecture-planning",
+        "database-design"
+      ],
+      "user_request": "Design a new SaaS system including storage and APIs.",
+      "expected_activation": "architecture-planning",
+      "must_not_activate": [
+        "database-design"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-ARCHITECTURE-PLANNING-PERFORMANCE-OPTIMIZATION",
+      "skills": [
+        "architecture-planning",
+        "performance-optimization"
+      ],
+      "user_request": "Plan a scalable architecture for a greenfield analytics product.",
+      "expected_activation": "architecture-planning",
+      "must_not_activate": [
+        "performance-optimization"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-CLEAN-ARCHITECTURE-REVIEW-CODE-REVIEW",
+      "skills": [
+        "clean-architecture-review",
+        "code-review"
+      ],
+      "user_request": "Audit boundaries and dependency direction across this repository.",
+      "expected_activation": "clean-architecture-review",
+      "must_not_activate": [
+        "code-review"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-CLEAN-ARCHITECTURE-REVIEW-DEPENDENCY-ANALYSIS",
+      "skills": [
+        "clean-architecture-review",
+        "dependency-analysis"
+      ],
+      "user_request": "Assess whether module boundaries and dependency direction are healthy.",
+      "expected_activation": "clean-architecture-review",
+      "must_not_activate": [
+        "dependency-analysis"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-CLEAN-ARCHITECTURE-REVIEW-SOLID-REVIEW",
+      "skills": [
+        "clean-architecture-review",
+        "solid-review"
+      ],
+      "user_request": "Review framework leakage and clean boundaries in this repository.",
+      "expected_activation": "clean-architecture-review",
+      "must_not_activate": [
+        "solid-review"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-CLEAN-ARCHITECTURE-REVIEW-REFACTORING-CODE",
+      "skills": [
+        "clean-architecture-review",
+        "refactoring-code"
+      ],
+      "user_request": "Assess legacy layers and propose an incremental modernization path.",
+      "expected_activation": "clean-architecture-review",
+      "must_not_activate": [
+        "refactoring-code"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-CODE-REVIEW-SECURITY-AUDIT",
+      "skills": [
+        "code-review",
+        "security-audit"
+      ],
+      "user_request": "Review this PR for correctness, security, performance, and tests.",
+      "expected_activation": "code-review",
+      "must_not_activate": [
+        "security-audit"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-CODE-REVIEW-PERFORMANCE-OPTIMIZATION",
+      "skills": [
+        "code-review",
+        "performance-optimization"
+      ],
+      "user_request": "Review this PR for correctness and production readiness.",
+      "expected_activation": "code-review",
+      "must_not_activate": [
+        "performance-optimization"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-CODE-REVIEW-DEPENDENCY-ANALYSIS",
+      "skills": [
+        "code-review",
+        "dependency-analysis"
+      ],
+      "user_request": "Review this changed service for bugs and maintainability.",
+      "expected_activation": "code-review",
+      "must_not_activate": [
+        "dependency-analysis"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-CODE-REVIEW-REFACTORING-CODE",
+      "skills": [
+        "code-review",
+        "refactoring-code"
+      ],
+      "user_request": "Find bugs and risks in this pull request.",
+      "expected_activation": "code-review",
+      "must_not_activate": [
+        "refactoring-code"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-CODE-REVIEW-TEST-GENERATION",
+      "skills": [
+        "code-review",
+        "test-generation"
+      ],
+      "user_request": "Review this endpoint before merge.",
+      "expected_activation": "code-review",
+      "must_not_activate": [
+        "test-generation"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-CODEBASE-UNDERSTANDING-SECURITY-AUDIT",
+      "skills": [
+        "codebase-understanding",
+        "security-audit"
+      ],
+      "user_request": "Where are authorization decisions made in this repository?",
+      "expected_activation": "codebase-understanding",
+      "must_not_activate": [
+        "security-audit"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-CODEBASE-UNDERSTANDING-DEBUGGING",
+      "skills": [
+        "codebase-understanding",
+        "debugging"
+      ],
+      "user_request": "Map the order-submission request path in this unfamiliar service.",
+      "expected_activation": "codebase-understanding",
+      "must_not_activate": [
+        "debugging"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-DATABASE-DESIGN-PERFORMANCE-OPTIMIZATION",
+      "skills": [
+        "database-design",
+        "performance-optimization"
+      ],
+      "user_request": "Design a tenant-safe PostgreSQL schema and migration plan.",
+      "expected_activation": "database-design",
+      "must_not_activate": [
+        "performance-optimization"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-DATABASE-DESIGN-SECURITY-AUDIT",
+      "skills": [
+        "database-design",
+        "security-audit"
+      ],
+      "user_request": "Review this ERD for integrity and tenant ownership rules.",
+      "expected_activation": "database-design",
+      "must_not_activate": [
+        "security-audit"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-DATABASE-DESIGN-DEBUGGING",
+      "skills": [
+        "database-design",
+        "debugging"
+      ],
+      "user_request": "Why does this existing database query time out?",
+      "expected_activation": "debugging",
+      "must_not_activate": [
+        "database-design"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-DEBUGGING-ROOT-CAUSE-ANALYSIS",
+      "skills": [
+        "debugging",
+        "root-cause-analysis"
+      ],
+      "user_request": "The checkout request fails now; identify and safely fix the cause.",
+      "expected_activation": "debugging",
+      "must_not_activate": [
+        "root-cause-analysis"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-DEBUGGING-PERFORMANCE-OPTIMIZATION",
+      "skills": [
+        "debugging",
+        "performance-optimization"
+      ],
+      "user_request": "The API returns 500 after deploy; reproduce and fix it.",
+      "expected_activation": "debugging",
+      "must_not_activate": [
+        "performance-optimization"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-DEBUGGING-TEST-GENERATION",
+      "skills": [
+        "debugging",
+        "test-generation"
+      ],
+      "user_request": "Why does this regression test fail intermittently?",
+      "expected_activation": "debugging",
+      "must_not_activate": [
+        "test-generation"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-DEPENDENCY-ANALYSIS-SECURITY-AUDIT",
+      "skills": [
+        "dependency-analysis",
+        "security-audit"
+      ],
+      "user_request": "Analyze this lockfile for obsolete packages and a safe upgrade path.",
+      "expected_activation": "dependency-analysis",
+      "must_not_activate": [
+        "security-audit"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-DEPENDENCY-ANALYSIS-PERFORMANCE-OPTIMIZATION",
+      "skills": [
+        "dependency-analysis",
+        "performance-optimization"
+      ],
+      "user_request": "Find duplicate packages and import cycles in this monorepo.",
+      "expected_activation": "dependency-analysis",
+      "must_not_activate": [
+        "performance-optimization"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-DESIGN-PATTERN-ADVISOR-REFACTORING-CODE",
+      "skills": [
+        "design-pattern-advisor",
+        "refactoring-code"
+      ],
+      "user_request": "Should this provider switch use Strategy, Factory, or a map?",
+      "expected_activation": "design-pattern-advisor",
+      "must_not_activate": [
+        "refactoring-code"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-DESIGN-PATTERN-ADVISOR-SOLID-REVIEW",
+      "skills": [
+        "design-pattern-advisor",
+        "solid-review"
+      ],
+      "user_request": "Is Strategy appropriate for this extension point?",
+      "expected_activation": "design-pattern-advisor",
+      "must_not_activate": [
+        "solid-review"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-DESIGN-PATTERN-ADVISOR-CLEAN-ARCHITECTURE-REVIEW",
+      "skills": [
+        "design-pattern-advisor",
+        "clean-architecture-review"
+      ],
+      "user_request": "Choose a pattern for this plugin extension point.",
+      "expected_activation": "design-pattern-advisor",
+      "must_not_activate": [
+        "clean-architecture-review"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-PERFORMANCE-OPTIMIZATION-ROOT-CAUSE-ANALYSIS",
+      "skills": [
+        "performance-optimization",
+        "root-cause-analysis"
+      ],
+      "user_request": "Profile and reduce p95 latency for this API.",
+      "expected_activation": "performance-optimization",
+      "must_not_activate": [
+        "root-cause-analysis"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-PERFORMANCE-OPTIMIZATION-REFACTORING-CODE",
+      "skills": [
+        "performance-optimization",
+        "refactoring-code"
+      ],
+      "user_request": "Measure memory use and reduce it without regressing throughput.",
+      "expected_activation": "performance-optimization",
+      "must_not_activate": [
+        "refactoring-code"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-REFACTORING-CODE-SOLID-REVIEW",
+      "skills": [
+        "refactoring-code",
+        "solid-review"
+      ],
+      "user_request": "Refactor this God class without changing behavior.",
+      "expected_activation": "refactoring-code",
+      "must_not_activate": [
+        "solid-review"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-REFACTORING-CODE-CODE-REVIEW",
+      "skills": [
+        "refactoring-code",
+        "code-review"
+      ],
+      "user_request": "Extract pricing rules into smaller units while preserving behavior.",
+      "expected_activation": "refactoring-code",
+      "must_not_activate": [
+        "code-review"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-SOLID-REVIEW-CODE-REVIEW",
+      "skills": [
+        "solid-review",
+        "code-review"
+      ],
+      "user_request": "Assess these classes specifically for SRP, ISP, and DIP risks.",
+      "expected_activation": "solid-review",
+      "must_not_activate": [
+        "code-review"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-SECURITY-AUDIT-DEPENDENCY-ANALYSIS",
+      "skills": [
+        "security-audit",
+        "dependency-analysis"
+      ],
+      "user_request": "Conduct a security audit of CI, cloud, auth, and dependencies.",
+      "expected_activation": "security-audit",
+      "must_not_activate": [
+        "dependency-analysis"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-TEST-GENERATION-DEBUGGING",
+      "skills": [
+        "test-generation",
+        "debugging"
+      ],
+      "user_request": "Write regression tests for the confirmed duplicate-order fix.",
+      "expected_activation": "test-generation",
+      "must_not_activate": [
+        "debugging"
+      ],
+      "selection_rule": "Choose the skill that owns the request's primary deliverable; incidental adjacent concerns remain secondary."
+    },
+    {
+      "id": "RT-API-DESIGN-REVIEW-BOUNDARY",
+      "skills": [
+        "api-design-review",
+        "architecture-planning"
+      ],
+      "user_request": "Please use api-design-review for a task whose primary deliverable is architecture-planning.",
+      "expected_activation": "architecture-planning",
+      "must_not_activate": [
+        "api-design-review"
+      ],
+      "selection_rule": "Incorrect-routing refusal: redirect to the owning specialty and do not perform out-of-scope work."
+    },
+    {
+      "id": "RT-ARCHITECTURE-PLANNING-BOUNDARY",
+      "skills": [
+        "architecture-planning",
+        "clean-architecture-review"
+      ],
+      "user_request": "Please use architecture-planning for a task whose primary deliverable is clean-architecture-review.",
+      "expected_activation": "clean-architecture-review",
+      "must_not_activate": [
+        "architecture-planning"
+      ],
+      "selection_rule": "Incorrect-routing refusal: redirect to the owning specialty and do not perform out-of-scope work."
+    },
+    {
+      "id": "RT-CLEAN-ARCHITECTURE-REVIEW-BOUNDARY",
+      "skills": [
+        "clean-architecture-review",
+        "architecture-planning"
+      ],
+      "user_request": "Please use clean-architecture-review for a task whose primary deliverable is architecture-planning.",
+      "expected_activation": "architecture-planning",
+      "must_not_activate": [
+        "clean-architecture-review"
+      ],
+      "selection_rule": "Incorrect-routing refusal: redirect to the owning specialty and do not perform out-of-scope work."
+    },
+    {
+      "id": "RT-CODE-REVIEW-BOUNDARY",
+      "skills": [
+        "code-review",
+        "security-audit"
+      ],
+      "user_request": "Please use code-review for a task whose primary deliverable is security-audit.",
+      "expected_activation": "security-audit",
+      "must_not_activate": [
+        "code-review"
+      ],
+      "selection_rule": "Incorrect-routing refusal: redirect to the owning specialty and do not perform out-of-scope work."
+    },
+    {
+      "id": "RT-CODEBASE-UNDERSTANDING-BOUNDARY",
+      "skills": [
+        "codebase-understanding",
+        "security-audit"
+      ],
+      "user_request": "Please use codebase-understanding for a task whose primary deliverable is security-audit.",
+      "expected_activation": "security-audit",
+      "must_not_activate": [
+        "codebase-understanding"
+      ],
+      "selection_rule": "Incorrect-routing refusal: redirect to the owning specialty and do not perform out-of-scope work."
+    },
+    {
+      "id": "RT-DATABASE-DESIGN-BOUNDARY",
+      "skills": [
+        "database-design",
+        "performance-optimization"
+      ],
+      "user_request": "Please use database-design for a task whose primary deliverable is performance-optimization.",
+      "expected_activation": "performance-optimization",
+      "must_not_activate": [
+        "database-design"
+      ],
+      "selection_rule": "Incorrect-routing refusal: redirect to the owning specialty and do not perform out-of-scope work."
+    },
+    {
+      "id": "RT-DEBUGGING-BOUNDARY",
+      "skills": [
+        "debugging",
+        "root-cause-analysis"
+      ],
+      "user_request": "Please use debugging for a task whose primary deliverable is root-cause-analysis.",
+      "expected_activation": "root-cause-analysis",
+      "must_not_activate": [
+        "debugging"
+      ],
+      "selection_rule": "Incorrect-routing refusal: redirect to the owning specialty and do not perform out-of-scope work."
+    },
+    {
+      "id": "RT-DEPENDENCY-ANALYSIS-BOUNDARY",
+      "skills": [
+        "dependency-analysis",
+        "security-audit"
+      ],
+      "user_request": "Please use dependency-analysis for a task whose primary deliverable is security-audit.",
+      "expected_activation": "security-audit",
+      "must_not_activate": [
+        "dependency-analysis"
+      ],
+      "selection_rule": "Incorrect-routing refusal: redirect to the owning specialty and do not perform out-of-scope work."
+    },
+    {
+      "id": "RT-DESIGN-PATTERN-ADVISOR-BOUNDARY",
+      "skills": [
+        "design-pattern-advisor",
+        "refactoring-code"
+      ],
+      "user_request": "Please use design-pattern-advisor for a task whose primary deliverable is refactoring-code.",
+      "expected_activation": "refactoring-code",
+      "must_not_activate": [
+        "design-pattern-advisor"
+      ],
+      "selection_rule": "Incorrect-routing refusal: redirect to the owning specialty and do not perform out-of-scope work."
+    },
+    {
+      "id": "RT-PERFORMANCE-OPTIMIZATION-BOUNDARY",
+      "skills": [
+        "performance-optimization",
+        "debugging"
+      ],
+      "user_request": "Please use performance-optimization for a task whose primary deliverable is debugging.",
+      "expected_activation": "debugging",
+      "must_not_activate": [
+        "performance-optimization"
+      ],
+      "selection_rule": "Incorrect-routing refusal: redirect to the owning specialty and do not perform out-of-scope work."
+    },
+    {
+      "id": "RT-REFACTORING-CODE-BOUNDARY",
+      "skills": [
+        "refactoring-code",
+        "code-review"
+      ],
+      "user_request": "Please use refactoring-code for a task whose primary deliverable is code-review.",
+      "expected_activation": "code-review",
+      "must_not_activate": [
+        "refactoring-code"
+      ],
+      "selection_rule": "Incorrect-routing refusal: redirect to the owning specialty and do not perform out-of-scope work."
+    },
+    {
+      "id": "RT-ROOT-CAUSE-ANALYSIS-BOUNDARY",
+      "skills": [
+        "root-cause-analysis",
+        "debugging"
+      ],
+      "user_request": "Please use root-cause-analysis for a task whose primary deliverable is debugging.",
+      "expected_activation": "debugging",
+      "must_not_activate": [
+        "root-cause-analysis"
+      ],
+      "selection_rule": "Incorrect-routing refusal: redirect to the owning specialty and do not perform out-of-scope work."
+    },
+    {
+      "id": "RT-SECURITY-AUDIT-BOUNDARY",
+      "skills": [
+        "security-audit",
+        "code-review"
+      ],
+      "user_request": "Please use security-audit for a task whose primary deliverable is code-review.",
+      "expected_activation": "code-review",
+      "must_not_activate": [
+        "security-audit"
+      ],
+      "selection_rule": "Incorrect-routing refusal: redirect to the owning specialty and do not perform out-of-scope work."
+    },
+    {
+      "id": "RT-SOLID-REVIEW-BOUNDARY",
+      "skills": [
+        "solid-review",
+        "refactoring-code"
+      ],
+      "user_request": "Please use solid-review for a task whose primary deliverable is refactoring-code.",
+      "expected_activation": "refactoring-code",
+      "must_not_activate": [
+        "solid-review"
+      ],
+      "selection_rule": "Incorrect-routing refusal: redirect to the owning specialty and do not perform out-of-scope work."
+    },
+    {
+      "id": "RT-TEST-GENERATION-BOUNDARY",
+      "skills": [
+        "test-generation",
+        "debugging"
+      ],
+      "user_request": "Please use test-generation for a task whose primary deliverable is debugging.",
+      "expected_activation": "debugging",
+      "must_not_activate": [
+        "test-generation"
+      ],
+      "selection_rule": "Incorrect-routing refusal: redirect to the owning specialty and do not perform out-of-scope work."
+    }
+  ]
+}

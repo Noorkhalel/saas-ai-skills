@@ -1,6 +1,6 @@
 ---
 name: security-audit
-description: 'Perform a comprehensive, senior-AppSec security audit of code, pull requests, whole repositories, APIs, databases, authentication and authorization systems, SaaS applications, cloud and infrastructure (Docker, Kubernetes, Terraform, AWS/Azure/GCP), CI/CD pipelines, dependencies, and AI/LLM/MCP systems — with threat model, severity-ranked findings backed by evidence, exploitability analysis, prioritized remediation, and a production-readiness verdict. Use whenever the user asks to run a security audit, audit this project/repo/PR, review security, do an application security review, secure this code, audit authentication or authorization, do an OWASP review, find vulnerabilities, review secrets, review API/Docker/Kubernetes/Terraform/cloud security, check tenant isolation, or assess whether something is safe to deploy — even if they only share code and ask whether it is secure, exploitable, or safe to ship. Prefer this over a general code review when the request is security-led.'
+description: "Conduct a security-led audit of code, systems, APIs, infrastructure, dependencies, and AI workflows with threat modeling and exploitability-backed remediation. Use when security risk is the primary concern. Do not use for a generic code review, database design, or non-security debugging."
 license: MIT
 metadata:
   version: "1.0.0"
@@ -173,6 +173,22 @@ This skill is for **defensive security review of systems the user is authorized 
 | `references/dependencies.md` | Phase 9 — SCA, CVEs, abandoned packages, license & supply-chain risk |
 | `references/ai-security.md` | Phase 10 — prompt injection, tool safety, RAG/memory poisoning, output handling, MCP |
 | `references/report-schema.md` | Output — full report template, severity table, finding schema, worked example |
+
+## Routing Boundary
+
+**Use this skill when** the requested outcome is security posture, exploitability, threat modeling, tenant isolation, authn/authz, secrets, infrastructure, supply-chain, or AI/LLM security assessment.
+
+**Do NOT use this skill when** security is only one concern in a broad implementation review (`code-review`), dependency health without a broader attack-surface assessment (`dependency-analysis`), database modeling (`database-design`), or active non-security failure diagnosis (`debugging`).
+
+**Routing note:** Explicitly security-led wording wins over generic ?review?; security findings in a general PR review do not force an audit unless the user asks to deepen security scope.
+
+## Optional Workflow Integration
+
+This skill is fully standalone: it never requires another skill, a handoff, or workflow files. Workflow output is opt-in when the user requests persistent output or `.ai-workflow/` already exists (unless the user opts out). Follow the packaged [workflow contract](shared/workflow-contract.md).
+
+Relevant handoff topics: `ai`, `api`, `authentication`, `authorization`, `compliance`, `database`, `dependencies`, `infrastructure`, `multi-tenancy`, `secrets`, `security`.
+
+When enabled, inspect only matching concise handoffs as unverified leads, verify important claims against current security-relevant project evidence, and avoid opening full artifacts unless evidence is needed. Complete this skill's normal security audit first; then save that specialized report to `.ai-workflow/artifacts/security-audit.md`, write the standardized concise handoff to `.ai-workflow/handoffs/security-audit.json`, and update only `runs.security-audit` in `state.json` while preserving other runs and unknown metadata. Missing, invalid, or irrelevant workflow data never blocks the audit.
 
 ## Portability note
 

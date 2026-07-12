@@ -1,6 +1,6 @@
 ---
 name: clean-architecture-review
-description: "Evidence-based production architecture review for applications and repositories using Clean Architecture, Hexagonal/Ports and Adapters, Onion, DDD, CQRS, event-driven systems, modular monoliths, microservices, MVC/MVVM, vertical slices, and hybrid designs. Use for review architecture, clean architecture review, architecture audit/analysis, review project or software structure, architecture health check, is this clean architecture, improve architecture, review layers/dependencies/boundaries, or production architecture review. Evaluate boundaries, dependency direction, domain isolation, module responsibility, coupling/cohesion, smells, testability, scalability, maintainability, and incremental modernization; explain evidence, trade-offs, and safe next steps."
+description: "Audit the current architecture of an existing repository or deployed system: boundaries, dependency direction, module responsibilities, coupling, testability, and incremental modernization. Use for Clean/Hexagonal/DDD/layering health checks. Do not use for greenfield architecture design or a narrow code/PR review."
 ---
 
 # Clean Architecture Review
@@ -111,6 +111,22 @@ Use plain Markdown and Mermaid; label framework-specific guidance. The workflow 
 - [ ] Domain policy/invariants, adapters/ports, transaction/event boundaries, framework isolation, and DDD fit are assessed.
 - [ ] Smells name mechanism and impact; coupling/cohesion and testability use code/test/runtime evidence where possible.
 - [ ] Recommendations are incremental, compatible, measurable, and sequenced with characterization/contract tests and rollback/repair.
+
+## Routing Boundary
+
+**Use this skill when** the primary deliverable is an evidence-based assessment of an existing system?s boundaries, dependencies, module ownership, and modernization path.
+
+**Do NOT use this skill when** the user wants a future system plan (`architecture-planning`), a single PR or function review (`code-review`), a dependency inventory/upgrade plan (`dependency-analysis`), a SOLID-only diagnosis (`solid-review`), or an implementation refactor (`refactoring-code`).
+
+**Routing note:** Existing-system evidence wins over pattern vocabulary: ?review our architecture? routes here; ?design architecture for a new product? routes to `architecture-planning`.
+
+## Optional Workflow Integration
+
+This skill is fully standalone: it never requires another skill, a handoff, or workflow files. Workflow output is opt-in when the user requests persistent output or `.ai-workflow/` already exists (unless the user opts out). Follow the packaged [workflow contract](shared/workflow-contract.md).
+
+Relevant handoff topics: `architecture`, `code-quality`, `dependencies`, `maintainability`, `performance`, `security`, `testing`.
+
+When enabled, inspect only matching concise handoffs as optional leads, verify important claims against repository boundaries and tests, and avoid opening full artifacts unless evidence is needed. Complete this skill's normal architecture review first; then save that specialized report to `.ai-workflow/artifacts/clean-architecture-review.md`, write the standardized concise handoff to `.ai-workflow/handoffs/clean-architecture-review.json`, and update only `runs.clean-architecture-review` in `state.json` while preserving other runs and unknown metadata. Missing, invalid, or irrelevant workflow data never blocks the review.
 
 ## Examples
 

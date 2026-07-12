@@ -1,6 +1,6 @@
 ---
 name: refactoring-code
-description: 'Analyze, plan, and safely execute behavior-preserving refactoring of existing code, with built-in review of architecture, security, performance, and test impact. Use this skill whenever the user asks to refactor, restructure, clean up, simplify, modernize, or reorganize existing code; mentions technical debt, code smells, legacy code, spaghetti code, God objects, duplication, tight coupling, deep nesting, or maintainability; asks to split up a large class, function, or module, prepare code for a new feature, improve testability, or move toward a cleaner architecture (SOLID, clean/hexagonal/layered architecture, DDD, CQRS, modular monolith, microservices); or requests a refactoring plan, code-quality audit, or design review of existing code — even when the word "refactor" never appears. Also apply it when you notice significant structural problems while working on another task in an existing codebase.'
+description: "Plan and execute behavior-preserving structural changes to existing code: simplify, decompose, modernize, and reduce technical debt with tests and safe steps. Use when implementation change is requested. Do not use for a review-only finding report, new features, or bug fixes that change behavior."
 license: MIT
 metadata:
   version: "2.0.0"
@@ -102,6 +102,22 @@ The one-screen version for common cases; full catalog with heuristics in `refere
 Scale the report to the engagement. A one-function extract needs: smells found (`file:line`), refactorings applied, confirmation tests stay green. A codebase audit or multi-step refactor uses the full report structure — Executive Summary, Architecture Review, Code Smells, Risk Assessment, Refactoring Plan, Incremental Changes, Security Review, Performance Review, Testing Impact, Complexity & Maintainability, Suggested Design Patterns, Future Improvements — templated in `references/workflow.md`.
 
 Always cite locations as `file:line`, name every smell and pattern by its catalog name, and state explicitly whether behavior is preserved and how you verified it.
+
+## Routing Boundary
+
+**Use this skill when** the user requests a behavior-preserving structural change to existing code: extract, simplify, reorganize, remove duplication, improve testability, or incrementally modernize.
+
+**Do NOT use this skill when** the user wants diagnosis only (`code-review`, `solid-review`, or `clean-architecture-review`), a new feature, a behavior-changing bug fix (`debugging`), or only pattern selection (`design-pattern-advisor`).
+
+**Routing note:** A review can recommend a refactor, but this skill wins only when the requested deliverable includes a safe structural implementation plan or change.
+
+## Optional Workflow Integration
+
+This skill is fully standalone: it never requires another skill, a handoff, or workflow files. Workflow output is opt-in when the user requests persistent output or `.ai-workflow/` already exists (unless the user opts out). Follow the packaged [workflow contract](shared/workflow-contract.md).
+
+Relevant handoff topics: `architecture`, `code-quality`, `complexity`, `dependencies`, `duplication`, `maintainability`, `performance`, `security`, `testing`.
+
+When enabled, inspect only matching concise handoffs as optional leads, verify important claims in the repository and characterization tests, and avoid opening full artifacts unless evidence is needed. Complete this skill's normal refactoring report first; then save that specialized report to `.ai-workflow/artifacts/refactoring-code.md`, write the standardized concise handoff to `.ai-workflow/handoffs/refactoring-code.json`, and update only `runs.refactoring-code` in `state.json` while preserving other runs and unknown metadata. Missing, invalid, or irrelevant workflow data never blocks behavior-preserving refactoring.
 
 ## Reference map
 

@@ -19,3 +19,9 @@ Skills may cover adjacent concerns but must remain separately selectable. The ca
 ## Documentation synchronization
 
 `SKILLS.md`, README overview, changelog, and validation workflow are updated whenever skills are added or removed. The validator checks folder names, canonical files, root catalog membership, basic relative links, and unsafe local-path patterns. It does not certify skill quality or runtime compatibility.
+
+## Optional workflow integration
+
+Workflow integration is a project-runtime convention, not a shared skill runtime or dependency. The canonical contract lives at `shared/workflow-contract.md` and is synchronized into every `skills/<skill-name>/shared/workflow-contract.md`. This duplication is deliberate: the supported installer selects and copies individual skill folders, so a repository-level contract alone would not be present for a single-skill installation.
+
+When enabled by a user request or an existing `.ai-workflow/` directory, a skill may write a detailed skill-specific artifact, a concise standardized handoff, and only lightweight run metadata. Skills filter handoffs by their own topic sets, verify inherited claims in project files, and do not load unrelated reports. Missing, malformed, or absent workflow files are recoverable and never prevent standalone execution. The synchronizer and validator enforce identical packaged copies without creating cross-skill prompt dependencies.
