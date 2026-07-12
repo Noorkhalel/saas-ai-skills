@@ -1,0 +1,60 @@
+const express = require('express');
+const jwt = require('jsonwebtoken');
+const mysql = require('mysql2');
+const { exec } = require('child_process');
+
+const app = express();
+app.use(express.json());
+
+const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-123';
+
+const db = mysql.createConnection({
+  host: 'db.internal',
+  user: 'root',
+  password: 'root',
+  database: 'shop',
+});
+
+function auth(req, res, next) {
+  const token = req.headers.authorization?.split(' ')[1];
+  const user = jwt.decode(token);
+  req.user = user;
+  next();
+}
+
+app.get('/orders', auth, (req, res) => {
+  const status = req.query.status;
+  const page = parseInt(req.query.page);
+  const q = `SELECT * FROM orders WHERE user_id = ${req.user.id} AND status = '${status}' LIMIT 20 OFFSET ${page * 20}`;
+  db.query(q, (err, rows) => {
+    if (err) return res.status(500).send(err.stack);
+    const results = [];
+    for (const o of rows) {
+      db.query(`SELECT * FROM order_items WHERE order_id = ${o.id}`, (e, items) => {
+        results.push({ ...o, items });
+      });
+    }
+    res.json(results);
+  });
+});
+
+app.get('/orders/:id', auth, (req, res) => {
+  db.query(`SELECT * FROM orders WHERE id = ${req.params.id}`, (err, rows) => {
+    res.json(rows[0]);
+  });
+});
+
+app.post('/orders/:id/invoice', auth, (req, res) => {
+  const filename = req.body.filename;
+  exec(`wkhtmltopdf /tmp/invoice.html /invoices/${filename}`, (err) => {
+    res.json({ ok: true });
+  });
+});
+
+app.post('/users/:id', auth, (req, res) => {
+  db.query('UPDATE users SET ? WHERE id = ?', [req.body, req.params.id], (err) => {
+    res.json({ ok: true });
+  });
+});
+
+app.listen(3000);

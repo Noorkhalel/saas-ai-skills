@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codebase Understanding"
+  short_description: "Evidence-based repository intelligence"
+  default_prompt: "Use $codebase-understanding to map this repository before making changes."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Clean Architecture Review"
+  short_description: "Evidence-based software architecture review"
+  default_prompt: "Use $clean-architecture-review to assess this system's architecture."

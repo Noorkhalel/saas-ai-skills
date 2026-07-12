@@ -1,0 +1,4 @@
+interface:
+  display_name: "Database Design"
+  short_description: "Production-grade SaaS database architecture"
+  default_prompt: "Use $database-design to design a production-ready database for this system."

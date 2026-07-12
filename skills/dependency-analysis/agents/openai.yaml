@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dependency Analysis"
+  short_description: "Evidence-based dependency health analysis"
+  default_prompt: "Use $dependency-analysis to assess this project's dependency risks."

@@ -1,0 +1,71 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors and IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.code-workspace
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm/
+.pnpm-store/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# Build and generated output
+dist/
+build/
+out/
+coverage/
+.cache/
+.tmp/
+temp/
+tmp/
+
+# Logs and local validation output
+logs/
+*.log
+test-results/
+playwright-report/
+coverage-report/
+eval-results/
+benchmark-results/
+
+# Local AI tool state (public skill sources remain under skills/)
+.claude/
+.cursor/
+.roo/
+.cline/
+.windsurf/
+.codex/
+.agent/
+.agents/local/

@@ -1,72 +1,29 @@
 # Skills Catalog
 
-This catalog lists every skill currently available in the repository.
+This catalog is generated from the canonical `skills/<folder>/SKILL.md` structure. Installation identifiers are the folder names. Install a selected skill with `npx skills add noorkhalel/saas-ai-skills --skill <folder>`.
 
-## Discovery Index
+| Skill | Folder | Category | Description | Installation |
+|---|---|---|---|---|
+| [API Design Review](skills/api-design-review/SKILL.md) | [api-design-review](skills/api-design-review/) | API Design | Reviews REST, GraphQL, gRPC, realtime, OpenAPI, and AI API contracts. | `--skill api-design-review` |
+| [Architecture Planning](skills/architecture-planning/SKILL.md) | [architecture-planning](skills/architecture-planning/) | SaaS Architecture | Plans production architecture, SaaS boundaries, data, cloud, and delivery. | `--skill architecture-planning` |
+| [Clean Architecture Review](skills/clean-architecture-review/SKILL.md) | [clean-architecture-review](skills/clean-architecture-review/) | Code Quality | Reviews architectural boundaries, dependency direction, and modernization paths. | `--skill clean-architecture-review` |
+| [Code Review](skills/code-review/SKILL.md) | [code-review](skills/code-review/) | Code Quality | Reviews correctness, security, performance, maintainability, and tests. | `--skill code-review` |
+| [Codebase Understanding](skills/codebase-understanding/SKILL.md) | [codebase-understanding](skills/codebase-understanding/) | Developer Workflow | Maps unfamiliar repositories and focused change paths using evidence. | `--skill codebase-understanding` |
+| [Database Design](skills/database-design/SKILL.md) | [database-design](skills/database-design/) | Database Design | Designs SaaS schemas, tenancy, migrations, security, and operations. | `--skill database-design` |
+| [Debugging](skills/debugging/SKILL.md) | [debugging](skills/debugging/) | Debugging | Diagnoses software failures with reproducible evidence. | `--skill debugging` |
+| [Dependency Analysis](skills/dependency-analysis/SKILL.md) | [dependency-analysis](skills/dependency-analysis/) | Dependency Management | Audits package, module, runtime, service, and supply-chain dependencies. | `--skill dependency-analysis` |
+| [Design Pattern Advisor](skills/design-pattern-advisor/SKILL.md) | [design-pattern-advisor](skills/design-pattern-advisor/) | Software Design | Selects the simplest justified design pattern or no pattern. | `--skill design-pattern-advisor` |
+| [Performance Optimization](skills/performance-optimization/SKILL.md) | [performance-optimization](skills/performance-optimization/) | Performance | Profiles and improves full-stack SaaS performance with validation. | `--skill performance-optimization` |
+| [Refactoring Code](skills/refactoring-code/SKILL.md) | [refactoring-code](skills/refactoring-code/) | Refactoring | Safely improves internal structure while preserving behavior. | `--skill refactoring-code` |
+| [Root Cause Analysis](skills/root-cause-analysis/SKILL.md) | [root-cause-analysis](skills/root-cause-analysis/) | Incident Response | Builds postmortems and systemic corrective actions. | `--skill root-cause-analysis` |
+| [Security Audit](skills/security-audit/SKILL.md) | [security-audit](skills/security-audit/) | Security | Audits application, cloud, API, data, and AI security. | `--skill security-audit` |
+| [SOLID Review](skills/solid-review/SKILL.md) | [solid-review](skills/solid-review/) | Code Quality | Reviews practical SRP, OCP, LSP, ISP, and DIP risks. | `--skill solid-review` |
+| [Test Generation](skills/test-generation/SKILL.md) | [test-generation](skills/test-generation/) | Testing | Designs deterministic unit, integration, and end-to-end tests. | `--skill test-generation` |
 
-- Code Quality: `code-review`, `refactoring-code`
-- Architecture: `architecture-planning`
-- Debugging: `debugging`
-- Root Cause Analysis: `root-cause-analysis`
-- Testing: `test-generation`
+## Selection boundaries
 
-## Catalog
-
-| Name | Folder | Description | Category | Typical use cases | Keywords | Dependencies |
-|------|--------|-------------|----------|-------------------|----------|--------------|
-| architecture-planning | `skills/architecture-planning` | Act as a principal software architect and produce a production-ready architecture plan before code is written. | Architecture | System design, SaaS architecture, API and data planning, cloud decisions | architecture, design, SaaS, cloud, API, data, security | None |
-| code-review | `skills/code-review` | Perform deep, senior-engineer code review with verified findings and severity-ranked recommendations. | Code Quality | PR reviews, bug hunting, security review, maintainability audits, production readiness checks | review, bugs, security, performance, database, testing, architecture | None |
-| debugging | `skills/debugging` | Diagnose the real root cause of a bug, crash, or performance problem using evidence-driven investigation. | Debugging | Stack trace analysis, log investigation, crash diagnosis, performance troubleshooting, intermittent failures | debug, incident, logs, stack trace, crash, performance, runtime | None |
-| refactoring-code | `skills/refactoring-code` | Analyze, plan, and safely execute behavior-preserving refactoring. | Refactoring | Legacy cleanup, extracting modules, simplifying structure, preparation for new work, maintainability improvements | refactor, clean-up, architecture, smells, patterns, maintainability, SOLID | None |
-| root-cause-analysis | `skills/root-cause-analysis` | Investigate a software failure like a senior engineer running a postmortem and trace the incident back to root causes. | Root Cause Analysis | Postmortems, incidents, recurrence prevention, timeline reconstruction, process fixes | RCA, postmortem, incident, timeline, prevention, failure analysis | None |
-| test-generation | `skills/test-generation` | Act as a senior SDET to generate meaningful, deterministic tests. | Testing | Unit tests, integration tests, e2e tests, regression coverage, mocks and fixtures | tests, SDET, unit, integration, e2e, regression, coverage | None |
-
-## Skill Reports
-
-### architecture-planning
-
-- Folder: `skills/architecture-planning`
-- Category: Architecture
-- Typical use cases: greenfield system design, architecture review, SaaS planning, cloud and data decisions
-- Keywords: architecture, design, SaaS, cloud, API, data, security
-- Dependencies: none
-
-### code-review
-
-- Folder: `skills/code-review`
-- Category: Code Quality
-- Typical use cases: code review, bug review, security review, database review, testing review
-- Keywords: review, bugs, security, performance, database, testing, architecture
-- Dependencies: none
-
-### debugging
-
-- Folder: `skills/debugging`
-- Category: Debugging
-- Typical use cases: error diagnosis, stack traces, logs, runtime failures, performance issues
-- Keywords: debug, incident, logs, stack trace, crash, performance, runtime
-- Dependencies: none
-
-### refactoring-code
-
-- Folder: `skills/refactoring-code`
-- Category: Refactoring
-- Typical use cases: structural cleanup, behavior-preserving rewrites, module extraction, maintainability work
-- Keywords: refactor, clean-up, architecture, smells, patterns, maintainability, SOLID
-- Dependencies: none
-
-### root-cause-analysis
-
-- Folder: `skills/root-cause-analysis`
-- Category: Root Cause Analysis
-- Typical use cases: postmortems, incidents, recurrence prevention, timeline reconstruction
-- Keywords: RCA, postmortem, incident, timeline, prevention, failure analysis
-- Dependencies: none
-
-### test-generation
-
-- Folder: `skills/test-generation`
-- Category: Testing
-- Typical use cases: unit tests, integration tests, e2e tests, regression coverage, mocks and fixtures
-- Keywords: tests, SDET, unit, integration, e2e, regression, coverage
-- Dependencies: none
+- Use **Codebase Understanding** before other skills when repository context is missing.
+- Use **Architecture Planning** for future system design; **Clean Architecture Review** for current boundaries; **SOLID Review** for focused design-principle issues.
+- Use **Code Review** for broad quality/correctness; **Refactoring Code** when implementing behavior-preserving structural changes; **Design Pattern Advisor** only to select/evaluate a pattern.
+- Use **Debugging** for an active defect and **Root Cause Analysis** for systemic incident analysis after or alongside investigation.
+- Use **Dependency Analysis** for package/module/runtime dependency risk, **Security Audit** for broad security, and **Performance Optimization** for measured bottlenecks.

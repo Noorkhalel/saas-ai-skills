@@ -1,35 +1,37 @@
 # Contributing
 
-Thanks for helping improve the collection.
+Keep skills independent, behavior-preserving, and easy to discover. Do not merge prompts, move references between skills, or change an existing skill's meaning unless the change is explicitly scoped and reviewed.
 
-## Principles
+## Add a skill
 
-- Keep every skill independent.
-- Do not merge skill prompts or share prompt logic between skills.
-- Preserve existing behavior unless a change is explicitly requested.
-- Prefer documentation, metadata, and packaging improvements over prompt rewrites.
+1. Create `skills/<kebab-case-name>/`.
+2. Add `SKILL.md` with clear name and description.
+3. Add optional references, evaluations, examples, or assets only inside that skill folder.
+4. Validate relative links and remove local paths/secrets.
+5. Add the skill to `SKILLS.md`.
+6. Add a concise README summary entry.
+7. Update `CHANGELOG.md` under `Unreleased`.
+8. Run documentation validation.
+9. Test installation with the supported Skills CLI syntax.
+10. Submit a pull request.
 
-## Workflow
+## Required checklist
 
-1. Identify the skill or root document you want to change.
-2. Make the smallest change that solves the problem.
-3. Update `SKILLS.md` if the skill catalog changes.
-4. Update the relevant root docs if the repository surface changes.
-5. Verify the change does not alter skill behavior.
+- [ ] The skill has a unique and clear scope
+- [ ] The folder name uses lowercase kebab-case
+- [ ] `SKILL.md` exists
+- [ ] References use relative paths
+- [ ] No secrets or local paths are included
+- [ ] `SKILLS.md` is updated
+- [ ] README summary is updated
+- [ ] CHANGELOG is updated
+- [ ] Installation was tested
+- [ ] The skill does not unintentionally duplicate another skill
 
-## Skill Additions
+## Validation
 
-When adding a new skill:
+Run `python scripts/validate_repository.py`. Review the output, then run the relevant skill-specific validator or evaluation fixtures when present. Keep generated output, caches, and private configuration out of commits.
 
-- Create a new folder under `skills/`.
-- Add a canonical `SKILL.md` file.
-- Add supporting references only inside that skill folder.
-- Add a concise README if it helps discovery.
-- Update `SKILLS.md`, `README.md`, and `CHANGELOG.md`.
+## Pull requests
 
-## Review Expectations
-
-- Use clear, descriptive folder names.
-- Avoid temporary or generated files unless they are explicitly needed.
-- Keep Markdown consistent and link targets relative.
-- Document any compatibility caveats in the root docs.
+Use the pull request template. Keep changes scoped, state affected skills, explain compatibility, and include exact commands/tests used. For a new skill, cite its catalog row and installation identifier.

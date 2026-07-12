@@ -1,0 +1,22 @@
+name: Validate skill collection
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/validate_repository.py
+      - name: Check for obvious private key files
+        run: |
+          ! find . -type f \( -name '*.pem' -o -name '*.p12' -o -name '*.pfx' \) -not -path './.git/*' | grep .

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Pattern Advisor"
+  short_description: "Evidence-based design pattern selection"
+  default_prompt: "Use $design-pattern-advisor to recommend the simplest pattern for this design problem."

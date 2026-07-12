@@ -1,109 +1,91 @@
-# SaaS AI Skills Collection
+# SaaS AI Skills
 
-This repository is a collection of independent AI Skills for software design, code quality, debugging, refactoring, testing, and incident analysis.
+[![skills.sh](https://skills.sh/b/noorkhalel/saas-ai-skills)](https://skills.sh/noorkhalel/saas-ai-skills)
 
-Each skill lives in its own folder under `skills/` and keeps its own prompt, references, and evaluation fixtures isolated from the others.
+An open-source collection of independent AI Skills for building, operating, securing, testing, and improving modern SaaS applications. The repository currently contains **15 independent AI Skills**. Each one is self-contained, portable, and designed to give coding agents a disciplined, evidence-based workflow.
 
-## Overview
+## Why this exists
 
-- Each skill is self-contained and can be installed on its own.
-- The repository is organized for loaders that understand GitHub-hosted skill collections.
-- No skill behavior is changed by the collection structure in this repository.
+SaaS work crosses architecture, APIs, databases, auth, operations, incidents, and AI integrations. These skills help agents apply the right specialist workflow without coupling skills together or hiding their instructions in a monolithic prompt.
 
-## Supported Assistants
+Benefits include clearer planning, safer repository changes, stronger reviews, reproducible investigations, and a catalog that scales as the collection grows.
 
-This collection is intended to work with AI skill loaders and agents that support folder-based skill discovery, including:
+## Skill overview
 
-- Anthropic Skills
-- OpenAI Skills
-- Claude Code
-- Cursor
-- Codex
-- Roo Code
-- Cline
-- Windsurf
+| Skill | Purpose | Category | Link |
+|---|---|---|---|
+| API Design Review | Review API contracts and production readiness. | API Design | [skill](skills/api-design-review/SKILL.md) |
+| Architecture Planning | Plan production SaaS architecture before implementation. | SaaS Architecture | [skill](skills/architecture-planning/SKILL.md) |
+| Clean Architecture Review | Review boundaries, dependencies, and maintainability. | Code Quality | [skill](skills/clean-architecture-review/SKILL.md) |
+| Code Review | Perform senior-engineer correctness and quality review. | Code Quality | [skill](skills/code-review/SKILL.md) |
+| Codebase Understanding | Build evidence-based repository context before changes. | Developer Workflow | [skill](skills/codebase-understanding/SKILL.md) |
+| Database Design | Design production SaaS data models and migrations. | Database Design | [skill](skills/database-design/SKILL.md) |
+| Debugging | Diagnose failures from evidence. | Debugging | [skill](skills/debugging/SKILL.md) |
+| Dependency Analysis | Audit package, module, runtime, and supply-chain dependencies. | Dependency Management | [skill](skills/dependency-analysis/SKILL.md) |
+| Design Pattern Advisor | Select patterns only when design forces justify them. | Software Design | [skill](skills/design-pattern-advisor/SKILL.md) |
+| Performance Optimization | Find and validate system performance improvements. | Performance | [skill](skills/performance-optimization/SKILL.md) |
+| Refactoring Code | Plan and execute behavior-preserving refactoring. | Refactoring | [skill](skills/refactoring-code/SKILL.md) |
+| Root Cause Analysis | Produce evidence-based incident root-cause analysis. | Incident Response | [skill](skills/root-cause-analysis/SKILL.md) |
+| Security Audit | Audit SaaS security, cloud, API, and AI risks. | Security | [skill](skills/security-audit/SKILL.md) |
+| SOLID Review | Review practical SOLID design risks. | Code Quality | [skill](skills/solid-review/SKILL.md) |
+| Test Generation | Generate meaningful deterministic tests. | Testing | [skill](skills/test-generation/SKILL.md) |
 
-Support depends on the loader version and its GitHub install workflow.
-
-## Repository Structure
-
-- `skills/<skill-name>/SKILL.md` is the canonical skill prompt.
-- `skills/<skill-name>/references/` contains supporting documentation for that skill.
-- `skills/<skill-name>/evals/` contains evaluation fixtures and benchmark material.
-- `SKILLS.md` is the catalog and discovery index.
+See [SKILLS.md](SKILLS.md) for the complete catalog, installation identifiers, and category details.
 
 ## Installation
 
-### Install all skills
+The repository works with the [Skills CLI](https://www.skills.sh/docs/cli) and compatible folder-based skill loaders.
+
+Install the collection interactively:
 
 ```bash
-npx skills add https://github.com/Noorkhalel/saas-ai-skills
+npx skills add noorkhalel/saas-ai-skills
 ```
 
-### Install one skill
+Install one skill:
 
 ```bash
-npx skills add https://github.com/Noorkhalel/saas-ai-skills --skill refactoring-code
+npx skills add noorkhalel/saas-ai-skills --skill refactoring-code
 ```
 
-### Install multiple skills
+Install selected skills with repeated `--skill` flags:
 
 ```bash
-npx skills add https://github.com/Noorkhalel/saas-ai-skills --skill refactoring-code architecture-planning test-generation
+npx skills add noorkhalel/saas-ai-skills \
+  --skill refactoring-code \
+  --skill architecture-planning \
+  --skill test-generation
 ```
 
-If your installed `skills` CLI expects a different multi-skill selector syntax, follow that CLI's help output. This repository is structured around repository URL plus named skill selection.
+Use `npx skills add noorkhalel/saas-ai-skills --list` to inspect available skills first. CLI behavior can vary by installed version; consult `npx skills add --help` if its output differs.
 
-## Quick Start
+## Quick start
 
-1. Open `SKILLS.md` to browse the catalog.
-2. Choose the skill that matches the task.
-3. Install all skills or only the selected skills.
-4. Open the chosen skill's `SKILL.md` and follow its instructions.
+1. Browse [SKILLS.md](SKILLS.md) and choose a skill.
+2. Install it with the matching folder name passed to `--skill`.
+3. Let your compatible agent load `skills/<skill-name>/SKILL.md` and its relative references.
+4. Keep skill prompts independent; use repository documentation to choose related skills.
 
-## Repository Layout
+## Repository structure
 
 ```text
-skills/
-  architecture-planning/
-  code-review/
-  debugging/
-  refactoring-code/
-  root-cause-analysis/
-  test-generation/
+skills/<skill-name>/
+  SKILL.md          # canonical instructions
+  references/       # optional, loaded on demand
+  evals/            # optional evaluation fixtures
+  examples/         # optional examples
+.github/             # community files and lightweight validation
+SKILLS.md            # full catalog
 ```
 
-Each folder remains independent by design.
+## Contributing, releases, and security
 
-## Contributing
+Read [CONTRIBUTING.md](CONTRIBUTING.md) before adding a skill. The collection uses [Semantic Versioning](RELEASE.md); the current recorded version is [`VERSION`](VERSION). Security reports follow [SECURITY.md](SECURITY.md). The project is licensed under [MIT](LICENSE).
 
-Contributions should keep each skill isolated.
-
-- Do not merge skills together.
-- Do not change a skill prompt unless the task explicitly requires it.
-- Keep folder names stable and descriptive.
-- Update `SKILLS.md` and the root docs when adding or removing skills.
-- Prefer documentation and packaging changes over prompt rewrites.
-
-See `CONTRIBUTING.md` for the full workflow.
-
-## License
-
-This project is licensed under the MIT License. See `LICENSE`.
+See [Issues](https://github.com/Noorkhalel/saas-ai-skills/issues) for bugs and proposals, and [Discussions](https://github.com/Noorkhalel/saas-ai-skills/discussions) for questions and ideas.
 
 ## Roadmap
 
-- Expand the catalog as new skills are added.
-- Add optional GitHub issue and pull request templates.
-- Add release automation when the collection format stabilizes.
-- Keep the collection compatible with additional skill loaders as their install formats evolve.
-
-## Versioning
-
-This repository follows Semantic Versioning. The current collection version is recorded in `VERSION`.
-
-## Credits
-
-- Repository owner and maintainer: Noorkhalel
-- Skill content authorship is preserved inside each skill folder
-- Open-source packaging guidance is documented in the root docs
+- Keep the catalog and validation tooling synchronized as skills are added.
+- Improve evaluation coverage without coupling independent skills.
+- Add only lightweight, dependency-free repository automation.

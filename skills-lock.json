@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "skills": {
+    "architecture-planning": {
+      "source": "Noorkhalel/saas-ai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/architecture-planning/SKILL.md",
+      "computedHash": "84a3b1ddec9e26b5c8499cf6587d7b606157d2a6c3d815b36112c68edf2e799a"
+    },
+    "code-review": {
+      "source": "Noorkhalel/saas-ai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/code-review/SKILL.md",
+      "computedHash": "d242e4ff60d2cecf5e7247964e0ce7e7ba3401287956eb24121cffe92b537fef"
+    },
+    "debugging": {
+      "source": "noorkhalel/saas-ai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/debugging/SKILL.md",
+      "computedHash": "237e362feda36fb9ad690127805d8a8868d9f00368dadfbbc9452056d5767a3f"
+    },
+    "refactoring-code": {
+      "source": "noorkhalel/saas-ai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/refactoring-code/SKILL.md",
+      "computedHash": "82c316afbad698012db795853291f29397f1476b4ca1fd3fa59742dc2d9359e7"
+    },
+    "root-cause-analysis": {
+      "source": "Noorkhalel/saas-ai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/root-cause-analysis/SKILL.md",
+      "computedHash": "22f50e5f48b6c39d1a3f9d646f83889894a736c78d054291d3d3dfd6160e82c6"
+    }
+  }
+}

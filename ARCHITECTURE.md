@@ -1,44 +1,21 @@
-# Architecture
+# Repository Architecture
 
-## Collection Model
+## Structure and isolation
 
-This repository is a collection of independent prompt skills. Each skill is packaged as its own folder under `skills/` and is expected to remain self-contained.
+Each skill is an independent package under `skills/<lowercase-kebab-case>/`. `SKILL.md` is the canonical instruction file and must remain self-contained. Optional `references/`, `evals/`, `examples/`, and `assets/` folders belong only to their owning skill; they are never shared or moved between skills to create hidden coupling.
 
-## Folder Conventions
+## Discovery and installation
 
-- `skills/<name>/SKILL.md` is the authoritative skill definition.
-- `skills/<name>/references/` contains supporting reference material.
-- `skills/<name>/evals/` contains evaluation fixtures and benchmark data.
-- `skills/<name>/README.md` is optional but recommended for discovery.
+The `skills/` directory is the source of truth. `SKILLS.md` catalogs every valid skill folder and uses the folder name as the installation identifier. Compatible loaders select a skill by folder; the Skills CLI supports repository installation and repeated `--skill` selectors. Root docs must not list a skill that lacks `SKILL.md`.
 
-## Design Rules
+## Scaling model
 
-- Do not merge skills together.
-- Do not introduce shared prompt modules that change behavior across skills.
-- Keep the root documentation focused on collection-level concerns.
-- Treat `evals/` as development and validation material, not as prompt content.
+The repository scales by adding isolated folders, not a shared prompt runtime. New skills use kebab-case names, register in `SKILLS.md`, receive one concise README summary entry, and are checked by the lightweight validation workflow. References are loaded on demand; evaluation fixtures stay outside the canonical prompt.
 
-## Installation Compatibility
+## Overlap management
 
-This layout is intended to be compatible with skill loaders that discover named skills from repository folders.
+Skills may cover adjacent concerns but must remain separately selectable. The catalog documents selection boundaries: repository understanding before changes; planning for future architecture; reviews for current code/boundaries/security/dependencies/performance; refactoring for behavior-preserving implementation; debugging and RCA for failures. Resolve overlap with catalog/documentation notes, not prompt merging.
 
-To maximize compatibility:
+## Documentation synchronization
 
-- Keep skill folder names stable and descriptive.
-- Keep each skill's prompt in `SKILL.md`.
-- Keep file paths simple and predictable.
-- Document the skill catalog at the root.
-
-## Public Distribution Strategy
-
-The repository should present a clear collection boundary:
-
-1. Discover the skill in `SKILLS.md`.
-2. Install the repository or selected skills through the supported loader.
-3. Consume only the selected skill folder and its references.
-
-## Non-Goals
-
-- No behavior changes to existing skill prompts.
-- No consolidation of skill content into a shared runtime.
-- No assumption that every loader supports the same multi-skill selector syntax.
+`SKILLS.md`, README overview, changelog, and validation workflow are updated whenever skills are added or removed. The validator checks folder names, canonical files, root catalog membership, basic relative links, and unsafe local-path patterns. It does not certify skill quality or runtime compatibility.

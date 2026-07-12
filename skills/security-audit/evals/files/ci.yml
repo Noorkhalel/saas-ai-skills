@@ -1,0 +1,33 @@
+name: PR Build and Deploy
+
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+
+permissions: write-all
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Greet contributor
+        run: |
+          echo "Building PR: ${{ github.event.pull_request.title }}"
+
+      - uses: some-vendor/setup-tool@main
+
+      - name: Install and build
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy to production
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          aws s3 sync ./dist s3://acme-prod-site --delete

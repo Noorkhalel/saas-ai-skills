@@ -1,0 +1,4 @@
+interface:
+  display_name: "Performance Optimization"
+  short_description: "Evidence-based system performance engineering"
+  default_prompt: "Use $performance-optimization to profile and improve this production system."

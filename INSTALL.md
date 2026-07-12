@@ -5,22 +5,25 @@ This repository is designed as a GitHub-hosted collection of independent AI Skil
 ## Install everything
 
 ```bash
-npx skills add https://github.com/Noorkhalel/saas-ai-skills
+npx skills add noorkhalel/saas-ai-skills
 ```
 
 ## Install one skill
 
 ```bash
-npx skills add https://github.com/Noorkhalel/saas-ai-skills --skill refactoring-code
+npx skills add noorkhalel/saas-ai-skills --skill refactoring-code
 ```
 
 ## Install multiple skills
 
 ```bash
-npx skills add https://github.com/Noorkhalel/saas-ai-skills --skill refactoring-code architecture-planning test-generation
+npx skills add noorkhalel/saas-ai-skills \
+  --skill refactoring-code \
+  --skill architecture-planning \
+  --skill test-generation
 ```
 
-If your installed `skills` CLI uses a different multi-select syntax, use the syntax documented by that CLI version. This repository keeps the skill names and folder names aligned so the selector can map directly to the skill folder.
+Use `npx skills add noorkhalel/saas-ai-skills --list` before installation to inspect the current catalog. The folder name is the skill selector. If installed CLI help differs, follow `npx skills add --help`.
 
 ## Manual inspection
 

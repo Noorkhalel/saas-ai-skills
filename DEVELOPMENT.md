@@ -28,6 +28,10 @@ When making changes:
 
 ## Suggested Validation
 
-- Check Markdown links.
-- Verify the catalog matches the repository contents.
-- Confirm the skill count and folder names are current.
+Run:
+
+```bash
+python scripts/validate_repository.py
+```
+
+Then run the skill-specific validator or evaluation fixtures when present. Check Markdown links, catalog membership, folder names, and relevant installation flow before opening a pull request.

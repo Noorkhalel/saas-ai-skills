@@ -1,0 +1,4 @@
+interface:
+  display_name: "SOLID Review"
+  short_description: "Evidence-based SOLID design review"
+  default_prompt: "Use $solid-review to assess this code for practical SOLID design issues."

@@ -10,7 +10,7 @@ Yes. Use the loader's named skill selection syntax, such as `--skill refactoring
 
 ## Can I install multiple skills?
 
-Yes, if your `skills` CLI version supports multiple selectors in one command. If not, install each skill separately.
+Yes. Use repeated selectors, for example `--skill refactoring-code --skill architecture-planning`. Check `npx skills add --help` if your installed CLI differs.
 
 ## Will adding docs change skill behavior?
 

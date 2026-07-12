@@ -1,0 +1,4 @@
+interface:
+  display_name: "API Design Review"
+  short_description: "Production-grade API architecture review"
+  default_prompt: "Use $api-design-review to assess this API for production readiness."
