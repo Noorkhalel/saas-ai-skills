@@ -9,7 +9,6 @@ permissions:
 jobs:
   model-evals:
     runs-on: ubuntu-latest
-    environment: model-evals
     env:
       EVAL_OPENAI_API_KEY: ${{ secrets.EVAL_OPENAI_API_KEY }}
       EVAL_OPENAI_BASE_URL: ${{ secrets.EVAL_OPENAI_BASE_URL }}

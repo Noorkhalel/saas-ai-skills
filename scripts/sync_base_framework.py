@@ -9,6 +9,12 @@ BASE = ROOT / "shared" / "base"
 MAP = json.loads((BASE / "skill-policy-map.json").read_text(encoding="utf-8"))
 FRAMEWORK = json.loads((BASE / "framework.json").read_text(encoding="utf-8"))
 
+
+def normalized_sha256(path: Path) -> str:
+    """Hash text as Git stores it, independent of the checkout line ending."""
+    return hashlib.sha256(path.read_text(encoding="utf-8").encode("utf-8")).hexdigest()
+
+
 def main() -> int:
     check = argparse.ArgumentParser(description=__doc__)
     check.add_argument("--check", action="store_true")
@@ -24,7 +30,7 @@ def main() -> int:
             "generated_by": "scripts/sync_base_framework.py",
             "framework_version": FRAMEWORK["framework_version"],
             "policy_ids": ids,
-            "sha256": {filename: hashlib.sha256((BASE / filename).read_bytes()).hexdigest() for filename in sorted(expected)},
+            "sha256": {filename: normalized_sha256(BASE / filename) for filename in sorted(expected)},
         }
         for filename in expected:
             source = BASE / filename

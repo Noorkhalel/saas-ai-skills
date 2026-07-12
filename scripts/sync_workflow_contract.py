@@ -14,6 +14,11 @@ TOPICS = ROOT / "shared" / "handoff-topics.json"
 SKILLS = ROOT / "skills"
 
 
+def normalized_sha256(path: Path) -> str:
+    """Hash text as Git stores it, independent of the checkout line ending."""
+    return hashlib.sha256(path.read_text(encoding="utf-8").encode("utf-8")).hexdigest()
+
+
 def destinations() -> list[Path]:
     return sorted(skill / "shared" / "workflow-contract.md" for skill in SKILLS.iterdir() if skill.is_dir())
 
@@ -33,8 +38,8 @@ def main() -> int:
         manifest = destination.parent / ".generated-workflow-contract.json"
         expected_manifest = {
             "generated_by": "scripts/sync_workflow_contract.py",
-            "contract_sha256": hashlib.sha256(source).hexdigest(),
-            "topics_sha256": hashlib.sha256(topic_source).hexdigest(),
+            "contract_sha256": normalized_sha256(CANONICAL),
+            "topics_sha256": normalized_sha256(TOPICS),
         }
         if args.check:
             if not destination.is_file() or destination.read_bytes() != source or not topic_destination.is_file() or topic_destination.read_bytes() != topic_source:
