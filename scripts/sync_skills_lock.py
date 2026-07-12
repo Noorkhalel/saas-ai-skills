@@ -4,10 +4,17 @@ from __future__ import annotations
 import argparse, hashlib, json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; LOCK=ROOT/'skills-lock.json'
+
+
+def normalized_sha256(path: Path) -> str:
+    """Hash text as Git stores it, independent of the checkout line ending."""
+    return hashlib.sha256(path.read_text(encoding='utf-8').encode('utf-8')).hexdigest()
+
+
 def main() -> int:
     parser=argparse.ArgumentParser(); parser.add_argument('--check',action='store_true'); args=parser.parse_args(); lock=json.loads(LOCK.read_text(encoding='utf-8')); errors=[]
     for skill, item in lock['skills'].items():
-        path=ROOT/item['skillPath']; digest=hashlib.sha256(path.read_bytes()).hexdigest()
+        path=ROOT/item['skillPath']; digest=normalized_sha256(path)
         if args.check:
             if item.get('computedHash') != digest: errors.append(f'{skill}: stale computedHash')
         else: item['computedHash']=digest
